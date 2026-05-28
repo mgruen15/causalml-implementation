@@ -8,8 +8,6 @@ campaign."
 Key methodological changes from v1:
   - Uses R's `grf` package (causal_forest, average_treatment_effect,
     best_linear_projection, test_calibration) via rpy2, matching the paper exactly.
-  - Uses R's `policytree` package for optimal policy learning, which performs
-    doubly-robust empirical welfare maximisation over depth-3 trees.
   - GATEs are estimated via best_linear_projection on doubly robust scores,
     NOT via OLS on raw CATE point estimates.
   - Panel is constructed to yield exactly 1,582 customers × 33 periods = 52,206
@@ -23,11 +21,11 @@ Key methodological changes from v1:
 Requirements
 ------------
 Python : pandas, numpy
-R      : grf (>= 2.2), policytree, causalDML
+R      : grf (>= 2.2), causalDML
 rpy2   : pip install rpy2
 
 Install R packages once:
-    Rscript -e "install.packages(c('grf','policytree','causalDML'), repos='https://cloud.r-project.org')"
+    Rscript -e "install.packages(c('grf','causalDML'), repos='https://cloud.r-project.org')"
 """
 
 import os
@@ -48,7 +46,6 @@ from rpy2.robjects.conversion import localconverter
 
 base   = importr("base")
 grf    = importr("grf")
-ptree  = importr("policytree")
 
 # causalDML is optional – skip gracefully if not installed
 try:
@@ -694,84 +691,7 @@ def test_calibration(fit_result, tag=""):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# SECTION 7  Optimal policy learning via policytree (Section 6.4)
-# ─────────────────────────────────────────────────────────────────────────────
-
-def optimal_policy_learning(fit_result, tag=""):
-    """
-    Paper Section 6.4: uses doubly robust scores from grf + depth-3 policy tree
-    from `policytree`. Follows the paper's feature quantisation rules.
-    """
-    print(f"\n{tag} Optimal policy learning (depth-3 policytree)...")
-
-    cf       = fit_result["forest"]
-    X_df     = pd.DataFrame(fit_result["X"], columns=fit_result["col_names"])
-
-    # ── Feature quantisation (Section 6.4) ───────────────────────────────────
-    X_policy = X_df.copy().fillna(-1)   # missing → -1
-
-    for col in [c for c in X_policy.columns if "lagged_spend" in c]:
-        vals = X_policy[col].values.copy()
-        vals = np.where(vals >= 2000, 2000, vals)
-        vals = np.where((vals >= 1000) & (vals < 2000),
-                        np.round(vals / 200) * 200, vals)
-        vals = np.where(vals < 1000,
-                        np.round(vals / 100) * 100, vals)
-        X_policy[col] = vals
-
-    # ── Doubly robust scores Γ̂ ───────────────────────────────────────────────
-    # FIX: Use policytree's function to guarantee an N x 2 matrix [Control, Treated]
-    dr_scores = ptree.double_robust_scores(cf)
-    dr_scores_arr = np.array(dr_scores)
-    
-    # Identify rows where any score is NaN (due to propensities hitting 0 or 1)
-    valid_mask = ~np.isnan(dr_scores_arr).any(axis=1)
-    n_nan = (~valid_mask).sum()
-    if n_nan > 0:
-        print(f"{tag} Removing {n_nan} observations with NaN doubly-robust scores.")
-        
-    # Filter both X_policy and the scores to keep them perfectly aligned
-    X_policy_filtered = X_policy.iloc[valid_mask].copy()
-    dr_scores_filtered = dr_scores_arr[valid_mask]
-    
-    # Convert filtered X back to R matrix
-    r_Xp = _to_r_matrix(X_policy_filtered)
-    r_Xp_mat = ro.r['as.matrix'](r_Xp)
-    
-    # Convert filtered scores back to R matrix
-    r_dr_scores = ro.r.matrix(
-        ro.FloatVector(dr_scores_filtered.flatten(order="F")),
-        nrow=dr_scores_filtered.shape[0],
-        ncol=dr_scores_filtered.shape[1]
-    )
-    r_dr_scores_mat = ro.r['as.matrix'](r_dr_scores)
-
-    # ── Fit depth-3 policy tree ───────────────────────────────────────────────
-    pt = ptree.policy_tree(r_Xp_mat, r_dr_scores_mat, depth=ro.IntVector([3]))
-
-    # Safely extract leaves (avoids potential R object structure issues)
-    try:
-        n_leaves = int(ro.r["$"](pt, "n.leaves")[0])
-    except Exception:
-        n_leaves = "unknown"
-        
-    print(f"{tag} Policy tree fitted with {n_leaves} leaves (depth=3).")
-
-    # ── Evaluate empirical welfare ────────────────────────────────────────────
-    # Make sure we use the FILTERED matrices here to avoid dimension mismatches
-    actions  = np.array(ptree.predict_policy_tree(pt, r_Xp_mat)) - 1  # 0/1
-    dr_arr   = dr_scores_filtered
-    
-    # welfare = mean gain from assigning treatment where tree says treat
-    welfare = float(np.mean(
-        np.where(actions == 1, dr_arr[:, 1], dr_arr[:, 0])
-    ))
-    print(f"{tag} Empirical welfare under optimal policy: {welfare:.3f}")
-    return pt
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# SECTION 8  Double ML robustness check (Section 6.5, Table 6)
+# SECTION 7  Double ML robustness check (Section 6.5, Table 6)
 # ─────────────────────────────────────────────────────────────────────────────
 
 def double_ml_ate(panel, treatment_col, feature_cols, outcome_col):
@@ -814,46 +734,46 @@ def double_ml_ate(panel, treatment_col, feature_cols, outcome_col):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# SECTION 9  Main pipeline
+# SECTION 8  Main pipeline
 # ─────────────────────────────────────────────────────────────────────────────
 
 def run_pipeline():
 
     # ── Table 2 / 3 benchmark specs (treatment → outcomes) ───────────────────
     benchmarks = [
-        # (treatment_col, [outcome_cols], run_policy_tree, run_double_ml)
+        # (treatment_col, [outcome_cols], run_double_ml)
         # ("treatment_Any Coupon",
         #  ["avg_daily_expenditure_demeaned",
         #   "avg_daily_expenditure_t1_demeaned",
         #   "avg_daily_expenditure_t2_demeaned"],
-        #  False, True),
+        #  True),
 
         ("treatment_drugstore items",
          ["avg_daily_expenditure_demeaned",
           "avg_daily_expenditure_t1_demeaned",
           "avg_daily_expenditure_t2_demeaned"],
-         True, True),
+         True),
 
         ("treatment_other food",
          ["avg_daily_expenditure_demeaned",
           "avg_daily_expenditure_t1_demeaned",
           "avg_daily_expenditure_t2_demeaned"],
-         True, True),
+         True),
 
         ("treatment_other non-food products",
          ["avg_daily_expenditure_demeaned",
           "avg_daily_expenditure_t1_demeaned",
           "avg_daily_expenditure_t2_demeaned"],
-         False, True),
+         True),
 
         ("treatment_ready-to-eat food",
          ["avg_daily_expenditure_demeaned",
           "avg_daily_expenditure_t1_demeaned"],
-         False, False),
+         False),
 
         ("treatment_meat/seafood",
          ["avg_daily_expenditure_demeaned"],
-         True, False),
+         False),
     ]
 
     # ─────────────────────────────────────────────────────────────────────────
@@ -876,7 +796,7 @@ def run_pipeline():
 
     results_full = {}
 
-    for t_col, outcomes, do_policy, do_dml in benchmarks:
+    for t_col, outcomes, do_dml in benchmarks:
         if t_col not in panel.columns:
             print(f"\nSkipping {t_col} – column not found in panel.")
             continue
@@ -901,10 +821,6 @@ def run_pipeline():
 
             results_full[(t_col, outcome)] = {"ate": ate, "gate": gate}
 
-            # ── Optimal policy tree (Figure 5) ───────────────────────────────
-            if do_policy and outcome == "avg_daily_expenditure_demeaned":
-                optimal_policy_learning(fit, tag=tag)
-
             # ── Double ML robustness (Table 6) ───────────────────────────────
             if do_dml and outcome == "avg_daily_expenditure_demeaned":
                 double_ml_ate(panel, t_col, feature_cols, outcome)
@@ -926,7 +842,7 @@ def run_pipeline():
     )
     feature_cols_r = [c for c in panel_r.columns if c not in non_feature_r]
 
-    for t_col, outcomes, _, _ in benchmarks:
+    for t_col, outcomes, _ in benchmarks:
         if t_col not in panel_r.columns:
             continue
         outcome = "avg_daily_expenditure_demeaned"
