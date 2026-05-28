@@ -64,7 +64,7 @@ def load_data():
     return campaigns, coupons_items, demographics, transactions, items, train
 
 
-def create_artificial_periods(campaigns):
+def create_artificial_periods(campaigns, transactions):
     """
     Paper Section 4: collapse the 18 partially overlapping campaigns into
     non-overlapping artificial periods by taking every unique start/end boundary
@@ -95,6 +95,19 @@ def create_artificial_periods(campaigns):
     ]).dt.normalize().drop_duplicates().sort_values().reset_index(drop=True)
 
     periods = []
+    
+    # Add period 0: from first transaction to day before first campaign
+    min_tx_date = pd.to_datetime(transactions["date"]).min().normalize()
+    first_camp_date = boundaries.min()
+    
+    if min_tx_date < first_camp_date:
+        periods.append({
+            "period_id":     0,
+            "start_date":    min_tx_date,
+            "end_date":      first_camp_date - pd.Timedelta(days=1),
+            "duration_days": (first_camp_date - pd.Timedelta(days=1) - min_tx_date).days + 1,
+        })
+
     for i in range(len(boundaries) - 1):
         s = boundaries.iloc[i]
         e = boundaries.iloc[i + 1] - pd.Timedelta(days=1)
@@ -226,7 +239,7 @@ def preprocess_data(full_run=True):
     campaigns = campaigns[campaigns["campaign_id"].isin(train_campaigns)].copy()
 
     items   = map_item_categories(items)
-    periods = create_artificial_periods(campaigns)
+    periods = create_artificial_periods(campaigns, transactions)
 
     # ── parse transaction dates ──────────────────────────────────────────────
     transactions["date"] = pd.to_datetime(transactions["date"])
@@ -379,6 +392,30 @@ def preprocess_data(full_run=True):
     treatment_cols = [c for c in treatments.columns if c.startswith("treatment_")]
     panel[treatment_cols] = panel[treatment_cols].fillna(0).astype(int)
 
+    # ── Coupon redemptions at t ───────────────────────────────────────────────
+    train_redemptions = train_periods[train_periods["redemption_status"] == 1]
+    if len(train_redemptions) > 0:
+        redemptions = (
+            train_redemptions
+            .groupby(["customer_id", "period_id", "coupon_category"])
+            .size()
+            .unstack(fill_value=0)
+        )
+        redemptions = (redemptions > 0).astype(int).reset_index()
+        redemptions.columns.name = None
+        redemptions = redemptions.rename(
+            columns={c: f"redemption_{c}"
+                     for c in redemptions.columns
+                     if c not in ["customer_id", "period_id"]}
+        )
+        redemptions["redemption_Any Coupon"] = (
+            redemptions
+            .drop(["customer_id", "period_id"], axis=1)
+            .sum(axis=1) > 0
+        ).astype(int)
+    else:
+        redemptions = pd.DataFrame(columns=["customer_id", "period_id"])
+
     # ── Lagged coupon history (t-1) ───────────────────────────────────────────
     lagged_tr = treatments.copy()
     lagged_tr["period_id"] = lagged_tr["period_id"] + 1
@@ -389,6 +426,17 @@ def preprocess_data(full_run=True):
     panel = panel.merge(lagged_tr, on=["customer_id", "period_id"], how="left")
     lagged_coupon_cols = [c for c in lagged_tr.columns if c.startswith("lagged_coupon_")]
     panel[lagged_coupon_cols] = panel[lagged_coupon_cols].fillna(0).astype(int)
+
+    lagged_red = redemptions.copy()
+    if not lagged_red.empty:
+        lagged_red["period_id"] = lagged_red["period_id"] + 1
+        red_cols = [c for c in lagged_red.columns if c.startswith("redemption_")]
+        lagged_red = lagged_red.rename(
+            columns={c: c.replace("redemption_", "lagged_redemption_") for c in red_cols}
+        )
+        panel = panel.merge(lagged_red, on=["customer_id", "period_id"], how="left")
+        lagged_red_cols = [c for c in lagged_red.columns if c.startswith("lagged_redemption_")]
+        panel[lagged_red_cols] = panel[lagged_red_cols].fillna(0).astype(int)
 
     # ── Period fixed effects ──────────────────────────────────────────────────
     panel = pd.get_dummies(panel, columns=["period_id"], prefix="FE_period")
@@ -509,6 +557,7 @@ def estimate_causal_forest(panel, treatment_col, feature_cols, outcome_col):
         num_trees = ro.IntVector([2000]),
         honesty   = ro.BoolVector([True]),
         clusters  = r_clusters,
+        tune_parameters = ro.StrVector(["all"]),
         seed      = ro.IntVector([42]),
     )
 
@@ -534,8 +583,15 @@ def estimate_ate(fit_result, tag=""):
     AIPW estimator (Athey & Wager 2019) with clustered SEs.
     """
     cf  = fit_result["forest"]
-    # Using 'overlap' prevents NaN outputs when propensities are near 0 or 1
-    ate = grf.average_treatment_effect(cf, target_sample=ro.StrVector(["overlap"]))
+    
+    # Extract OOB propensity scores
+    w_hat = np.array(cf.rx2("W.hat"))
+    keep = (w_hat >= 0.01) & (w_hat <= 0.99)
+    subset_indices = np.where(keep)[0] + 1 # 1-indexed for R
+    r_subset = ro.IntVector(subset_indices.tolist())
+
+    # Estimate ATE on trimmed sample
+    ate = grf.average_treatment_effect(cf, target_sample=ro.StrVector(["all"]), subset=r_subset)
     coef = float(ate.rx2("estimate")[0])
     se   = float(ate.rx2("std.err")[0])
     z    = coef / se if se > 0 else float("nan")
@@ -642,11 +698,20 @@ def double_ml_ate(panel, treatment_col, feature_cols, outcome_col):
     print(f"\n{tag} Running Double ML...")
 
     data = panel.dropna(subset=[outcome_col]).copy()
-    X = data[feature_cols].astype(float).fillna(0)
+    X_base = data[feature_cols].astype(float).fillna(0)
+    
+    from sklearn.preprocessing import PolynomialFeatures
+    poly = PolynomialFeatures(degree=2, interaction_only=False, include_bias=False)
+    X_poly = poly.fit_transform(X_base)
+    
     Y = data[outcome_col].astype(float).values
     W = data[treatment_col].astype(int).values
 
-    r_X = _to_r_matrix(X)
+    # Convert X_poly to pandas DataFrame so _to_r_matrix can name columns
+    import pandas as pd
+    X_poly_df = pd.DataFrame(X_poly, columns=poly.get_feature_names_out(X_base.columns))
+    
+    r_X = _to_r_matrix(X_poly_df)
     r_Y = ro.FloatVector(Y.tolist())
     r_W = ro.FloatVector(W.astype(float).tolist())
 
@@ -684,11 +749,11 @@ def run_pipeline():
         #   "avg_daily_expenditure_t2"],
         #  True),
 
-        # ("treatment_drugstore items",
-        #  ["avg_daily_expenditure",
-        #   "avg_daily_expenditure_t1",
-        #   "avg_daily_expenditure_t2"],
-        #  True),
+        ("treatment_drugstore items",
+          ["avg_daily_expenditure",
+           "avg_daily_expenditure_t1",
+           "avg_daily_expenditure_t2"],
+          True),
 
         ("treatment_other food",
          ["avg_daily_expenditure",
