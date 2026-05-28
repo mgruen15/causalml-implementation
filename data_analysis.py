@@ -2,14 +2,18 @@
 data_analysis.py
 
 Diagnostic script to analyze the merged panel data from replicate_causal_ml.py
-and identify potential reasons for non-significant causal effects.
+(or v2) and identify potential reasons for non-significant causal effects.
 """
 
 import pandas as pd
 import numpy as np
 from scipy import stats
 import matplotlib.pyplot as plt
-from replicate_causal_ml import preprocess_data
+
+try:
+    from replicate_causal_ml_v2 import preprocess_data
+except ImportError:
+    from replicate_causal_ml import preprocess_data
 
 def run_analysis():
     print("=== Starting Data Analysis ===")
