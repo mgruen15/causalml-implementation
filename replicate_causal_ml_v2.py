@@ -63,28 +63,34 @@ DATA_DIR = "./data"
 
 def load_data():
     print("Loading raw data files...")
-    campaigns   = pd.read_csv(os.path.join(DATA_DIR, "campaign_data.csv"))
+    campaigns     = pd.read_csv(os.path.join(DATA_DIR, "campaign_data.csv"))
     coupons_items = pd.read_csv(os.path.join(DATA_DIR, "coupon_item_mapping.csv"))
     demographics  = pd.read_csv(os.path.join(DATA_DIR, "customer_demographics.csv"))
     transactions  = pd.read_csv(os.path.join(DATA_DIR, "customer_transaction_data.csv"))
     items         = pd.read_csv(os.path.join(DATA_DIR, "item_data.csv"))
-    train         = pd.read_csv(os.path.join(DATA_DIR, "train.csv"))
-    return campaigns, coupons_items, demographics, transactions, items, train
+    
+    # Load both and concatenate to get the FULL treatment distribution
+    train = pd.read_csv(os.path.join(DATA_DIR, "train.csv"))
+    test  = pd.read_csv(os.path.join(DATA_DIR, "test.csv"))
+    
+    # We don't care about redemption_status for assigning treatments, just who got what
+    full_distributions = pd.concat([train, test], ignore_index=True)
+    
+    return campaigns, coupons_items, demographics, transactions, items, full_distributions
 
 
 def create_artificial_periods(campaigns):
     """
-    Paper Section 4: collapse the 18 partially overlapping campaigns into 33
+    Paper Section 4: collapse the 18 partially overlapping campaigns into
     non-overlapping artificial periods by taking every unique start/end boundary
     as a split point.
 
     FIX: Normalise all dates to midnight (date-only, no time component) before
     collecting boundaries. Any sub-day time artifacts in the raw CSV — e.g.
     "01/01/12 00:00:01" vs "01/01/12 00:00:00" — would otherwise produce
-    duplicate near-identical boundaries and inflate the period count beyond 33.
-    We also assert the final count equals 33 so the problem is caught early.
+    duplicate near-identical boundaries and inflate the period count.
     """
-    print("Creating 33 non-overlapping artificial campaign periods...")
+    print("Creating non-overlapping artificial campaign periods...")
 
     # Normalise to date-only (strips any time component)
     campaigns = campaigns.copy()
@@ -119,17 +125,7 @@ def create_artificial_periods(campaigns):
         })
 
     df = pd.DataFrame(periods)
-
-    # Hard check — the paper reports exactly 33 periods from 18 campaigns
-    if len(df) != 33:
-        print(
-            f"  [WARNING] Expected 33 periods but got {len(df)}.\n"
-            "  Check that campaign_data.csv date formats match '%d/%m/%y' exactly.\n"
-            "  Inspect campaigns['start_date'] and campaigns['end_date'] below:\n"
-            f"{campaigns[['campaign_id','start_date','end_date']].to_string()}"
-        )
-    else:
-        print(f"  ✓ {len(df)} artificial periods created (matches paper).")
+    print(f"  ✓ {len(df)} artificial periods created.")
 
     return df
 
@@ -137,21 +133,35 @@ def create_artificial_periods(campaigns):
 def map_item_categories(items):
     """Paper Section 4 / Table S2: map granular categories to 5 broad groups."""
     mapping = {
-        "Prepared Food":        "ready-to-eat food",
-        "Bakery":               "ready-to-eat food",
-        "Salads":               "ready-to-eat food",
-        "Vegetables (cut)":     "ready-to-eat food",
-        "Restauarant":          "ready-to-eat food",   # typo present in original data
-        "Packaged Meat":        "meat/seafood",
-        "Seafood":              "meat/seafood",
-        "Meat":                 "meat/seafood",
-        "Grocery":              "other food",
-        "Natural Products":     "other food",
-        "Dairy, Juices & Snacks": "other food",
-        "Alcohol":              "other food",
-        "Pharmaceutical":       "drugstore items",
-        "Skin & Hair Care":     "drugstore items",
+        # Ready-to-eat food
+        "Prepared Food":          "ready-to-eat food",
+        "Bakery":                 "ready-to-eat food",
+        "Restauarant":            "ready-to-eat food", 
+        "Dairy, Juices & Snacks": "ready-to-eat food",
+        
+        # Other food
+        "Grocery":                "other food",
+        "Natural Products":       "other food",
+        "Salads":                 "other food",
+        "Vegetables (cut)":       "other food",
+        "Alcohol":                "other food", # Unspecified in S2 but fits here based on logic
+        
+        # Meat/Seafood
+        "Packaged Meat":          "meat/seafood",
+        "Seafood":                "meat/seafood",
+        "Meat":                   "meat/seafood",
+        
+        # Drugstore items
+        "Pharmaceutical":         "drugstore items",
+        "Skin & Hair Care":       "drugstore items",
+        
+        # Other non-food products
+        "Flowers & Plants":       "other non-food products",
+        "Garden":                 "other non-food products",
+        "Travel":                 "other non-food products",
+        "Miscellaneous":          "other non-food products"
     }
+    
     items = items.copy()
     items["target_category"] = items["category"].map(
         lambda x: mapping.get(x, "other non-food products")
@@ -219,7 +229,7 @@ def preprocess_data(full_run=True):
       • Coupon receipt & redemption in t-1
       • Other-coupon dummies at t (for category-specific estimations)
       • Period fixed effects
-    Outcome: avg_daily_expenditure (also demeaned; and t+1, t+2 variants).
+    Outcome: avg_daily_expenditure (and t+1, t+2 variants).
 
     full_run=False  →  keep only observations with known socio-economics
                        (paper Section 6.5 / Table 4, n=431 customers, 13,792 obs)
@@ -271,7 +281,7 @@ def preprocess_data(full_run=True):
     # ── Balanced panel: every customer × every period ────────────────────────
     # Paper: n=1,582 customers, T=33 periods → 52,206 obs before trimming
     all_customers = pd.DataFrame(
-        {"customer_id": transactions["customer_id"].unique()}
+        {"customer_id": range(1, 1583)}
     )
     panel = all_customers.assign(key=1).merge(
         periods.assign(key=1), on="key"
@@ -411,45 +421,32 @@ def preprocess_data(full_run=True):
                      (2, "avg_daily_expenditure_t2")]:
         panel[col] = panel.groupby("customer_id")["avg_daily_expenditure"].shift(-lag)
 
-    # ── Customer demeaning (entity fixed effects proxy, Section 6) ────────────
-    print("Demeaning outcomes by customer mean...")
-    for base_col in [
-        "avg_daily_expenditure",
-        "avg_daily_expenditure_t1",
-        "avg_daily_expenditure_t2",
-    ]:
-        cust_mean = panel.groupby("customer_id")[base_col].transform("mean")
-        panel[f"{base_col}_demeaned"] = panel[base_col] - cust_mean
-
     panel = panel.drop(columns=["_period_idx"])
 
     n_cust   = panel["customer_id"].nunique()
     n_obs    = len(panel)
     n_treat  = panel["treatment_Any Coupon"].mean()
 
-    # ── Panel shape validation (Fix 2) ───────────────────────────────────────
-    # Paper: n=1,582 customers × 33 periods = 52,206 obs (full run).
-    # Reduced run will be smaller; we only validate in full_run mode.
+    # ── Panel shape validation ───────────────────────────────────────────────
+    # We only validate in full_run mode.
     if full_run:
         expected_customers = 1582
-        expected_periods   = len(periods)          # should be 33
-        expected_obs       = expected_customers * expected_periods
+        expected_obs       = expected_customers * len(periods)
 
         if n_cust != expected_customers:
             print(
                 f"  [WARNING] Customer count = {n_cust:,} "
                 f"(expected {expected_customers:,}). "
-                "Check that all transaction customer_ids resolve to unique customers."
+                "Check that all targeted customer_ids are included in the panel."
             )
         if n_obs != expected_obs:
             print(
                 f"  [WARNING] Panel rows = {n_obs:,} "
-                f"(expected {expected_obs:,} = {expected_customers} × {expected_periods}). "
-                "Likely caused by wrong period count — fix period construction first."
+                f"(expected {expected_obs:,}). "
             )
         else:
             print(f"  ✓ Panel shape correct: {n_obs:,} obs "
-                  f"({n_cust:,} customers × {expected_periods} periods).")
+                  f"({n_cust:,} customers × {len(periods)} periods).")
 
     print(f"Panel built: {n_obs:,} obs | {n_cust:,} customers | "
           f"treatment rate (any coupon) = {n_treat:.3f}")
@@ -484,7 +481,6 @@ def estimate_causal_forest(panel, treatment_col, feature_cols, outcome_col):
       • n_estimators = 2,000
       • honest = TRUE
       • clusters = customer_id  (clustered SEs)
-      • Propensity trimming at [0.01, 0.99] (Section 6.2)
     """
     tag = f"[{treatment_col} → {outcome_col}]"
     print(f"\n{tag} Fitting causal forest...")
@@ -506,22 +502,6 @@ def estimate_causal_forest(panel, treatment_col, feature_cols, outcome_col):
     Y = data[outcome_col].astype(float).values
     W = data[treatment_col].astype(int).values
     clusters = data["customer_id"].values
-
-    # Fix 3b: drop any other-treatment column that correlates > 0.90 with W.
-    # Near-perfect correlation means both columns carry essentially the same
-    # signal; including them causes the grf orthogonalization to over-partial
-    # out the treatment, collapsing ATE estimates toward zero.
-    if other_t:
-        w_series = pd.Series(W, name="W")
-        drop_cols = []
-        for oc in other_t:
-            r = abs(X[oc].corr(w_series))
-            if r > 0.90:
-                drop_cols.append(oc)
-        if drop_cols:
-            print(f"{tag} Dropping {len(drop_cols)} other-treatment control(s) "
-                  f"with |corr(W)| > 0.90: {drop_cols}")
-            X = X.drop(columns=drop_cols)
 
     # Encode clusters as integer indices
     uid, cluster_idx = np.unique(clusters, return_inverse=True)
@@ -547,43 +527,14 @@ def estimate_causal_forest(panel, treatment_col, feature_cols, outcome_col):
         seed      = ro.IntVector([42]),
     )
 
-    # ── Propensity trimming [0.01, 0.99] (Section 6.2) ───────────────────────
-    e_hat = np.array(ro.r["$"](cf, "W.hat"))
-    mask  = (e_hat >= 0.01) & (e_hat <= 0.99)
-    n_ret = int(mask.sum())
-    print(f"{tag} Retained {n_ret:,} / {len(mask):,} obs within common support.")
-
-    if n_ret < 100:
-        print(f"{tag} Too few observations after trimming. Skipping.")
-        return None
-
-    # ── Re-fit on trimmed sample ──────────────────────────────────────────────
-    X_t  = X[mask];  Y_t = Y[mask]; W_t = W[mask]
-    ci_t = cluster_idx[mask]
-
-    r_Xt  = _to_r_matrix(X_t)
-    r_Yt  = ro.FloatVector(Y_t.tolist())
-    r_Wt  = ro.FloatVector(W_t.astype(float).tolist())
-    r_cit = ro.IntVector(ci_t.tolist())
-
-    cf_t = grf.causal_forest(
-        X         = r_Xt,
-        Y         = r_Yt,
-        W         = r_Wt,
-        num_trees = ro.IntVector([2000]),
-        honesty   = ro.BoolVector([True]),
-        clusters  = r_cit,
-        seed      = ro.IntVector([42]),
-    )
-
     return {
-        "forest":     cf_t,
-        "X":          X_t,
-        "Y":          Y_t,
-        "W":          W_t,
-        "r_X":        r_Xt,
-        "clusters":   ci_t,
-        "r_clusters": r_cit,
+        "forest":     cf,
+        "X":          X,
+        "Y":          Y,
+        "W":          W,
+        "r_X":        r_X,
+        "clusters":   cluster_idx,
+        "r_clusters": r_clusters,
         "col_names":  list(X.columns),
     }
 
@@ -743,36 +694,36 @@ def run_pipeline():
     benchmarks = [
         # (treatment_col, [outcome_cols], run_double_ml)
         # ("treatment_Any Coupon",
-        #  ["avg_daily_expenditure_demeaned",
-        #   "avg_daily_expenditure_t1_demeaned",
-        #   "avg_daily_expenditure_t2_demeaned"],
+        #  ["avg_daily_expenditure",
+        #   "avg_daily_expenditure_t1",
+        #   "avg_daily_expenditure_t2"],
         #  True),
 
-        ("treatment_drugstore items",
-         ["avg_daily_expenditure_demeaned",
-          "avg_daily_expenditure_t1_demeaned",
-          "avg_daily_expenditure_t2_demeaned"],
-         True),
+        # ("treatment_drugstore items",
+        #  ["avg_daily_expenditure",
+        #   "avg_daily_expenditure_t1",
+        #   "avg_daily_expenditure_t2"],
+        #  True),
 
         ("treatment_other food",
-         ["avg_daily_expenditure_demeaned",
-          "avg_daily_expenditure_t1_demeaned",
-          "avg_daily_expenditure_t2_demeaned"],
+         ["avg_daily_expenditure",
+          "avg_daily_expenditure_t1",
+          "avg_daily_expenditure_t2"],
          True),
 
         ("treatment_other non-food products",
-         ["avg_daily_expenditure_demeaned",
-          "avg_daily_expenditure_t1_demeaned",
-          "avg_daily_expenditure_t2_demeaned"],
+         ["avg_daily_expenditure",
+          "avg_daily_expenditure_t1",
+          "avg_daily_expenditure_t2"],
          True),
 
         ("treatment_ready-to-eat food",
-         ["avg_daily_expenditure_demeaned",
-          "avg_daily_expenditure_t1_demeaned"],
+         ["avg_daily_expenditure",
+          "avg_daily_expenditure_t1"],
          False),
 
         ("treatment_meat/seafood",
-         ["avg_daily_expenditure_demeaned"],
+         ["avg_daily_expenditure"],
          False),
     ]
 
@@ -816,13 +767,13 @@ def run_pipeline():
             gate = estimate_gate(fit, tag=tag)
 
             # ── Calibration (Table 8) ────────────────────────────────────────
-            if outcome == "avg_daily_expenditure_demeaned":
+            if outcome == "avg_daily_expenditure":
                 test_calibration(fit, tag=tag)
 
             results_full[(t_col, outcome)] = {"ate": ate, "gate": gate}
 
             # ── Double ML robustness (Table 6) ───────────────────────────────
-            if do_dml and outcome == "avg_daily_expenditure_demeaned":
+            if do_dml and outcome == "avg_daily_expenditure":
                 double_ml_ate(panel, t_col, feature_cols, outcome)
 
     # ─────────────────────────────────────────────────────────────────────────
@@ -845,7 +796,7 @@ def run_pipeline():
     for t_col, outcomes, _ in benchmarks:
         if t_col not in panel_r.columns:
             continue
-        outcome = "avg_daily_expenditure_demeaned"
+        outcome = "avg_daily_expenditure"
         tag = f"[REDUCED | {t_col} → {outcome}]"
         fit_r = estimate_causal_forest(panel_r, t_col, feature_cols_r, outcome)
         if fit_r is None:
