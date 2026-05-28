@@ -366,7 +366,7 @@ def run_pipeline():
     
     # Target treatments for replication benchmarks
     benchmarks = [
-        ('treatment_Any Coupon', ['avg_daily_expenditure_demeaned', 'avg_daily_expenditure_t1_demeaned', 'avg_daily_expenditure_t2_demeaned']),
+        ('treatment_Any Coupon', ['avg_daily_expenditure_demeaned', 'avg_daily_expenditure_t1_demeaned', 'avg_daily_expenditure_t2_demeaned']), # no significant results
         ('treatment_drugstore items', ['avg_daily_expenditure_demeaned', 'avg_daily_expenditure_t1_demeaned', 'avg_daily_expenditure_t2_demeaned']),
         ('treatment_other food', ['avg_daily_expenditure_demeaned']),
         ('treatment_other non-food products', ['avg_daily_expenditure_demeaned', 'avg_daily_expenditure_t1_demeaned', 'avg_daily_expenditure_t2_demeaned']),
