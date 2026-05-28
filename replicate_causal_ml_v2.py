@@ -63,20 +63,18 @@ DATA_DIR = "./data"
 
 def load_data():
     print("Loading raw data files...")
+    
     campaigns     = pd.read_csv(os.path.join(DATA_DIR, "campaign_data.csv"))
     coupons_items = pd.read_csv(os.path.join(DATA_DIR, "coupon_item_mapping.csv"))
     demographics  = pd.read_csv(os.path.join(DATA_DIR, "customer_demographics.csv"))
     transactions  = pd.read_csv(os.path.join(DATA_DIR, "customer_transaction_data.csv"))
     items         = pd.read_csv(os.path.join(DATA_DIR, "item_data.csv"))
     
-    # Load both and concatenate to get the FULL treatment distribution
+    # We strictly use train.csv for the treatment assignments to restrict 
+    # the analysis to the 18 specific campaigns (yielding 32 periods).
     train = pd.read_csv(os.path.join(DATA_DIR, "train.csv"))
-    test  = pd.read_csv(os.path.join(DATA_DIR, "test.csv"))
     
-    # We don't care about redemption_status for assigning treatments, just who got what
-    full_distributions = pd.concat([train, test], ignore_index=True)
-    
-    return campaigns, coupons_items, demographics, transactions, items, full_distributions
+    return campaigns, coupons_items, demographics, transactions, items, train
 
 
 def create_artificial_periods(campaigns):
