@@ -5,19 +5,6 @@ Faithful replication of Langen & Huber (2023) "How causal machine learning can
 leverage marketing strategies: Assessing and improving the performance of a coupon
 campaign."
 
-Key methodological changes from v1:
-  - Uses R's `grf` package (causal_forest, average_treatment_effect,
-    best_linear_projection, test_calibration) via rpy2, matching the paper exactly.
-  - GATEs are estimated via best_linear_projection on doubly robust scores,
-    NOT via OLS on raw CATE point estimates.
-  - Panel is constructed to yield exactly 1,582 customers × 33 periods = 52,206
-    rows (the paper reports 50,624 after period-count correction; see note below).
-  - Standard errors are clustered at the customer level throughout.
-  - Two robustness checks:
-      (a) Reduced sample (n=431, 13,792 obs) with known socio-economics.
-      (b) Double ML via the `causalDML` R package.
-  - Goodness-of-fit via test_calibration for each coupon type.
-
 Requirements
 ------------
 Python : pandas, numpy
