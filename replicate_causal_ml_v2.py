@@ -743,11 +743,11 @@ def run_pipeline():
     # ── Table 2 / 3 benchmark specs (treatment → outcomes) ───────────────────
     benchmarks = [
         # (treatment_col, [outcome_cols], run_double_ml)
-        # ("treatment_Any Coupon",
-        #  ["avg_daily_expenditure",
-        #   "avg_daily_expenditure_t1",
-        #   "avg_daily_expenditure_t2"],
-        #  True),
+        ("treatment_Any Coupon",
+         ["avg_daily_expenditure",
+          "avg_daily_expenditure_t1",
+          "avg_daily_expenditure_t2"],
+         True),
 
         ("treatment_drugstore items",
           ["avg_daily_expenditure",
@@ -796,6 +796,10 @@ def run_pipeline():
     feature_cols = [c for c in panel.columns if c not in non_feature]
 
     results_full = {}
+    all_ate_results = []
+    all_gate_results = []
+    all_calibration_results = []
+    all_cate_distributions = []
 
     for t_col, outcomes, do_dml in benchmarks:
         if t_col not in panel.columns:
@@ -810,21 +814,86 @@ def run_pipeline():
             if fit is None:
                 continue
 
+            # ── CATE Distributions (Fig 1) ───────────────────────────────────
+            if outcome == "avg_daily_expenditure":
+                # Get OOB predictions from the forest
+                preds = ro.r.predict(fit["forest"])
+                cates = np.array(preds.rx2("predictions")).flatten()
+                
+                # Extract key categorical features for heatmaps (reversing one-hot roughly)
+                X_cols = fit["col_names"]
+                X_vals = fit["X"]
+                
+                temp_df = pd.DataFrame({"cate": cates})
+                temp_df["treatment"] = t_col
+                
+                # Add columns for major categories
+                for group in ["age_range", "income_bracket", "family_size"]:
+                    # Find all columns for this group
+                    group_cols = [c for c in X_cols if c.startswith(f"{group}_")]
+                    if not group_cols: continue
+                    
+                    # For each row, find which dummy is 1
+                    # This is efficient for the whole dataframe
+                    group_df = X_vals[group_cols]
+                    # idxmax returns the column name with the 1
+                    labels = group_df.idxmax(axis=1).str.replace(f"{group}_", "")
+                    temp_df[group] = labels.values
+
+                all_cate_distributions.append(temp_df)
+
             # ── ATE (Table 2 / 3) ────────────────────────────────────────────
             ate = estimate_ate(fit, tag=tag)
+            all_ate_results.append({
+                "phase": "Phase 1 - Full",
+                "treatment": t_col,
+                "outcome": outcome,
+                "method": "GRF",
+                "estimate": ate["estimate"],
+                "se": ate["se"],
+                "pvalue": ate["pvalue"]
+            })
 
             # ── GATE (Figures 2-4) ───────────────────────────────────────────
             gate = estimate_gate(fit, tag=tag)
+            if gate is not None:
+                gate = gate.copy()
+                gate["phase"] = "Phase 1 - Full"
+                gate["treatment"] = t_col
+                gate["outcome"] = outcome
+                all_gate_results.append(gate)
 
             # ── Calibration (Table 8) ────────────────────────────────────────
             if outcome == "avg_daily_expenditure":
-                test_calibration(fit, tag=tag)
+                cal = test_calibration(fit, tag=tag)
+                row_names = list(ro.r["rownames"](cal))
+                vals = np.array(cal)
+                for i, row in enumerate(row_names):
+                    all_calibration_results.append({
+                        "phase": "Phase 1 - Full",
+                        "treatment": t_col,
+                        "outcome": outcome,
+                        "test_variable": row,
+                        "estimate": vals[i, 0],
+                        "se": vals[i, 1],
+                        "pvalue": vals[i, 3]
+                    })
 
             results_full[(t_col, outcome)] = {"ate": ate, "gate": gate}
 
             # ── Double ML robustness (Table 6) ───────────────────────────────
             if do_dml and outcome == "avg_daily_expenditure":
-                double_ml_ate(panel, t_col, feature_cols, outcome)
+                dml = double_ml_ate(panel, t_col, feature_cols, outcome)
+                if dml:
+                    all_ate_results.append({
+                        "phase": "Phase 1 - Full",
+                        "treatment": t_col,
+                        "outcome": outcome,
+                        "method": "DoubleML",
+                        "estimate": dml["estimate"],
+                        "se": dml["se"],
+                        "pvalue": dml["pvalue"]
+                    })
 
     # ─────────────────────────────────────────────────────────────────────────
     # PHASE 2: Robustness – reduced sample (N ≈ 13,792, known socio-economics)
@@ -851,7 +920,72 @@ def run_pipeline():
         fit_r = estimate_causal_forest(panel_r, t_col, feature_cols_r, outcome)
         if fit_r is None:
             continue
-        estimate_ate(fit_r, tag=tag)
+        ate_r = estimate_ate(fit_r, tag=tag)
+        all_ate_results.append({
+            "phase": "Phase 2 - Reduced",
+            "treatment": t_col,
+            "outcome": outcome,
+            "method": "GRF",
+            "estimate": ate_r["estimate"],
+            "se": ate_r["se"],
+            "pvalue": ate_r["pvalue"]
+        })
+
+    # ── Save all results to disk ─────────────────────────────────────────────
+    print("\nSaving all results to './results' directory...")
+    
+    if all_ate_results:
+        ate_df = pd.DataFrame(all_ate_results)
+        ate_df.to_csv("results/ate_results.csv", index=False)
+        print("  ✓ Saved results/ate_results.csv")
+
+    if all_gate_results:
+        gate_df = pd.concat(all_gate_results, ignore_index=True)
+        # Reorder columns to put phase/treatment/outcome first
+        cols = ["phase", "treatment", "outcome", "variable", "coef", "se", "pval"]
+        gate_df = gate_df[cols]
+        gate_df.to_csv("results/gate_results.csv", index=False)
+        print("  ✓ Saved results/gate_results.csv")
+
+    if all_calibration_results:
+        cal_df = pd.DataFrame(all_calibration_results)
+        cal_df.to_csv("results/calibration_results.csv", index=False)
+        print("  ✓ Saved results/calibration_results.csv")
+
+    if all_cate_distributions:
+        cate_df = pd.concat(all_cate_distributions, ignore_index=True)
+        cate_df.to_csv("results/cate_distributions.csv", index=False)
+        print("  ✓ Saved results/cate_distributions.csv")
+
+    # ── Calculate Confounder Strengths for DAG ──────────────────────────────
+    print("Calculating confounder strengths for DAG...")
+    confounder_results = []
+    # Identify representative confounder cols (baseline habits and demographics)
+    rep_x = {
+        "Baseline Spending": [c for c in panel.columns if "lagged_spend_" in c],
+        "Demographics": [c for c in panel.columns if "age_range_" in c or "income_bracket_" in c or "family_size_" in c]
+    }
+    
+    for t_col, outcomes, _ in benchmarks:
+        if t_col not in panel.columns: continue
+        outcome = "avg_daily_expenditure"
+        
+        for label, cols in rep_x.items():
+            # X -> D strength (mean correlation)
+            corr_d = panel[cols].corrwith(panel[t_col]).abs().mean()
+            # X -> Y strength (mean correlation)
+            corr_y = panel[cols].corrwith(panel[outcome]).abs().mean()
+            
+            confounder_results.append({
+                "treatment": t_col,
+                "confounder_group": label,
+                "strength_to_d": corr_d,
+                "strength_to_y": corr_y
+            })
+    
+    conf_df = pd.DataFrame(confounder_results)
+    conf_df.to_csv("results/confounder_strengths.csv", index=False)
+    print("  ✓ Saved results/confounder_strengths.csv")
 
     print("\n" + "="*70)
     print("Pipeline complete.")

@@ -1,0 +1,13 @@
+treatment,confounder_group,strength_to_d,strength_to_y
+treatment_Any Coupon,Baseline Spending,0.05442934705870619,0.15942055311573855
+treatment_Any Coupon,Demographics,0.0246048309186594,0.06358501837235898
+treatment_drugstore items,Baseline Spending,0.05147799971807079,0.15942055311573855
+treatment_drugstore items,Demographics,0.02411367102174537,0.06358501837235898
+treatment_other food,Baseline Spending,0.05442934705870619,0.15942055311573855
+treatment_other food,Demographics,0.0246048309186594,0.06358501837235898
+treatment_other non-food products,Baseline Spending,0.021419318692700914,0.15942055311573855
+treatment_other non-food products,Demographics,0.01191021276612875,0.06358501837235898
+treatment_ready-to-eat food,Baseline Spending,0.03079359120346094,0.15942055311573855
+treatment_ready-to-eat food,Demographics,0.018480886150201752,0.06358501837235898
+treatment_meat/seafood,Baseline Spending,0.04093583729362152,0.15942055311573855
+treatment_meat/seafood,Demographics,0.019357454869700863,0.06358501837235898
