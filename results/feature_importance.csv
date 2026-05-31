@@ -1,0 +1,531 @@
+feature,importance,treatment
+age_range_18-25,2.0473700773071775e-05,treatment_Any Coupon
+age_range_26-35,0.011970644763193655,treatment_Any Coupon
+age_range_36-45,0.01982913379775632,treatment_Any Coupon
+age_range_46-55,0.016866778280076607,treatment_Any Coupon
+age_range_56-70,0.000348583837851348,treatment_Any Coupon
+age_range_70+,0.00027110813913175364,treatment_Any Coupon
+age_range_unknown,0.015052909833040582,treatment_Any Coupon
+marital_status_Married,0.01831424870529424,treatment_Any Coupon
+marital_status_Single,0.0034748888203374314,treatment_Any Coupon
+marital_status_unknown,0.017712649120235166,treatment_Any Coupon
+rented_0.0,0.01016323406379368,treatment_Any Coupon
+rented_1.0,8.441521591982425e-05,treatment_Any Coupon
+rented_unknown,0.012606788496549566,treatment_Any Coupon
+family_size_1,0.015701264321812992,treatment_Any Coupon
+family_size_2,0.01984816120728884,treatment_Any Coupon
+family_size_3,0.00455560520430657,treatment_Any Coupon
+family_size_4,0.000341668474353737,treatment_Any Coupon
+family_size_5+,0.0009820398989590369,treatment_Any Coupon
+family_size_unknown,0.018079164142763053,treatment_Any Coupon
+no_of_children_1,0.008951236754920253,treatment_Any Coupon
+no_of_children_2,0.0003349347040026335,treatment_Any Coupon
+no_of_children_3+,0.0009357792820380578,treatment_Any Coupon
+no_of_children_unknown,0.026378811304109257,treatment_Any Coupon
+income_bracket_1.0,6.533791642040164e-05,treatment_Any Coupon
+income_bracket_2.0,0.00016740987686338047,treatment_Any Coupon
+income_bracket_3.0,0.00031585740450321094,treatment_Any Coupon
+income_bracket_4.0,0.011989551638149057,treatment_Any Coupon
+income_bracket_5.0,0.011759305688291435,treatment_Any Coupon
+income_bracket_6.0,0.0010568377454072055,treatment_Any Coupon
+income_bracket_7.0,2.177930547346722e-05,treatment_Any Coupon
+income_bracket_8.0,2.8603872397824476e-05,treatment_Any Coupon
+income_bracket_9.0,2.177930547346722e-05,treatment_Any Coupon
+income_bracket_10.0,0.0,treatment_Any Coupon
+income_bracket_11.0,0.0,treatment_Any Coupon
+income_bracket_12.0,0.0,treatment_Any Coupon
+income_bracket_unknown,0.014747624967580562,treatment_Any Coupon
+lagged_spend_other food,0.10663362034348471,treatment_Any Coupon
+lagged_spend_other non-food products,0.06557647335411898,treatment_Any Coupon
+lagged_spend_ready-to-eat food,0.06442296355934964,treatment_Any Coupon
+lagged_spend_drugstore items,0.0975287586607201,treatment_Any Coupon
+lagged_spend_meat/seafood,0.12986101777846012,treatment_Any Coupon
+lagged_coupon_drugstore items,0.0052067960553465135,treatment_Any Coupon
+lagged_coupon_meat/seafood,0.006651296086609917,treatment_Any Coupon
+lagged_coupon_other food,0.0036321548837550317,treatment_Any Coupon
+lagged_coupon_other non-food products,0.0,treatment_Any Coupon
+lagged_coupon_ready-to-eat food,0.0038652475278664307,treatment_Any Coupon
+lagged_coupon_Any Coupon,0.004641530189214248,treatment_Any Coupon
+lagged_redemption_drugstore items,0.0,treatment_Any Coupon
+lagged_redemption_meat/seafood,0.0,treatment_Any Coupon
+lagged_redemption_other food,0.0001103170823436041,treatment_Any Coupon
+lagged_redemption_ready-to-eat food,0.0,treatment_Any Coupon
+lagged_redemption_Any Coupon,6.263591044635703e-05,treatment_Any Coupon
+FE_period_0,0.0,treatment_Any Coupon
+FE_period_2,0.0,treatment_Any Coupon
+FE_period_3,0.0,treatment_Any Coupon
+FE_period_4,0.0,treatment_Any Coupon
+FE_period_5,0.0,treatment_Any Coupon
+FE_period_6,0.0,treatment_Any Coupon
+FE_period_7,0.0,treatment_Any Coupon
+FE_period_8,0.0,treatment_Any Coupon
+FE_period_9,0.04209131283216433,treatment_Any Coupon
+FE_period_10,0.0,treatment_Any Coupon
+FE_period_11,0.0,treatment_Any Coupon
+FE_period_12,0.0,treatment_Any Coupon
+FE_period_13,0.0,treatment_Any Coupon
+FE_period_14,0.0,treatment_Any Coupon
+FE_period_15,0.0,treatment_Any Coupon
+FE_period_16,0.0,treatment_Any Coupon
+FE_period_17,0.0,treatment_Any Coupon
+FE_period_18,0.0,treatment_Any Coupon
+FE_period_19,0.026282271524926355,treatment_Any Coupon
+FE_period_20,0.0,treatment_Any Coupon
+FE_period_21,0.10142885401994489,treatment_Any Coupon
+FE_period_22,0.0,treatment_Any Coupon
+FE_period_23,0.0,treatment_Any Coupon
+FE_period_24,0.0,treatment_Any Coupon
+FE_period_25,0.0,treatment_Any Coupon
+FE_period_26,0.0020251135602416554,treatment_Any Coupon
+FE_period_27,0.0,treatment_Any Coupon
+FE_period_28,0.0,treatment_Any Coupon
+FE_period_29,0.0,treatment_Any Coupon
+FE_period_30,0.07698102684193935,treatment_Any Coupon
+FE_period_31,0.0,treatment_Any Coupon
+FE_period_32,0.0,treatment_Any Coupon
+FE_period_33,0.0,treatment_Any Coupon
+age_range_18-25,0.00014130182952109963,treatment_drugstore items
+age_range_26-35,0.01075573415009203,treatment_drugstore items
+age_range_36-45,0.010594271488339427,treatment_drugstore items
+age_range_46-55,0.02453238513609347,treatment_drugstore items
+age_range_56-70,0.0,treatment_drugstore items
+age_range_70+,4.36405073653614e-05,treatment_drugstore items
+age_range_unknown,0.010598169196628001,treatment_drugstore items
+marital_status_Married,0.014942582093646784,treatment_drugstore items
+marital_status_Single,0.0008814971016949447,treatment_drugstore items
+marital_status_unknown,0.010634480332400354,treatment_drugstore items
+rented_0.0,0.015760887613729253,treatment_drugstore items
+rented_1.0,0.0002712578936915363,treatment_drugstore items
+rented_unknown,0.010062979325335343,treatment_drugstore items
+family_size_1,0.013624208511827194,treatment_drugstore items
+family_size_2,0.007907329087527414,treatment_drugstore items
+family_size_3,0.006147011918080919,treatment_drugstore items
+family_size_4,0.001805199574109874,treatment_drugstore items
+family_size_5+,0.002277878919416219,treatment_drugstore items
+family_size_unknown,0.011335565493152856,treatment_drugstore items
+no_of_children_1,0.004155551649923996,treatment_drugstore items
+no_of_children_2,0.003684296392942142,treatment_drugstore items
+no_of_children_3+,0.0016618707882519947,treatment_drugstore items
+no_of_children_unknown,0.012457662569398023,treatment_drugstore items
+income_bracket_1.0,0.03082168755597963,treatment_drugstore items
+income_bracket_2.0,0.003193827823361436,treatment_drugstore items
+income_bracket_3.0,1.8328757572008114e-05,treatment_drugstore items
+income_bracket_4.0,0.007804562244231479,treatment_drugstore items
+income_bracket_5.0,0.007300012353787138,treatment_drugstore items
+income_bracket_6.0,0.005487166670122754,treatment_drugstore items
+income_bracket_7.0,9.164378786004056e-05,treatment_drugstore items
+income_bracket_8.0,0.0009362347632760874,treatment_drugstore items
+income_bracket_9.0,5.672882675331469e-06,treatment_drugstore items
+income_bracket_10.0,0.0,treatment_drugstore items
+income_bracket_11.0,0.0,treatment_drugstore items
+income_bracket_12.0,0.0,treatment_drugstore items
+income_bracket_unknown,0.010512305380249663,treatment_drugstore items
+lagged_spend_other food,0.13099218933808127,treatment_drugstore items
+lagged_spend_other non-food products,0.07014175789470542,treatment_drugstore items
+lagged_spend_ready-to-eat food,0.07541062994659858,treatment_drugstore items
+lagged_spend_drugstore items,0.1096077243045813,treatment_drugstore items
+lagged_spend_meat/seafood,0.09076669644623121,treatment_drugstore items
+lagged_coupon_drugstore items,0.005701520151319154,treatment_drugstore items
+lagged_coupon_meat/seafood,0.021196985848389294,treatment_drugstore items
+lagged_coupon_other food,0.006992405805407344,treatment_drugstore items
+lagged_coupon_other non-food products,0.0,treatment_drugstore items
+lagged_coupon_ready-to-eat food,0.018330725077053613,treatment_drugstore items
+lagged_coupon_Any Coupon,0.007248873779059054,treatment_drugstore items
+lagged_redemption_drugstore items,0.0,treatment_drugstore items
+lagged_redemption_meat/seafood,0.0,treatment_drugstore items
+lagged_redemption_other food,0.00038656691779312446,treatment_drugstore items
+lagged_redemption_ready-to-eat food,0.0,treatment_drugstore items
+lagged_redemption_Any Coupon,0.0016127687751177303,treatment_drugstore items
+FE_period_0,0.0,treatment_drugstore items
+FE_period_2,0.0,treatment_drugstore items
+FE_period_3,0.0,treatment_drugstore items
+FE_period_4,7.627990100042605e-05,treatment_drugstore items
+FE_period_5,0.0,treatment_drugstore items
+FE_period_6,0.0,treatment_drugstore items
+FE_period_7,9.460865857243416e-05,treatment_drugstore items
+FE_period_8,0.0,treatment_drugstore items
+FE_period_9,0.0008811589699378543,treatment_drugstore items
+FE_period_10,0.0,treatment_drugstore items
+FE_period_11,1.1345765350662938e-05,treatment_drugstore items
+FE_period_12,1.2655874896676646e-05,treatment_drugstore items
+FE_period_13,0.0,treatment_drugstore items
+FE_period_14,0.0,treatment_drugstore items
+FE_period_15,0.0,treatment_drugstore items
+FE_period_16,0.0,treatment_drugstore items
+FE_period_17,0.0,treatment_drugstore items
+FE_period_18,0.0,treatment_drugstore items
+FE_period_19,0.0,treatment_drugstore items
+FE_period_20,0.0,treatment_drugstore items
+FE_period_21,0.10186358564573934,treatment_drugstore items
+FE_period_22,2.5311749793353292e-05,treatment_drugstore items
+FE_period_23,0.0,treatment_drugstore items
+FE_period_24,0.0,treatment_drugstore items
+FE_period_25,0.0,treatment_drugstore items
+FE_period_26,2.2691530701325875e-05,treatment_drugstore items
+FE_period_27,0.0,treatment_drugstore items
+FE_period_28,0.0,treatment_drugstore items
+FE_period_29,0.014221760866914382,treatment_drugstore items
+FE_period_30,0.07302664010195048,treatment_drugstore items
+FE_period_31,0.0,treatment_drugstore items
+FE_period_32,0.0,treatment_drugstore items
+FE_period_33,5.672882675331469e-06,treatment_drugstore items
+treatment_meat/seafood,0.012952210867451026,treatment_drugstore items
+treatment_other food,0.0,treatment_drugstore items
+treatment_other non-food products,0.0,treatment_drugstore items
+treatment_ready-to-eat food,0.017970029108395784,treatment_drugstore items
+age_range_18-25,0.0002197567199782056,treatment_other food
+age_range_26-35,0.0020050221304557503,treatment_other food
+age_range_36-45,0.005405742332803798,treatment_other food
+age_range_46-55,0.023764017509937337,treatment_other food
+age_range_56-70,0.0002051008526457034,treatment_other food
+age_range_70+,0.0002220100731854314,treatment_other food
+age_range_unknown,0.014441523867604078,treatment_other food
+marital_status_Married,0.014510949905997187,treatment_other food
+marital_status_Single,0.0063201190935719105,treatment_other food
+marital_status_unknown,0.016704661842282316,treatment_other food
+rented_0.0,0.014966144888651813,treatment_other food
+rented_1.0,0.0003882314526275414,treatment_other food
+rented_unknown,0.01708906780391635,treatment_other food
+family_size_1,0.01655098854827181,treatment_other food
+family_size_2,0.014403011740187276,treatment_other food
+family_size_3,0.002369844969005799,treatment_other food
+family_size_4,0.00015567062338449458,treatment_other food
+family_size_5+,0.0007643703291194017,treatment_other food
+family_size_unknown,0.018304562964374382,treatment_other food
+no_of_children_1,0.0013139382906818568,treatment_other food
+no_of_children_2,0.00041430681656629356,treatment_other food
+no_of_children_3+,0.0008494897117251944,treatment_other food
+no_of_children_unknown,0.01784574602161537,treatment_other food
+income_bracket_1.0,0.0033665014219399422,treatment_other food
+income_bracket_2.0,0.006521650206454944,treatment_other food
+income_bracket_3.0,8.222719922190927e-05,treatment_other food
+income_bracket_4.0,0.00466481262928474,treatment_other food
+income_bracket_5.0,0.006410835425018856,treatment_other food
+income_bracket_6.0,0.0015095780844918494,treatment_other food
+income_bracket_7.0,4.9239045091358694e-05,treatment_other food
+income_bracket_8.0,0.00071909841468332,treatment_other food
+income_bracket_9.0,4.353891018816598e-05,treatment_other food
+income_bracket_10.0,0.0,treatment_other food
+income_bracket_11.0,0.0,treatment_other food
+income_bracket_12.0,0.0,treatment_other food
+income_bracket_unknown,0.014171296220446042,treatment_other food
+lagged_spend_other food,0.13968037002048211,treatment_other food
+lagged_spend_other non-food products,0.06510858159712611,treatment_other food
+lagged_spend_ready-to-eat food,0.05479640798310404,treatment_other food
+lagged_spend_drugstore items,0.1157411270015856,treatment_other food
+lagged_spend_meat/seafood,0.13403977117041374,treatment_other food
+lagged_coupon_drugstore items,0.00011161136423701853,treatment_other food
+lagged_coupon_meat/seafood,0.002849068441717107,treatment_other food
+lagged_coupon_other food,0.010616828599922749,treatment_other food
+lagged_coupon_other non-food products,0.0,treatment_other food
+lagged_coupon_ready-to-eat food,0.0019546891838955307,treatment_other food
+lagged_coupon_Any Coupon,0.009822729207839753,treatment_other food
+lagged_redemption_drugstore items,0.0,treatment_other food
+lagged_redemption_meat/seafood,0.0,treatment_other food
+lagged_redemption_other food,0.0,treatment_other food
+lagged_redemption_ready-to-eat food,0.0,treatment_other food
+lagged_redemption_Any Coupon,0.0,treatment_other food
+FE_period_0,0.0,treatment_other food
+FE_period_2,0.0,treatment_other food
+FE_period_3,0.0,treatment_other food
+FE_period_4,0.0,treatment_other food
+FE_period_5,0.0,treatment_other food
+FE_period_6,0.0,treatment_other food
+FE_period_7,0.0,treatment_other food
+FE_period_8,0.0,treatment_other food
+FE_period_9,0.00015029965327076182,treatment_other food
+FE_period_10,0.0,treatment_other food
+FE_period_11,0.0,treatment_other food
+FE_period_12,0.00012576610941007524,treatment_other food
+FE_period_13,0.0,treatment_other food
+FE_period_14,0.0,treatment_other food
+FE_period_15,0.0,treatment_other food
+FE_period_16,0.0,treatment_other food
+FE_period_17,0.0,treatment_other food
+FE_period_18,0.0,treatment_other food
+FE_period_19,0.0008916782586075425,treatment_other food
+FE_period_20,0.0,treatment_other food
+FE_period_21,0.13878895466063673,treatment_other food
+FE_period_22,0.0,treatment_other food
+FE_period_23,0.0,treatment_other food
+FE_period_24,0.0,treatment_other food
+FE_period_25,0.0,treatment_other food
+FE_period_26,5.700134903192708e-06,treatment_other food
+FE_period_27,0.0,treatment_other food
+FE_period_28,0.0,treatment_other food
+FE_period_29,0.007298633460669337,treatment_other food
+FE_period_30,1.710040470957813e-05,treatment_other food
+FE_period_31,0.0,treatment_other food
+FE_period_32,0.0,treatment_other food
+FE_period_33,0.031794417917166466,treatment_other food
+treatment_drugstore items,0.01740899268129531,treatment_other food
+treatment_meat/seafood,0.019125986317662644,treatment_other food
+treatment_other non-food products,0.0,treatment_other food
+treatment_ready-to-eat food,0.02291822978593415,treatment_other food
+age_range_18-25,0.0009705013924523619,treatment_other non-food products
+age_range_26-35,0.004433327228855718,treatment_other non-food products
+age_range_36-45,0.03040167971318421,treatment_other non-food products
+age_range_46-55,0.011408287130075065,treatment_other non-food products
+age_range_56-70,0.03444349874325709,treatment_other non-food products
+age_range_70+,0.030695691193224888,treatment_other non-food products
+age_range_unknown,0.002697665564197945,treatment_other non-food products
+marital_status_Married,0.020065677268615592,treatment_other non-food products
+marital_status_Single,0.000739015774901534,treatment_other non-food products
+marital_status_unknown,0.00915102762970062,treatment_other non-food products
+rented_0.0,0.007367074886113669,treatment_other non-food products
+rented_1.0,0.003794203667783471,treatment_other non-food products
+rented_unknown,0.0028441412215769193,treatment_other non-food products
+family_size_1,0.015594347788906924,treatment_other non-food products
+family_size_2,0.017344693271968845,treatment_other non-food products
+family_size_3,0.0012887058999543357,treatment_other non-food products
+family_size_4,0.004127913296719368,treatment_other non-food products
+family_size_5+,0.005435596097531289,treatment_other non-food products
+family_size_unknown,0.004807176019392195,treatment_other non-food products
+no_of_children_1,0.0009657740624206551,treatment_other non-food products
+no_of_children_2,0.0017140782254623217,treatment_other non-food products
+no_of_children_3+,0.005199120183892685,treatment_other non-food products
+no_of_children_unknown,0.004495112400783585,treatment_other non-food products
+income_bracket_1.0,0.014662666733655324,treatment_other non-food products
+income_bracket_2.0,0.03147460225787512,treatment_other non-food products
+income_bracket_3.0,0.00039579192730957303,treatment_other non-food products
+income_bracket_4.0,0.029837133654933626,treatment_other non-food products
+income_bracket_5.0,0.034462907932022,treatment_other non-food products
+income_bracket_6.0,0.0033251608800473815,treatment_other non-food products
+income_bracket_7.0,0.0004372913931778818,treatment_other non-food products
+income_bracket_8.0,0.0045541167403121965,treatment_other non-food products
+income_bracket_9.0,0.03027728782476714,treatment_other non-food products
+income_bracket_10.0,0.0,treatment_other non-food products
+income_bracket_11.0,0.0,treatment_other non-food products
+income_bracket_12.0,0.0,treatment_other non-food products
+income_bracket_unknown,0.0017743077077971476,treatment_other non-food products
+lagged_spend_other food,0.13163575966107316,treatment_other non-food products
+lagged_spend_other non-food products,0.0816703549767479,treatment_other non-food products
+lagged_spend_ready-to-eat food,0.036951286920252,treatment_other non-food products
+lagged_spend_drugstore items,0.11702904753538917,treatment_other non-food products
+lagged_spend_meat/seafood,0.06820288868826889,treatment_other non-food products
+lagged_coupon_drugstore items,0.009445760668710317,treatment_other non-food products
+lagged_coupon_meat/seafood,0.0082424709533611,treatment_other non-food products
+lagged_coupon_other food,0.0043961047637758426,treatment_other non-food products
+lagged_coupon_other non-food products,0.0660241467118523,treatment_other non-food products
+lagged_coupon_ready-to-eat food,0.009075728567909943,treatment_other non-food products
+lagged_coupon_Any Coupon,0.005231649441941806,treatment_other non-food products
+lagged_redemption_drugstore items,0.008108955821081364,treatment_other non-food products
+lagged_redemption_meat/seafood,0.00023499410877504242,treatment_other non-food products
+lagged_redemption_other food,0.0054300115859406825,treatment_other non-food products
+lagged_redemption_ready-to-eat food,1.8781515532272452e-05,treatment_other non-food products
+lagged_redemption_Any Coupon,0.012071352028761391,treatment_other non-food products
+FE_period_0,0.0,treatment_other non-food products
+FE_period_2,0.0,treatment_other non-food products
+FE_period_3,0.0,treatment_other non-food products
+FE_period_4,0.0,treatment_other non-food products
+FE_period_5,0.0,treatment_other non-food products
+FE_period_6,0.0,treatment_other non-food products
+FE_period_7,0.0,treatment_other non-food products
+FE_period_8,0.0,treatment_other non-food products
+FE_period_9,0.0,treatment_other non-food products
+FE_period_10,0.0,treatment_other non-food products
+FE_period_11,0.0,treatment_other non-food products
+FE_period_12,0.0,treatment_other non-food products
+FE_period_13,0.0,treatment_other non-food products
+FE_period_14,0.0,treatment_other non-food products
+FE_period_15,0.0,treatment_other non-food products
+FE_period_16,0.0,treatment_other non-food products
+FE_period_17,0.0,treatment_other non-food products
+FE_period_18,0.0,treatment_other non-food products
+FE_period_19,0.0,treatment_other non-food products
+FE_period_20,0.0,treatment_other non-food products
+FE_period_21,0.02917869196174798,treatment_other non-food products
+FE_period_22,7.163995656859943e-05,treatment_other non-food products
+FE_period_23,0.0008498166346555661,treatment_other non-food products
+FE_period_24,0.00046416354930671824,treatment_other non-food products
+FE_period_25,8.08055497130989e-05,treatment_other non-food products
+FE_period_26,0.0005202903249144995,treatment_other non-food products
+FE_period_27,0.00044349380033484315,treatment_other non-food products
+FE_period_28,0.0001262414503851716,treatment_other non-food products
+FE_period_29,7.906249693285371e-05,treatment_other non-food products
+FE_period_30,0.0006319044655601987,treatment_other non-food products
+FE_period_31,0.0,treatment_other non-food products
+FE_period_32,0.0,treatment_other non-food products
+FE_period_33,0.0,treatment_other non-food products
+treatment_drugstore items,0.00037701041177730057,treatment_other non-food products
+treatment_meat/seafood,0.006757253765775789,treatment_other non-food products
+treatment_other food,0.0,treatment_other non-food products
+treatment_ready-to-eat food,0.02546475597008546,treatment_other non-food products
+age_range_18-25,0.0001706976027459042,treatment_ready-to-eat food
+age_range_26-35,0.009994088920247102,treatment_ready-to-eat food
+age_range_36-45,0.0189579756963456,treatment_ready-to-eat food
+age_range_46-55,0.04330826143657534,treatment_ready-to-eat food
+age_range_56-70,0.0001512820504923133,treatment_ready-to-eat food
+age_range_70+,0.0030775300637386205,treatment_ready-to-eat food
+age_range_unknown,0.007251896231557554,treatment_ready-to-eat food
+marital_status_Married,0.012316759599477646,treatment_ready-to-eat food
+marital_status_Single,0.00729197105386039,treatment_ready-to-eat food
+marital_status_unknown,0.012562202703567395,treatment_ready-to-eat food
+rented_0.0,0.005233347898997283,treatment_ready-to-eat food
+rented_1.0,0.00046242966557405625,treatment_ready-to-eat food
+rented_unknown,0.008335067593186205,treatment_ready-to-eat food
+family_size_1,0.01412795531670966,treatment_ready-to-eat food
+family_size_2,0.012053606330693337,treatment_ready-to-eat food
+family_size_3,0.005927203279773382,treatment_ready-to-eat food
+family_size_4,0.0007412303534811101,treatment_ready-to-eat food
+family_size_5+,0.0021329837416037794,treatment_ready-to-eat food
+family_size_unknown,0.006977872806070724,treatment_ready-to-eat food
+no_of_children_1,0.004018734858666426,treatment_ready-to-eat food
+no_of_children_2,0.001303219365535515,treatment_ready-to-eat food
+no_of_children_3+,0.00400110882686422,treatment_ready-to-eat food
+no_of_children_unknown,0.018344144524513255,treatment_ready-to-eat food
+income_bracket_1.0,0.0013590582670546395,treatment_ready-to-eat food
+income_bracket_2.0,0.0033858804269158173,treatment_ready-to-eat food
+income_bracket_3.0,0.00037781855475734193,treatment_ready-to-eat food
+income_bracket_4.0,0.015535552334881249,treatment_ready-to-eat food
+income_bracket_5.0,0.0073045485140262635,treatment_ready-to-eat food
+income_bracket_6.0,0.004343395103715643,treatment_ready-to-eat food
+income_bracket_7.0,5.777900710145812e-05,treatment_ready-to-eat food
+income_bracket_8.0,5.0324078059691504e-05,treatment_ready-to-eat food
+income_bracket_9.0,0.00011121015337893431,treatment_ready-to-eat food
+income_bracket_10.0,0.0,treatment_ready-to-eat food
+income_bracket_11.0,0.0,treatment_ready-to-eat food
+income_bracket_12.0,0.0,treatment_ready-to-eat food
+income_bracket_unknown,0.008781227152304557,treatment_ready-to-eat food
+lagged_spend_other food,0.09316455532246264,treatment_ready-to-eat food
+lagged_spend_other non-food products,0.10938080098231609,treatment_ready-to-eat food
+lagged_spend_ready-to-eat food,0.07727020512925284,treatment_ready-to-eat food
+lagged_spend_drugstore items,0.08027756680866709,treatment_ready-to-eat food
+lagged_spend_meat/seafood,0.08245590547800982,treatment_ready-to-eat food
+lagged_coupon_drugstore items,0.007270652375768355,treatment_ready-to-eat food
+lagged_coupon_meat/seafood,0.009314945918309172,treatment_ready-to-eat food
+lagged_coupon_other food,0.005049718791813253,treatment_ready-to-eat food
+lagged_coupon_other non-food products,0.0001275186374147405,treatment_ready-to-eat food
+lagged_coupon_ready-to-eat food,0.004948526230874353,treatment_ready-to-eat food
+lagged_coupon_Any Coupon,0.006475952498429665,treatment_ready-to-eat food
+lagged_redemption_drugstore items,0.0,treatment_ready-to-eat food
+lagged_redemption_meat/seafood,0.0,treatment_ready-to-eat food
+lagged_redemption_other food,0.00426522979265132,treatment_ready-to-eat food
+lagged_redemption_ready-to-eat food,0.0,treatment_ready-to-eat food
+lagged_redemption_Any Coupon,0.004649494147161054,treatment_ready-to-eat food
+FE_period_0,0.0,treatment_ready-to-eat food
+FE_period_2,0.0,treatment_ready-to-eat food
+FE_period_3,0.0,treatment_ready-to-eat food
+FE_period_4,0.0,treatment_ready-to-eat food
+FE_period_5,0.0,treatment_ready-to-eat food
+FE_period_6,0.0,treatment_ready-to-eat food
+FE_period_7,0.0,treatment_ready-to-eat food
+FE_period_8,0.0,treatment_ready-to-eat food
+FE_period_9,0.014443143771974577,treatment_ready-to-eat food
+FE_period_10,3.331628104774884e-05,treatment_ready-to-eat food
+FE_period_11,0.0,treatment_ready-to-eat food
+FE_period_12,0.0,treatment_ready-to-eat food
+FE_period_13,0.0,treatment_ready-to-eat food
+FE_period_14,0.0,treatment_ready-to-eat food
+FE_period_15,0.0,treatment_ready-to-eat food
+FE_period_16,0.0,treatment_ready-to-eat food
+FE_period_17,0.0,treatment_ready-to-eat food
+FE_period_18,0.0,treatment_ready-to-eat food
+FE_period_19,0.0,treatment_ready-to-eat food
+FE_period_20,0.0,treatment_ready-to-eat food
+FE_period_21,0.11420405632273291,treatment_ready-to-eat food
+FE_period_22,0.0,treatment_ready-to-eat food
+FE_period_23,0.0,treatment_ready-to-eat food
+FE_period_24,0.0,treatment_ready-to-eat food
+FE_period_25,0.0,treatment_ready-to-eat food
+FE_period_26,0.03491914624870869,treatment_ready-to-eat food
+FE_period_27,0.0,treatment_ready-to-eat food
+FE_period_28,0.0,treatment_ready-to-eat food
+FE_period_29,0.025795473588370425,treatment_ready-to-eat food
+FE_period_30,2.446272605370927e-05,treatment_ready-to-eat food
+FE_period_31,0.0,treatment_ready-to-eat food
+FE_period_32,0.0003559952472621028,treatment_ready-to-eat food
+FE_period_33,0.0,treatment_ready-to-eat food
+treatment_drugstore items,0.00023391328031037838,treatment_ready-to-eat food
+treatment_meat/seafood,0.04344327669435248,treatment_ready-to-eat food
+treatment_other food,0.0,treatment_ready-to-eat food
+treatment_other non-food products,0.04184778021358416,treatment_ready-to-eat food
+age_range_18-25,0.0,treatment_meat/seafood
+age_range_26-35,0.012651058179067167,treatment_meat/seafood
+age_range_36-45,0.01800648227246813,treatment_meat/seafood
+age_range_46-55,0.02157000897830504,treatment_meat/seafood
+age_range_56-70,0.00019841297568815098,treatment_meat/seafood
+age_range_70+,1.5928322548531606e-05,treatment_meat/seafood
+age_range_unknown,0.008743360321661736,treatment_meat/seafood
+marital_status_Married,0.012451711245301615,treatment_meat/seafood
+marital_status_Single,0.024056153549273984,treatment_meat/seafood
+marital_status_unknown,0.014274594828333794,treatment_meat/seafood
+rented_0.0,0.013126593932785476,treatment_meat/seafood
+rented_1.0,0.0005667154657838356,treatment_meat/seafood
+rented_unknown,0.012461141606592301,treatment_meat/seafood
+family_size_1,0.017362528270134597,treatment_meat/seafood
+family_size_2,0.01212112228557744,treatment_meat/seafood
+family_size_3,0.01124242621681583,treatment_meat/seafood
+family_size_4,0.0004233691966623369,treatment_meat/seafood
+family_size_5+,0.000561070489773721,treatment_meat/seafood
+family_size_unknown,0.008275793991744204,treatment_meat/seafood
+no_of_children_1,0.011855071064164644,treatment_meat/seafood
+no_of_children_2,0.0008977487547365126,treatment_meat/seafood
+no_of_children_3+,0.0006067674513745315,treatment_meat/seafood
+no_of_children_unknown,0.020486706432581363,treatment_meat/seafood
+income_bracket_1.0,4.824732608432857e-05,treatment_meat/seafood
+income_bracket_2.0,0.0007480454635714239,treatment_meat/seafood
+income_bracket_3.0,0.00018155993626215187,treatment_meat/seafood
+income_bracket_4.0,0.011797199693486153,treatment_meat/seafood
+income_bracket_5.0,0.030671121334103716,treatment_meat/seafood
+income_bracket_6.0,0.0003518126528735031,treatment_meat/seafood
+income_bracket_7.0,0.0,treatment_meat/seafood
+income_bracket_8.0,8.195340493632676e-06,treatment_meat/seafood
+income_bracket_9.0,0.0,treatment_meat/seafood
+income_bracket_10.0,0.0,treatment_meat/seafood
+income_bracket_11.0,0.0,treatment_meat/seafood
+income_bracket_12.0,0.0,treatment_meat/seafood
+income_bracket_unknown,0.007511744041578779,treatment_meat/seafood
+lagged_spend_other food,0.13557897138191613,treatment_meat/seafood
+lagged_spend_other non-food products,0.0646355517243975,treatment_meat/seafood
+lagged_spend_ready-to-eat food,0.05686677168993425,treatment_meat/seafood
+lagged_spend_drugstore items,0.08420899692374285,treatment_meat/seafood
+lagged_spend_meat/seafood,0.08171765598421303,treatment_meat/seafood
+lagged_coupon_drugstore items,0.016196185955932405,treatment_meat/seafood
+lagged_coupon_meat/seafood,0.0036619473067516107,treatment_meat/seafood
+lagged_coupon_other food,0.0074590628097616594,treatment_meat/seafood
+lagged_coupon_other non-food products,0.0,treatment_meat/seafood
+lagged_coupon_ready-to-eat food,0.008376597919731684,treatment_meat/seafood
+lagged_coupon_Any Coupon,0.013992129933744294,treatment_meat/seafood
+lagged_redemption_drugstore items,0.0,treatment_meat/seafood
+lagged_redemption_meat/seafood,0.0,treatment_meat/seafood
+lagged_redemption_other food,0.00026708757879438037,treatment_meat/seafood
+lagged_redemption_ready-to-eat food,0.0,treatment_meat/seafood
+lagged_redemption_Any Coupon,0.0003328802412180054,treatment_meat/seafood
+FE_period_0,0.0,treatment_meat/seafood
+FE_period_2,0.0,treatment_meat/seafood
+FE_period_3,0.0,treatment_meat/seafood
+FE_period_4,0.0,treatment_meat/seafood
+FE_period_5,0.0,treatment_meat/seafood
+FE_period_6,0.0,treatment_meat/seafood
+FE_period_7,0.0,treatment_meat/seafood
+FE_period_8,0.0,treatment_meat/seafood
+FE_period_9,0.009207591165891059,treatment_meat/seafood
+FE_period_10,0.0,treatment_meat/seafood
+FE_period_11,0.0,treatment_meat/seafood
+FE_period_12,0.00019275936586275063,treatment_meat/seafood
+FE_period_13,0.0,treatment_meat/seafood
+FE_period_14,0.0,treatment_meat/seafood
+FE_period_15,0.0,treatment_meat/seafood
+FE_period_16,0.0,treatment_meat/seafood
+FE_period_17,0.0,treatment_meat/seafood
+FE_period_18,0.0,treatment_meat/seafood
+FE_period_19,0.0,treatment_meat/seafood
+FE_period_20,0.0,treatment_meat/seafood
+FE_period_21,0.08464181119875307,treatment_meat/seafood
+FE_period_22,0.0,treatment_meat/seafood
+FE_period_23,0.0,treatment_meat/seafood
+FE_period_24,0.0,treatment_meat/seafood
+FE_period_25,0.0,treatment_meat/seafood
+FE_period_26,0.055225937269669144,treatment_meat/seafood
+FE_period_27,0.0,treatment_meat/seafood
+FE_period_28,0.0,treatment_meat/seafood
+FE_period_29,0.00042868259647336517,treatment_meat/seafood
+FE_period_30,0.00015132030495585352,treatment_meat/seafood
+FE_period_31,0.0,treatment_meat/seafood
+FE_period_32,0.00046007688313169464,treatment_meat/seafood
+FE_period_33,0.0,treatment_meat/seafood
+treatment_drugstore items,0.0009778527259179043,treatment_meat/seafood
+treatment_other food,0.0,treatment_meat/seafood
+treatment_other non-food products,0.0014981386733676153,treatment_meat/seafood
+treatment_ready-to-eat food,0.1006492987460111,treatment_meat/seafood

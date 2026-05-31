@@ -800,6 +800,7 @@ def run_pipeline():
     all_gate_results = []
     all_calibration_results = []
     all_cate_distributions = []
+    all_feature_importance = []
 
     for t_col, outcomes, do_dml in benchmarks:
         if t_col not in panel.columns:
@@ -816,15 +817,22 @@ def run_pipeline():
 
             # ── CATE Distributions (Fig 1) ───────────────────────────────────
             if outcome == "avg_daily_expenditure":
-                # Get OOB predictions from the forest
-                preds = ro.r.predict(fit["forest"])
+                # Get OOB predictions from the forest with variance estimation
+                preds = ro.r.predict(fit["forest"], **{"estimate.variance": True})
                 cates = np.array(preds.rx2("predictions")).flatten()
+                variances = np.array(preds.rx2("variance.estimates")).flatten()
+                std_errs = np.sqrt(variances)
                 
                 # Extract key categorical features for heatmaps (reversing one-hot roughly)
                 X_cols = fit["col_names"]
                 X_vals = fit["X"]
                 
-                temp_df = pd.DataFrame({"cate": cates})
+                temp_df = pd.DataFrame({
+                    "cate": cates, 
+                    "std_err": std_errs,
+                    "Y": fit["Y"],
+                    "W": fit["W"]
+                })
                 temp_df["treatment"] = t_col
                 
                 # Add columns for major categories
@@ -834,13 +842,27 @@ def run_pipeline():
                     if not group_cols: continue
                     
                     # For each row, find which dummy is 1
-                    # This is efficient for the whole dataframe
                     group_df = X_vals[group_cols]
-                    # idxmax returns the column name with the 1
                     labels = group_df.idxmax(axis=1).str.replace(f"{group}_", "")
                     temp_df[group] = labels.values
 
+                # Also grab key spending features for persona building
+                persona_features = [c for c in X_cols if "lagged_spend" in c]
+                for pf in persona_features:
+                    temp_df[pf] = X_vals[pf].values
+
                 all_cate_distributions.append(temp_df)
+
+            # ── Feature Importance ───────────────────────────────────────────
+            if outcome == "avg_daily_expenditure":
+                var_imp = grf.variable_importance(fit["forest"])
+                var_imp_vals = np.array(var_imp).flatten()
+                imp_df = pd.DataFrame({
+                    "feature": fit["col_names"],
+                    "importance": var_imp_vals,
+                    "treatment": t_col
+                })
+                all_feature_importance.append(imp_df)
 
             # ── ATE (Table 2 / 3) ────────────────────────────────────────────
             ate = estimate_ate(fit, tag=tag)
@@ -956,6 +978,23 @@ def run_pipeline():
         cate_df = pd.concat(all_cate_distributions, ignore_index=True)
         cate_df.to_csv("results/cate_distributions.csv", index=False)
         print("  ✓ Saved results/cate_distributions.csv")
+
+    if all_feature_importance:
+        imp_df = pd.concat(all_feature_importance, ignore_index=True)
+        imp_df.to_csv("results/feature_importance.csv", index=False)
+        print("  ✓ Saved results/feature_importance.csv")
+
+    # ── Calculate Dynamic Cost (Avg Discount) ───────────────────────────────
+    # We calculate the average discount per redeemed coupon from transaction data
+    # as the baseline cost threshold for the profitability matrix.
+    tx_file = os.path.join(DATA_DIR, "customer_transaction_data.csv")
+    if os.path.exists(tx_file):
+        tx_sample = pd.read_csv(tx_file, usecols=["coupon_discount"])
+        avg_discount = abs(tx_sample[tx_sample["coupon_discount"] < 0]["coupon_discount"].mean())
+        if pd.isna(avg_discount): avg_discount = 1.50 # Fallback
+        with open("results/dynamic_cost.txt", "w") as f:
+            f.write(str(avg_discount))
+        print(f"  ✓ Saved results/dynamic_cost.txt (Cost = {avg_discount:.2f})")
 
     # ── Calculate Confounder Strengths for DAG ──────────────────────────────
     print("Calculating confounder strengths for DAG...")
