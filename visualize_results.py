@@ -232,59 +232,6 @@ def plot_personas():
     plt.close()
     print(f"✓ Saved Persona plot")
 
-def plot_profitability_threshold():
-    """Think Aloud #4: Profitability Threshold Matrix (Dynamic Cost)."""
-    dist_file = "results/cate_distributions.csv"
-    cost_file = "results/dynamic_cost.txt"
-    if not os.path.exists(dist_file) or not os.path.exists(cost_file): return
-    
-    df = pd.read_csv(dist_file)
-    with open(cost_file, "r") as f:
-        cost_threshold = float(f.read())
-        
-    for t_col in df["treatment"].unique():
-        data = df[df["treatment"] == t_col].copy()
-        
-        # Aggregate by subgroup
-        agg_df = data.groupby(['age_range', 'income_bracket']).agg(
-            mean_cate=('cate', 'mean'),
-            mean_se=('std_err', 'mean')
-        ).reset_index()
-        
-        def get_action(row):
-            ci_lower = row['mean_cate'] - 1.96 * row['mean_se']
-            ci_upper = row['mean_cate'] + 1.96 * row['mean_se']
-            if ci_lower > cost_threshold: return 1 # Green: Target
-            if ci_upper < cost_threshold: return -1 # Red: Exclude
-            return 0 # Gray: Uncertain
-                
-        agg_df['action'] = agg_df.apply(get_action, axis=1)
-        pivot_df = agg_df.pivot(index="age_range", columns="income_bracket", values="action")
-        
-        plt.figure(figsize=(12, 8))
-        cmap = sns.color_palette(["#ff9999", "#d3d3d3", "#99ff99"])
-        sns.heatmap(pivot_df, annot=False, cmap=cmap, cbar=False, linewidths=.5)
-        
-        # Legend
-        from matplotlib.patches import Patch
-        legend_elements = [
-            Patch(facecolor='#99ff99', label='Target (CATE > Cost)'),
-            Patch(facecolor='#d3d3d3', label='Uncertain'),
-            Patch(facecolor='#ff9999', label='Exclude (CATE < Cost)')
-        ]
-        plt.legend(handles=legend_elements, loc='upper left', bbox_to_anchor=(1, 1))
-        
-        label = LABEL_MAP.get(t_col, t_col)
-        plt.title(f"Profitability Action Matrix (Cost = ${cost_threshold:.2f})\n{label}")
-        plt.xlabel("Income Bracket")
-        plt.ylabel("Age Range")
-        
-        safe_name = t_col.replace("treatment_", "").replace("/", "_").replace(" ", "_")
-        plt.tight_layout()
-        plt.savefig(f"{THINK_ALOUD_DIR}/profitability_{safe_name}.png")
-        plt.close()
-        print(f"✓ Saved Profitability Matrix for {t_col}")
-
 def plot_feature_importance():
     """Think Aloud #5: Feature Importance for Heterogeneity."""
     file_path = "results/feature_importance.csv"
@@ -367,22 +314,45 @@ def plot_causal_dag():
         t_conf = conf_df[conf_df["treatment"] == t_col]
         plt.figure(figsize=(10, 7))
         pos = {"Demographics": (0.1, 0.8), "Baseline Habits": (0.1, 0.2), "Coupon (D)": (0.5, 0.5), "Expenditure (Y)": (0.9, 0.5)}
+        
+        # 1. Store the drawn patches in a dictionary
+        node_patches = {}
         for node, (x, y) in pos.items():
             color = "lightblue" if "(D)" in node else "lightgreen" if "(Y)" in node else "lightgrey"
             circle = plt.Circle((x, y), 0.08, color=color, ec="black", zorder=3)
             plt.gca().add_patch(circle)
+            node_patches[node] = circle
             plt.text(x, y, node, ha="center", va="center", fontweight="bold", zorder=4)
 
         def draw_arrow(start, end, label, color="black", lw=2):
-            plt.annotate("", xy=pos[end], xytext=pos[start], arrowprops=dict(arrowstyle="->", color=color, lw=lw, shrinkA=35, shrinkB=35, connectionstyle="arc3,rad=0.1"))
-            lx, ly = (pos[start][0] + pos[end][0]) / 2, (pos[start][1] + pos[end][1]) / 2
-            plt.text(lx, ly + 0.05, label, ha="center", color=color, fontweight="bold")
+            # 2. Pass the patches to patchA and patchB. This forces the arrow to clip exactly at the edge!
+            plt.annotate("", xy=pos[end], xytext=pos[start], 
+                         arrowprops=dict(arrowstyle="->", color=color, lw=lw,
+                                         patchA=node_patches[start], patchB=node_patches[end],
+                                         shrinkA=2, shrinkB=2)) # Adds a tiny 2-point gap so it doesn't overlap the black border
+            
+            p1 = np.array(pos[start])
+            p2 = np.array(pos[end])
+            mid = (p1 + p2) / 2
+            
+            plt.text(mid[0], mid[1], label, 
+                     ha="center", va="center", color=color, fontweight="bold",
+                     bbox=dict(facecolor='white', edgecolor='none', alpha=0.9, pad=1))
 
         for _, row in t_conf.iterrows():
             c_node = "Demographics" if row["confounder_group"] == "Demographics" else "Baseline Habits"
             draw_arrow(c_node, "Coupon (D)", f"r={row['strength_to_d']:.2f}", color="gray")
             draw_arrow(c_node, "Expenditure (Y)", f"r={row['strength_to_y']:.2f}", color="gray")
         draw_arrow("Coupon (D)", "Expenditure (Y)", f"ATE = {ate_val:+.2f}", color="darkblue", lw=3)
+
+        # Add Legend for clarity in think-aloud study
+        from matplotlib.lines import Line2D
+        legend_elements = [
+            Line2D([0], [0], color='gray', lw=1.5, label='r: Confounding Strength (Correlation)'),
+            Line2D([0], [0], color='darkblue', lw=2.5, label='ATE: Average Treatment Effect')
+        ]
+        plt.legend(handles=legend_elements, loc='lower center', ncol=2, frameon=True, fontsize=9)
+
         plt.title(f"SCM: {LABEL_MAP.get(t_col, t_col)}", fontsize=14, pad=20)
         plt.xlim(0, 1); plt.ylim(0, 1); plt.axis("off")
         safe_name = t_col.replace("treatment_", "").replace("/", "_").replace(" ", "_")
@@ -402,5 +372,4 @@ if __name__ == "__main__":
     plot_qini_curve()
     plot_waterfall_uncertainty()
     plot_personas()
-    plot_profitability_threshold()
     plot_feature_importance()
