@@ -1,13 +1,13 @@
 phase,treatment,outcome,test_variable,estimate,se,pvalue
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,mean.forest.prediction,0.9526159652940961,0.24783495182464663,6.065560098223021e-05
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,differential.forest.prediction,0.8727056245626054,0.4708407471705916,0.03190783225252916
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,mean.forest.prediction,1.7289060428157252,1.0546883856660314,0.05058281504015521
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,differential.forest.prediction,-0.27470536864049255,0.5976812308892703,0.6771040148130779
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,mean.forest.prediction,1.0380536022952045,0.6426866233905382,0.05313904650490249
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,differential.forest.prediction,0.8967725818573183,0.36124110424102196,0.006525191418792802
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,mean.forest.prediction,-1.8142964680495448,3.0270880177270127,0.7255301840207786
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,differential.forest.prediction,-1.1172024471122832,0.5827696294347569,0.9723819122274041
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,mean.forest.prediction,2.6821540679401257,0.9023031952457302,0.0014772913927312082
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,differential.forest.prediction,-1.6845345205541853,0.6984998205798659,0.992057946587005
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,mean.forest.prediction,1.4378454383306738,3.831442850076682,0.3537286706268675
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,differential.forest.prediction,0.29811982866916403,0.547057078689454,0.2928944423080097
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,mean.forest.prediction,0.9728498072453579,0.25489129321764076,6.76955280449103e-05
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,differential.forest.prediction,0.6144337793693627,0.4480350695542948,0.08512862274037876
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,mean.forest.prediction,1.5097435327233073,0.9413703657142168,0.05438517250633586
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,differential.forest.prediction,-0.274462221689335,0.4979959383606007,0.7092277238119485
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,mean.forest.prediction,0.8883783865299409,0.6139615352677239,0.07395692800050783
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,differential.forest.prediction,0.6704618352296678,0.3718142851448705,0.03567995365420456
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,mean.forest.prediction,-6.723740452555778,8.123739387807005,0.7960681838497619
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,differential.forest.prediction,-2.1480306713675033,1.2516765386398212,0.9569272508957902
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,mean.forest.prediction,1.9263234348475415,0.7296649702037749,0.004146401180486053
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,differential.forest.prediction,-1.085640520672951,0.7056040302707518,0.9380456617602269
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,mean.forest.prediction,1.3191223746589245,2.219663462268019,0.27616058517043396
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,differential.forest.prediction,0.35389485832311746,0.5602050121173844,0.2637850585134666

@@ -134,7 +134,7 @@ def map_item_categories(items):
         # Ready-to-eat food
         "Prepared Food":          "ready-to-eat food",
         "Bakery":                 "ready-to-eat food",
-        "Restauarant":            "ready-to-eat food", 
+        "Restaurant":            "ready-to-eat food", 
         "Dairy, Juices & Snacks": "ready-to-eat food",
         
         # Other food
@@ -142,7 +142,6 @@ def map_item_categories(items):
         "Natural Products":       "other food",
         "Salads":                 "other food",
         "Vegetables (cut)":       "other food",
-        "Alcohol":                "other food", # Unspecified in S2 but fits here based on logic
         
         # Meat/Seafood
         "Packaged Meat":          "meat/seafood",

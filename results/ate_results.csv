@@ -1,22 +1,22 @@
 phase,treatment,outcome,method,estimate,se,pvalue
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,GRF,42.40396946875435,4.0285258700856525,6.561234900570583e-26
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,GRF,38.02965468252638,4.087060267328779,1.3412848730794804e-20
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,GRF,24.991036153537713,4.3973123123427165,1.3215693355737356e-08
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,GRF,61.22619959508109,8.041574793227866,2.663428530914389e-14
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,GRF,21.76447708017307,7.872508514101134,0.005698952770661432
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,GRF,56.748145899508245,9.12717261643825,5.051557355306003e-10
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,GRF,44.6529193546908,4.263164811084592,1.1358360080692518e-25
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,GRF,65.6187190658949,3.2949106726485953,3.0060691412078336e-88
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,GRF,33.58129461213797,3.4247915456218787,1.0677161009528548e-22
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,GRF,27.286552108937226,27.37864398112628,0.3189410498186582
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,GRF,44.27399029957583,12.447851586131977,0.0003754603516177243
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,GRF,59.75806342933415,16.998368085762944,0.0004388975460935962
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,GRF,30.206286248956193,7.63557513688893,7.621720652533738e-05
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,GRF,29.978743617016864,5.025671185077307,2.4445076970521847e-09
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,GRF,6.894361013407117,6.180810870338416,0.2646593292311371
-Phase 2 - Reduced,treatment_Any Coupon,avg_daily_expenditure,GRF,2.3558684848539633,18.231090174747518,0.8971815307770283
-Phase 2 - Reduced,treatment_drugstore items,avg_daily_expenditure,GRF,-29.868317307024547,15.299827033407135,0.05091450319724264
-Phase 2 - Reduced,treatment_other food,avg_daily_expenditure,GRF,32.5043869378891,18.02950652550584,0.07141272411868864
-Phase 2 - Reduced,treatment_other non-food products,avg_daily_expenditure,GRF,39.49244024407764,43.94938445333245,0.3688715373439859
-Phase 2 - Reduced,treatment_ready-to-eat food,avg_daily_expenditure,GRF,-37.7330369078983,23.503834069794387,0.10840597572854471
-Phase 2 - Reduced,treatment_meat/seafood,avg_daily_expenditure,GRF,-21.75045645479899,15.237833679044376,0.1534651476927279
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,GRF,42.08757091953227,4.05394390962867,2.9980306318080147e-25
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,GRF,39.32476421123389,3.9811685037031697,5.201611353559875e-23
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,GRF,24.48423269527911,4.541955922461254,7.019141844116658e-08
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,GRF,62.89202663622531,8.850658459230917,1.1952797143065097e-12
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,GRF,19.257364412920495,5.686677200728485,0.0007081604684532876
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,GRF,57.846558203184344,9.051199869823188,1.647639157556023e-10
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,GRF,45.88597118303021,4.151256486468922,2.1079898095046336e-28
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,GRF,67.23172515819923,3.3176927010245705,2.640822545036013e-91
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,GRF,30.532409964852793,3.451199778954528,8.998614366082353e-19
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,GRF,27.742873830801404,27.567885088576304,0.3142484108703445
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,GRF,49.24730217735971,12.28210161328488,6.0800985050039476e-05
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,GRF,57.21427864804602,16.85140841862018,0.0006857288368404675
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,GRF,38.79350926715181,7.111573080175788,4.897756926105856e-08
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,GRF,22.835998819393744,5.391645371632052,2.2810303549255403e-05
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,GRF,24.483363380148926,8.098517413035543,0.002501244825291333
+Phase 2 - Reduced,treatment_Any Coupon,avg_daily_expenditure,GRF,-5.137749512006458,19.34650816325263,0.7905744798797985
+Phase 2 - Reduced,treatment_drugstore items,avg_daily_expenditure,GRF,-60.21786334442919,15.251235768401234,7.867776624251753e-05
+Phase 2 - Reduced,treatment_other food,avg_daily_expenditure,GRF,29.580754426183937,18.068076593200136,0.10159216190857769
+Phase 2 - Reduced,treatment_other non-food products,avg_daily_expenditure,GRF,34.69670811804989,39.29798630016659,0.3772832085054911
+Phase 2 - Reduced,treatment_ready-to-eat food,avg_daily_expenditure,GRF,-38.62366400068903,23.10253729358123,0.0945565764809941
+Phase 2 - Reduced,treatment_meat/seafood,avg_daily_expenditure,GRF,-45.02007981513457,15.457625468800686,0.0035856709235729278

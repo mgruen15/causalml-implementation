@@ -28,6 +28,75 @@ ORDER = [
     "treatment_other non-food products"
 ]
 
+def plot_summary_table():
+    """Think Aloud #6: Summary Table of ATE and CATE across categories."""
+    ate_path = "results/ate_results.csv"
+    cate_path = "results/cate_distributions.csv"
+    if not os.path.exists(ate_path) or not os.path.exists(cate_path): return
+
+    ate_df = pd.read_csv(ate_path)
+    cate_df = pd.read_csv(cate_path)
+
+    # Filter ATE to main phase and outcome
+    ate_df = ate_df[
+        (ate_df["phase"] == "Phase 1 - Full") & 
+        (ate_df["outcome"] == "avg_daily_expenditure") &
+        (ate_df["method"] == "GRF")
+    ]
+
+    summary_data = []
+    for t_col in ORDER:
+        if t_col not in cate_df["treatment"].unique(): continue
+        
+        # Get ATE info
+        ate_row = ate_df[ate_df["treatment"] == t_col]
+        if ate_row.empty: continue
+        ate_val = ate_row["estimate"].values[0]
+        ate_se = ate_row["se"].values[0]
+        
+        # Get CATE distribution info
+        cates = cate_df[cate_df["treatment"] == t_col]["cate"]
+        
+        summary_data.append({
+            "Coupon Category": LABEL_MAP.get(t_col, t_col),
+            "ATE (Avg. Effect)": f"${ate_val:.2f} (±{1.96*ate_se:.2f})",
+            "Mean CATE": f"${cates.mean():.2f}",
+            "Median CATE": f"${cates.median():.2f}",
+            "Std. Dev. CATE": f"${cates.std():.2f}",
+            "% Positive Effect": f"{(cates > 0).mean()*100:.1f}%"
+        })
+
+    df_table = pd.DataFrame(summary_data)
+
+    # Create the table plot
+    fig, ax = plt.subplots(figsize=(12, len(df_table)*0.8 + 1))
+    ax.axis('off')
+    
+    # Render the table
+    table = ax.table(
+        cellText=df_table.values,
+        colLabels=df_table.columns,
+        cellLoc='center',
+        loc='center',
+        colColours=["#f2f2f2"] * len(df_table.columns)
+    )
+    
+    # Styling
+    table.auto_set_font_size(False)
+    table.set_fontsize(10)
+    table.scale(1.2, 1.8)
+    
+    # Make header bold
+    for (row, col), cell in table.get_celld().items():
+        if row == 0:
+            cell.set_text_props(fontweight='bold')
+
+    plt.title("Effectiveness Summary across Coupon Categories", fontsize=14, pad=20, fontweight="bold")
+    plt.tight_layout()
+    plt.savefig(f"{THINK_ALOUD_DIR}/summary_table.png", dpi=300, bbox_inches='tight')
+    plt.close()
+    print("✓ Saved Think Aloud summary table")
+
 def plot_fig1_cate_distributions():
     """Replicates Figure 1: Distribution of CATE by coupon type."""
     file_path = "results/cate_distributions.csv"
@@ -378,6 +447,7 @@ if __name__ == "__main__":
     
     # Think Aloud Study Plots
     print("\nGenerating Think Aloud Study Visualizations...")
+    plot_summary_table()
     plot_qini_curve()
     plot_waterfall_uncertainty()
     plot_personas()

@@ -1,331 +1,331 @@
 phase,treatment,outcome,variable,coef,se,pval
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,(Intercept),45.87529977700168,4.2476247793247985,3.668745995793641e-27
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,age_range_18.25,-38.23434646631424,59.88106825094285,0.5231479669010712
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,age_range_26.35,-35.93287674140662,59.39720880453141,0.5452088631478065
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,age_range_36.45,-59.855768021472315,57.20621260879048,0.29542006999447823
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,age_range_46.55,-51.383979640411106,59.64273026108699,0.38895036691961116
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,age_range_56.70,-48.844520905198976,60.321054059356804,0.41809188207337933
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,age_range_70.,-34.90217001641171,59.95523815034555,0.5604768358429385
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,family_size_1,9.301303862371483,25.580366977965728,0.7161499546133816
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,family_size_2,-1.845588122221262,25.983673544309628,0.9433751381223668
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,family_size_3,-7.949205679889276,27.876383630188432,0.7755233523354123
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,family_size_4,-41.09174814414709,37.25734993116004,0.27006849148099854
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_1.0,51.642229507354045,57.21742332167101,0.3667629644426277
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_2.0,43.77887626463905,55.69996293063528,0.4318846742535536
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_3.0,27.760750006267035,55.36662001108531,0.6160926870029286
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_4.0,43.50304619172987,54.57745621208742,0.4254034386873863
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_5.0,47.59831695357113,55.38044415118444,0.39008036858056605
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_6.0,54.96184602017611,56.16706124056214,0.327810712974855
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_7.0,42.806251162913945,57.67081834966493,0.4579383161079096
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_8.0,14.376510900202232,59.592502664568336,0.8093646546135119
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_9.0,7.1588670889981625,66.15833289820378,0.9138310409798599
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_10.0,-31.9827533229298,94.60192186511432,0.7353063686968757
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_11.0,186.86435506863714,95.14147125476322,0.04952746510594235
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,(Intercept),23.043525105847447,4.279866961937886,7.310377141217115e-08
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,age_range_18.25,28.56833403773563,104.64343805606708,0.7848493684257674
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,age_range_26.35,44.070731509014415,101.74630963165741,0.6649125204290688
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,age_range_36.45,33.039272718787444,99.42869671652716,0.7396708236508329
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,age_range_46.55,31.32648422053876,103.1549652560246,0.7613701066455881
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,age_range_56.70,-9.269290437963292,101.98335648323662,0.927580175568135
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,age_range_70.,42.1130129725237,102.80248629875858,0.6820646302491995
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,family_size_1,40.47615126163399,32.13878819437472,0.2078853950382204
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,family_size_2,29.150012948884175,31.857678821106017,0.3601920896822768
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,family_size_3,29.056940549665555,34.51232734896492,0.39983149413094243
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,family_size_4,21.176333737141253,35.97468550674207,0.5561017893644863
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_1.0,-41.944637243743635,100.20484979454115,0.6755183849823745
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_2.0,-27.38569185656046,100.19779824895949,0.7846111997096548
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_3.0,-58.45699639425578,101.9851802636397,0.5665178664768831
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_4.0,-33.284577711929195,99.14984798494643,0.7370986979677576
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_5.0,-28.146392247968645,99.48439401928569,0.7772372595511647
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_6.0,-33.90336685921036,100.02242726255699,0.7346430413393583
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_7.0,-20.12473722006773,99.2015136318187,0.8392396169806702
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_8.0,-1.4129846212711656,104.89494405648315,0.9892524948951175
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_9.0,-43.9023023311106,102.74459680907603,0.6691659399000358
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_10.0,-108.30867346165381,108.71357841101442,0.3191210760914723
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_11.0,-36.77008180705193,113.85283345812988,0.746725734978158
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,(Intercept),11.06822867601832,3.998626446680597,0.005642130213127495
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,age_range_18.25,-57.01888876456607,93.88189972831468,0.5436234779541018
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,age_range_26.35,-36.18372743376527,95.45819286777379,0.7046500480913693
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,age_range_36.45,-31.93525609003277,93.69438423574177,0.7332217837608241
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,age_range_46.55,-42.46689468301561,95.6789534391159,0.6571545741104372
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,age_range_56.70,-51.80108440684453,97.15005248038011,0.5938927408722336
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,age_range_70.,-66.33683913436249,96.20070189820719,0.4904697280850637
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,family_size_1,34.13615447824191,26.14668027411525,0.19170713016781313
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,family_size_2,53.22373762558362,27.0738237408809,0.04931875651974398
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,family_size_3,14.357881606973962,30.0102257259058,0.6323442025419435
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,family_size_4,-28.82290513482337,37.02842638450645,0.4363373474667249
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_1.0,40.55545996799889,93.84572099920128,0.6656340534838235
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_2.0,37.74439449031035,94.27983688066486,0.6889046952825881
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_3.0,47.35430137661135,94.65493582197945,0.6168777265986161
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_4.0,34.136394408742,93.32157734570173,0.7145210056069149
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_5.0,44.76328895416406,93.82613118487822,0.6333018326152542
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_6.0,42.15890207966321,96.43031169485103,0.6619714717611103
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_7.0,20.949244605835606,95.95819539547061,0.8271835322358001
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_8.0,47.757353561835316,102.2811974957425,0.640557675131405
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_9.0,59.514554741229276,108.40274388156489,0.5829987827717868
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_10.0,-42.6582493862593,108.46779269230365,0.6941141552694161
-Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_11.0,11.721223753449816,124.55329637023452,0.9250252673288043
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,(Intercept),35.57912451752951,2.352019533612675,1.3849438072717097e-51
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,age_range_18.25,-6.026580438401999,31.088816483680702,0.8462937590540163
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,age_range_26.35,19.039776502101372,30.767077646349925,0.5360270996240772
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,age_range_36.45,0.5655742733842537,29.282633783591223,0.9845904316685755
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,age_range_46.55,-15.520386273389946,31.89367268393717,0.6265233232199563
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,age_range_56.70,-14.577334155407563,32.45149425471528,0.6532865351421078
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,age_range_70.,-3.226715666151352,32.31457053868599,0.9204611994152898
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,family_size_1,-13.552525583972988,18.441091345338656,0.46239819299796425
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,family_size_2,-4.204621674699142,19.074739672219778,0.8255380992196404
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,family_size_3,12.577841530721015,19.70280369041494,0.5232303029500882
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,family_size_4,-22.453655516040737,21.899831172670503,0.3052316450631388
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_1.0,-29.48983856625892,28.063826367122424,0.2933493066719026
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_2.0,-7.8734497595353785,41.59807110047712,0.8498785039724827
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_3.0,24.245109156882958,28.254174848920737,0.39083727763385423
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_4.0,22.38424739233217,26.24320065102318,0.3936886662355511
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_5.0,28.949221210087888,26.759699953160393,0.2793368487103387
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_6.0,23.013755780515467,27.51643186776469,0.40295396215859847
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_7.0,21.170965249855534,29.72604067528437,0.47634249896840397
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_8.0,-6.564003325300652,32.652750089151745,0.840680192974389
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_9.0,-6.704981491588438,36.07319750976903,0.8525462135810764
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_10.0,-44.399277923898914,59.59976761383276,0.4563009560602451
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_11.0,44.323368614981625,41.974640510198434,0.2909932977016817
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,(Intercept),11.362992751339641,4.4045460904014275,0.00988763300671847
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,age_range_18.25,13.85028499382485,37.799313546366406,0.7140559970590096
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,age_range_26.35,36.55265003967813,36.62965145054545,0.318333715337787
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,age_range_36.45,12.061926519042741,35.84136001213885,0.7364677263266688
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,age_range_46.55,-5.774177748282731,37.40472022198838,0.8773183942085389
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,age_range_56.70,-4.8468279858254855,38.32044174859596,0.8993512780974138
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,age_range_70.,11.478863779332713,38.641353512982235,0.7664206817982202
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,family_size_1,3.2223363468703075,20.149553958004073,0.8729439684147487
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,family_size_2,-6.97160326364751,21.166052941158387,0.7418724028208217
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,family_size_3,15.239630516630587,21.129352062808714,0.4707565921004534
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,family_size_4,-7.876929241699704,27.38508923659635,0.7736268052219898
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_1.0,-7.962899940429925,33.58523763350134,0.8125838744828359
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_2.0,-24.509852571368103,55.912558214904905,0.6611269210536515
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_3.0,10.988786590427399,33.730121312634395,0.7445879612400099
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_4.0,7.846249765545712,32.30154562583949,0.8080789586141357
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_5.0,29.92195013409393,32.50632431977163,0.35731791220058895
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_6.0,11.931067156399525,33.02226014640244,0.7178738963943152
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_7.0,27.44890869188953,35.53855373959712,0.4398990248706567
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_8.0,-1.0044692048326604,39.56276363429906,0.9797445804224266
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_9.0,-3.9108022544373156,36.936057999659795,0.9156777190084374
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_10.0,-30.867177201598913,48.23916105835486,0.5222548506450192
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_11.0,43.32066600887096,58.31821997094982,0.4575866088067878
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,(Intercept),30.706768062401334,2.5121515704126365,2.620733743426301e-34
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,age_range_18.25,-6.00130930362334,39.34553220656172,0.8787708591215102
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,age_range_26.35,13.654100032697107,38.40121524205891,0.7221684442515114
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,age_range_36.45,-8.042592535273714,37.09249560226031,0.8283453794858304
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,age_range_46.55,-38.791439555191694,39.11116563200878,0.32128772562742525
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,age_range_56.70,-27.135740804944277,39.48430414344905,0.4919260317020352
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,age_range_70.,-18.092612776772185,38.90187058099955,0.6418738368578049
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,family_size_1,30.318896496914046,18.214683863255274,0.09601288993721017
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,family_size_2,33.045874465637645,18.18708657828466,0.06922376988148762
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,family_size_3,28.07931756511278,19.541593598994336,0.15075280107988287
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,family_size_4,0.877756197835625,23.92113095353005,0.9707293356433325
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_1.0,-3.7870789591061875,37.68316926130484,0.9199494719162015
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_2.0,27.42762167152668,36.66087283506785,0.4543767545242583
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_3.0,33.68309273883612,36.34242404061442,0.3540216243757843
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_4.0,24.138172507385548,35.26893435904178,0.493723831262183
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_5.0,44.21512978774437,35.616035078697934,0.21444964493457264
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_6.0,19.44886540552254,35.988454817302134,0.5889101804883305
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_7.0,47.503173550243815,38.74519726658204,0.2201894282400388
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_8.0,15.477164444754456,41.39430213550699,0.7084833100203443
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_9.0,6.1763429955696765,41.1269463978047,0.8806251788779678
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_10.0,-18.150805622751445,54.93444099444586,0.7410927479140191
-Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_11.0,37.49527075722752,65.10945709121606,0.5646985725603786
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,(Intercept),46.87667902967036,4.457046284343894,7.734763370150779e-26
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,age_range_18.25,-80.29604995619444,66.20084740285526,0.22516889046939098
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,age_range_26.35,-106.08939937084925,55.31403749707143,0.05512452091369691
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,age_range_36.45,-126.42243603655366,53.206358986294,0.017502262704884017
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,age_range_46.55,-119.40501979512352,55.190645558773525,0.030508310171752113
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,age_range_56.70,-102.77861658492293,56.90278247870094,0.0708920691576906
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,age_range_70.,-91.93110131185853,56.62899894376981,0.10451303275131518
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,family_size_1,13.754623284112421,26.93701079813936,0.6096186473839407
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,family_size_2,-19.798605924083738,26.86153312351546,0.46108899610602827
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,family_size_3,-22.6400411464184,30.66619289361748,0.46035234005521397
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,family_size_4,-32.85148582689276,34.48370650138743,0.34076437680110416
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_1.0,151.41641489035044,60.56201233434312,0.012416541764410859
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_2.0,120.64976280077586,49.70271754127661,0.015210504107619288
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_3.0,112.72960608325832,49.475908120361716,0.022703330198258306
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_4.0,112.45276547660316,48.86222454165409,0.021372490651158864
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_5.0,108.9201819018354,49.43696806292805,0.02758515790106809
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_6.0,124.0620245597375,50.122548830716156,0.013321065602383919
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_7.0,99.41688244808853,53.53519310938907,0.06331279126304461
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_8.0,49.74637017205544,61.65019307250102,0.41972093839399505
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_9.0,87.99801828379887,62.33016458704712,0.15801492251693253
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_10.0,14.75735141174499,103.43719496451997,0.8865517518973975
-Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_11.0,154.72969661634747,67.28588638017933,0.0214765781850454
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,(Intercept),46.730734331224326,2.7146915027159326,3.616774237065947e-66
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,age_range_18.25,-62.44854358249824,63.855737425890794,0.3280985896071229
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,age_range_26.35,-72.23200510846937,58.39632442678087,0.2161213688962693
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,age_range_36.45,-50.98583799663744,56.17426780376687,0.3640755742836027
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,age_range_46.55,-70.17149498839416,58.605133925962406,0.23117303351169627
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,age_range_56.70,-70.62081209098062,59.609894846277165,0.2361367025653117
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,age_range_70.,-55.56242129537852,59.842626759236765,0.35316651169905033
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,family_size_1,7.1792091255679145,27.041716161944816,0.7906361207233212
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,family_size_2,-1.2300916455573419,29.136040674996405,0.9663244055586784
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,family_size_3,-31.57123750583524,32.14668004129146,0.32605679806535304
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,family_size_4,-31.99800464228849,29.973307912183852,0.2857300078857593
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_1.0,85.58254106773788,60.791609868713714,0.15919753904688919
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_2.0,106.165048591424,53.01758795164851,0.04524314858561977
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_3.0,112.03964471034466,52.882922147227156,0.0341274295626902
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_4.0,114.22814550443562,52.384871747031774,0.02922209294382227
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_5.0,104.10080599540268,52.36866494954288,0.0468356191126889
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_6.0,111.49022634362804,53.85740213941031,0.038449365369901414
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_7.0,107.36538706588237,53.47263760452857,0.04466526064676038
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_8.0,119.00810288461956,74.24772141497527,0.10897526324665269
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_9.0,58.98540494225691,58.8399827998885,0.31612200885867475
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_10.0,31.16883536024205,82.17205913399806,0.7044583224673737
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_11.0,93.51668023699101,75.88474576071702,0.21782506875832644
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,(Intercept),17.04551287346486,2.9449660197192853,7.174357415020412e-09
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,age_range_18.25,-92.69729338141651,55.4919919059922,0.09483557120632757
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,age_range_26.35,-82.81972151078476,51.36773159182354,0.10690642176800308
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,age_range_36.45,-78.34436221411592,50.351492615667894,0.11972795536448903
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,age_range_46.55,-87.77185100774227,51.33486597880494,0.08731229315281538
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,age_range_56.70,-72.75790742451319,52.76912312120859,0.16796493257560524
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,age_range_70.,-74.42241274857153,52.85026764288298,0.15908696338829714
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,family_size_1,-4.398118117537616,28.049183212911956,0.8754030762605773
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,family_size_2,12.296572043478044,28.671461623967602,0.6680139518404777
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,family_size_3,5.355700106112468,31.69446716390099,0.865813980365227
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,family_size_4,-21.287323244419998,33.89158617058078,0.5299416081132915
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_1.0,131.25016026226277,47.807197355552766,0.006046260707851048
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_2.0,121.29841213537574,45.66143397088153,0.007899331356112722
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_3.0,135.79759625213885,45.79480730230788,0.0030251476728814894
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_4.0,129.54254301376758,45.13554291983052,0.004105814119048144
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_5.0,122.47474430623323,45.08682529654905,0.006602004330336052
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_6.0,126.59065855540501,47.22517486280996,0.007352521175907016
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_7.0,113.86864986463253,48.04960754216392,0.01780165182394836
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_8.0,70.96188569352546,57.45717110366874,0.21682286583337057
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_9.0,63.2270004510855,54.083337947611554,0.2423838180374315
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_10.0,37.76124957650128,87.62374175100214,0.666508683281188
-Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_11.0,132.7213634538998,75.42344274333847,0.07846904716553782
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,(Intercept),-76.30045575493001,3.217497267698245,1.1638471347795908e-123
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,age_range_18.25,-62.409347125380854,74.9664637314943,0.4051323485784394
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,age_range_26.35,-107.35335727223011,69.6010561807872,0.12298008387225884
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,age_range_36.45,-7.929837544110087,67.86935412246113,0.90698750277125
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,age_range_46.55,-44.16334493031487,68.86988204370677,0.5213580570881573
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,age_range_56.70,59.14319150004646,74.30137338848266,0.42604114557680195
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,age_range_70.,-2.3556608158862264,71.96793812905366,0.9738883610093437
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,family_size_1,36.37976552463681,30.82714043329795,0.23795734737578628
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,family_size_2,36.398090466408824,29.78426877062454,0.22169138520790865
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,family_size_3,13.92724001254862,32.82003068728414,0.6713109960859109
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,family_size_4,-31.089728377801052,38.55783459317726,0.4200653968499811
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_1.0,24.670137716363914,67.07445966289168,0.713022176952969
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_2.0,222.8972186385669,69.52836205356084,0.0013474712539238624
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_3.0,113.6385475496751,65.77581499154196,0.0840542889711818
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_4.0,163.01619911699262,64.91540241182774,0.012034810509339005
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_5.0,175.18330147408747,64.61960215400501,0.006710394398990231
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_6.0,60.46468922195683,65.10280813042118,0.35301932576847905
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_7.0,108.09462995356495,68.40071463749037,0.11404095908704255
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_8.0,40.746319445043625,73.87795060912728,0.5812689344910467
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_9.0,56.38121104107118,84.86445112911946,0.5064578544178224
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_10.0,37.00932883020432,105.94736115419308,0.7268519356290783
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_11.0,183.07977666012613,81.28045154773717,0.024298279019760435
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,(Intercept),12.890611649755124,3.0734992552861704,2.744038386443e-05
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,age_range_18.25,-99.96190388803497,56.289365737684115,0.07576238175936291
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,age_range_26.35,-96.58992743040568,52.383635406768676,0.06520427536197239
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,age_range_36.45,-87.10045773315764,50.64355417539239,0.08546172912680033
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,age_range_46.55,-80.53901455371634,52.04605317136822,0.12175940758663303
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,age_range_56.70,-74.29523549175423,52.93571869882395,0.16047418562787738
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,age_range_70.,-78.65744543672231,52.57818969787204,0.1346575441827751
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,family_size_1,-37.85025158256924,22.526023247567508,0.09290707834110166
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,family_size_2,-70.69381076752182,22.113348079121334,0.001390060947236342
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,family_size_3,-4.6082257019941535,25.601175675226383,0.8571528571909832
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,family_size_4,-39.30179593839228,30.694940988524955,0.20041043751019544
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_1.0,157.06187373323974,49.204673858958,0.0014137214372741322
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_2.0,151.5761142615079,48.675265251719075,0.0018465524928766965
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_3.0,151.35011217758404,48.801484975780575,0.0019275129583774698
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_4.0,165.88052196034673,47.97564809331224,0.0005454610152267549
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_5.0,148.7217624730777,48.11074320314193,0.001994319725842711
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_6.0,109.1306215335486,48.93996259841141,0.025759267244652814
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_7.0,142.08202519337223,50.78015924412601,0.005144224173194097
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_8.0,107.8120399354706,56.167267844615196,0.054929023325495804
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_9.0,88.1882725215897,55.45506284514476,0.11178122167895727
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_10.0,71.51319774944834,86.42861226647405,0.40800009616950805
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_11.0,145.43625242222924,67.20351293710698,0.030460047797997245
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,(Intercept),75.36910126288575,3.4522673930488637,3.6806440902591575e-105
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,age_range_18.25,-191.82251769518984,64.71095691149533,0.0030352088979527774
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,age_range_26.35,-185.09652212221042,60.22157366944492,0.00211614855792446
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,age_range_36.45,-198.88741011219264,57.97770462811333,0.0006031618615044531
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,age_range_46.55,-195.4762601399904,59.518440407557534,0.0010230860737710902
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,age_range_56.70,-156.13670374033757,61.029654722539355,0.010519259114079254
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,age_range_70.,-162.05940469700693,60.3726113437259,0.007270194268490345
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,family_size_1,75.20414404745705,26.512509829223802,0.004562207381537294
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,family_size_2,-1.152113706638884,25.55173086989774,0.9640361875024728
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,family_size_3,22.114804534162836,29.29493161828822,0.4503113700837894
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,family_size_4,0.5445260958565307,35.511177355635034,0.9877658316147793
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_1.0,138.1927472369891,56.901324742250516,0.015159207163682752
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_2.0,162.54373914892062,55.62588205216134,0.0034785166130243154
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_3.0,167.1739184412981,56.15035408349012,0.0029098417500889443
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_4.0,199.08842213289856,55.15966167134818,0.00030731597959056644
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_5.0,159.72989578347864,55.22293746804882,0.0038241132148678766
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_6.0,144.51476031313936,56.396977616816066,0.010396442344831593
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_7.0,136.24470327070182,58.83177084596808,0.020571357308905917
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_8.0,114.93074275768824,64.41756970245244,0.07440513541667311
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_9.0,83.05049904603645,63.667849034266574,0.1920918157198791
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_10.0,82.63729131084222,97.70822705856115,0.39769316385404896
-Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_11.0,180.4822212725375,72.2589649600156,0.012502954020177575
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,(Intercept),40.610370336080166,3.13767384904171,2.9546433380534315e-38
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,age_range_18.25,-63.186102366525006,50.68728246647735,0.2125546026828515
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,age_range_26.35,-70.28666177446739,51.255257733858066,0.17028536524599333
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,age_range_36.45,-54.73034728915851,49.25167051506567,0.26647086844271356
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,age_range_46.55,-113.38234773917583,51.89916392764408,0.02891776559775131
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,age_range_56.70,-70.20529084254827,51.860436244099255,0.1758267809415627
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,age_range_70.,-46.61490093999511,51.65719709921744,0.3668542782980041
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,family_size_1,27.31694356548658,23.520885068106864,0.24548825104903035
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,family_size_2,51.706573316640515,23.38654005555463,0.027043315448117868
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,family_size_3,22.63238503671471,24.961236150167803,0.36456896725990784
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,family_size_4,-2.64237521341286,29.51325993074177,0.9286596278436892
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_1.0,16.753241595006088,48.88122447798561,0.7318002085924287
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_2.0,51.265311272590274,47.85418586900034,0.28404776190367
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_3.0,34.76104161385703,47.52201782870025,0.4644939776397833
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_4.0,35.472121476665656,46.9345989922687,0.4497859234699073
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_5.0,29.484136173721268,47.25710249018944,0.5326900124334155
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_6.0,34.361070630684175,49.41499602165503,0.4868346056257382
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_7.0,40.138714778441766,49.66401306355072,0.41897613546693746
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_8.0,20.12852537063299,53.054956502929095,0.7043997431884456
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_9.0,-18.985424184062158,57.60562813649376,0.7417217913710455
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_10.0,-43.64500713472482,77.59038698527127,0.5737741816034833
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_11.0,48.67850919399215,85.18409346475813,0.5676966361166023
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,(Intercept),18.809752531839038,2.639843292201645,1.0521610338719449e-12
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,age_range_18.25,-43.75641153892203,53.591331901756426,0.41422779011673705
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,age_range_26.35,-54.58579571555097,55.157129081928204,0.3223540118173638
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,age_range_36.45,-44.492756527716324,53.109329421840194,0.40217068931154776
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,age_range_46.55,-41.87335931887579,55.81843053168386,0.45315530669231663
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,age_range_56.70,-64.88545737398299,55.233503365992625,0.2401010138283181
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,age_range_70.,-51.0639476202496,55.357064074092975,0.35629996208319215
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,family_size_1,14.392937161831703,20.96105898354177,0.49230568046594014
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,family_size_2,12.524612722117004,20.841297550322047,0.5478748671391641
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,family_size_3,-28.747893527355583,22.49456266513863,0.20125776577083906
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,family_size_4,-23.569003319960675,26.34119696510828,0.3709205936099871
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_1.0,42.28211632180679,53.12195923681176,0.42606819692543474
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_2.0,57.5458822767365,52.9725925230954,0.2773368156540515
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_3.0,51.31774875893444,52.61752124858487,0.32941726692927764
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_4.0,54.39120768266493,52.07547747012391,0.29627357628179923
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_5.0,50.05907106205858,52.52592553065682,0.34057664845994773
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_6.0,49.80902077199823,53.627525253259755,0.35299935214397093
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_7.0,35.75906796168354,55.25035153142847,0.5174932648169566
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_8.0,33.6530723003119,57.38662867495756,0.5575911791832645
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_9.0,-4.289449884025114,58.685764668298845,0.9417333329273977
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_10.0,-21.73346269191787,81.76849665866474,0.790400013961307
-Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_11.0,77.75431634331385,69.06091777130467,0.26022159957431434
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,(Intercept),24.13785842786263,2.9891056324182164,6.87502385398403e-16
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,age_range_18.25,-53.59357647539028,51.50388286239112,0.2980783491047392
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,age_range_26.35,-54.81641776594855,51.81260313670418,0.2900719226437317
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,age_range_36.45,-59.95846683944696,50.580394198787374,0.23586107665803696
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,age_range_46.55,-73.1681555851292,52.522223392504955,0.16359867552692264
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,age_range_56.70,-36.85690778251278,52.76812823263871,0.4848869793520604
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,age_range_70.,-49.98402481135812,52.51782091269778,0.3412263700750967
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,family_size_1,-9.532818391504495,22.50537429572432,0.6718741505126476
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,family_size_2,-11.17865462985834,22.807740624156416,0.6240471753430379
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,family_size_3,-44.880123030235815,25.183427318220527,0.07473396597136635
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,family_size_4,-34.02686191521961,30.928348215481545,0.2712572037064919
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_1.0,36.47419821839867,47.93329159506023,0.44669834627029303
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_2.0,70.43596406366984,46.77330250104631,0.13209863688947573
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_3.0,54.23734375527579,46.56234450184995,0.24409202459982324
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_4.0,65.673406748918,46.23448118891336,0.15548496820028027
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_5.0,35.43925949673015,46.54302966437308,0.4464037099697189
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_6.0,45.05548731780323,47.413372743824816,0.3419796764483336
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_7.0,57.83898219811957,49.181049250990945,0.23958343644771113
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_8.0,17.401542374109585,54.009536329018296,0.7473071069221222
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_9.0,3.6653149668875047,57.08364412992983,0.9488036211188626
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_10.0,-37.10592299451211,81.73958449018494,0.6498646015518885
-Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_11.0,51.45066793187231,96.31309848242938,0.5932039312922495
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,(Intercept),44.98320757880172,4.2680997323444085,6.038332202234573e-26
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,age_range_18.25,-24.30019763836461,49.95447510256429,0.6266524156578736
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,age_range_26.35,-17.301638819892435,48.182919214969054,0.719534892314682
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,age_range_36.45,-45.09287180190534,45.75908309259956,0.32441212065626157
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,age_range_46.55,-33.85823960897627,48.07710426465421,0.4812810326840171
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,age_range_56.70,-32.11377273397517,49.3957211311674,0.5156093819898391
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,age_range_70.,-19.88374370865335,48.92798692294894,0.684459248112828
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,family_size_1,3.998272023972631,27.378123375985506,0.883891215222599
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,family_size_2,-5.129743001016218,27.895918790851955,0.8541015193528829
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,family_size_3,-15.44606082606756,29.4206559600526,0.5995803077345931
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,family_size_4,-46.72290090802596,37.279573639009605,0.21009815227017173
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_1.0,43.2396362018534,45.05182111614123,0.33717264059273877
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_2.0,34.381597684138704,42.26243566988079,0.4159201577299696
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_3.0,19.214172448215937,42.22653496130747,0.6490924078856319
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_4.0,30.678924838346482,40.74759113776922,0.4515124695407069
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_5.0,39.65127688117702,41.860083632417584,0.34352415524628643
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_6.0,43.79578025663561,42.963115097837544,0.3080268830066543
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_7.0,30.2814650196282,45.06664844269226,0.5016336106269945
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_8.0,3.1543625192763836,46.856952339583366,0.9463280205075318
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_9.0,-6.4753026136712775,55.66097973873625,0.9073877443963221
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_10.0,-44.22448656614573,88.45043593085948,0.617083008899008
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure,income_bracket_11.0,189.43640306831907,106.1074486991481,0.07421423713981044
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,(Intercept),24.969114260674505,4.15859864752797,1.935683044011775e-09
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,age_range_18.25,43.34450817327543,107.78326481398724,0.6875789674055397
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,age_range_26.35,58.7370648609659,105.9680627539851,0.5793826672530966
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,age_range_36.45,49.49946960930971,103.61631330497484,0.6328523661376417
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,age_range_46.55,51.18689763318287,106.67851507609477,0.6313547154026524
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,age_range_56.70,12.92284068388046,105.86622140607511,0.9028459281424956
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,age_range_70.,54.21233833043192,106.09809097842033,0.6093782753910024
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,family_size_1,28.326093584539365,25.80175384483723,0.27228134628201733
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,family_size_2,19.64367101372214,26.345285889062392,0.4558981937233615
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,family_size_3,15.368511167622797,29.894427500455503,0.6071893285533028
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,family_size_4,9.133130439050044,32.04678678095305,0.7756501809450719
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_1.0,-54.25434474063921,105.48731906819069,0.6070298206171183
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_2.0,-42.386533369367974,105.11338417071734,0.6867690957564194
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_3.0,-59.38244860447148,105.93799553259035,0.5751138750171492
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_4.0,-43.49467999461052,104.44253754147181,0.6770854202474286
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_5.0,-38.57569301903115,104.85217691959484,0.7129452355772438
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_6.0,-43.684538498892074,105.46436406906125,0.6787210739176283
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_7.0,-30.262713243866816,104.50082148234186,0.7721287598575194
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_8.0,-13.739575803703689,110.56327549133358,0.901102870372319
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_9.0,-56.35408393589567,108.46859493938119,0.6033845070942698
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_10.0,-121.63629081357813,114.33722513058326,0.2874071496393211
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t1,income_bracket_11.0,-49.85204222949121,116.67964557366233,0.6691949232794272
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,(Intercept),10.295091009067349,4.033597633432564,0.01070337583675199
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,age_range_18.25,-81.98083098621359,85.0803736013449,0.33526669184803914
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,age_range_26.35,-61.96416086265835,86.83019556323991,0.47546276161839585
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,age_range_36.45,-58.63646876589439,84.94639213105887,0.49002381243616056
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,age_range_46.55,-72.21553285536739,86.73466178548175,0.40507277031835087
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,age_range_56.70,-79.37561371702975,89.14065937936255,0.37322679077339427
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,age_range_70.,-91.01949154185921,87.29772928787236,0.29712345559706527
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,family_size_1,30.835886807756545,27.6783216252218,0.2652499902652529
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,family_size_2,45.169115306411314,28.50305065817423,0.11303832915343802
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,family_size_3,8.411300440827214,31.120891249265753,0.7869473254487558
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,family_size_4,-45.18638130748005,39.19689830131252,0.24899604802862157
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_1.0,71.75781825978143,84.26817931821864,0.39447300505931526
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_2.0,76.21909155071917,84.659920401629,0.3679665232862013
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_3.0,82.24715390429354,85.44472001609597,0.33576441087730824
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_4.0,69.13579262895288,83.71968202723144,0.4089210398365297
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_5.0,76.93134915430201,84.1785111457813,0.3607700982760256
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_6.0,76.74854936517151,87.24390452658493,0.37902562807187434
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_7.0,60.60073416272299,86.65478494162888,0.48434594694501565
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_8.0,85.43801823973435,93.01238310543022,0.3583271151016735
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_9.0,104.28052939132591,102.73033802636049,0.31006798633726446
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_10.0,-16.580389329053336,100.30458874500499,0.8687082208508313
+Phase 1 - Full,treatment_Any Coupon,avg_daily_expenditure_t2,income_bracket_11.0,37.31494011971694,121.81493695197966,0.759358636168318
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,(Intercept),37.383082298218135,2.3159578588021663,1.8108893523117815e-58
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,age_range_18.25,-11.64107863039153,31.76589174802628,0.7140198311119236
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,age_range_26.35,7.468562183608082,31.353940966656324,0.8117255978079798
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,age_range_36.45,-7.182052914691391,29.859356717824433,0.8099208328706328
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,age_range_46.55,-27.392103302954517,32.443532186692146,0.3985051866762621
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,age_range_56.70,-18.447990660926283,33.14602041786918,0.5778255152386221
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,age_range_70.,-8.72769021016383,33.16998215458679,0.7924590315328226
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,family_size_1,-19.0098165694715,18.692746544424168,0.30917616618193294
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,family_size_2,-2.9624155160355587,19.425066167282328,0.8787894119444152
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,family_size_3,0.8067125439478302,19.883066531927234,0.9676365906320059
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,family_size_4,-21.189485636064838,22.486169571373303,0.34602598307980004
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_1.0,-16.04997211525506,28.77884005309474,0.5770513600970768
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_2.0,3.460775943589164,44.04740727127483,0.9373754748345865
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_3.0,38.68511605059261,28.590791654023768,0.17604170653947446
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_4.0,39.57866865906287,26.83069100353525,0.1401845646639739
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_5.0,44.63794668754864,27.339136240431134,0.10252788366892422
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_6.0,32.87196953391078,28.164891846797207,0.24316498000836648
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_7.0,34.910776495713286,30.578325115937073,0.2535907835023713
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_8.0,9.884501811495191,32.916483193863975,0.7639569094391575
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_9.0,2.564929037021622,36.87218344247028,0.9445419860653131
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_10.0,-33.407082591822565,66.33131980400603,0.6145167684065872
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure,income_bracket_11.0,61.8652690395815,46.446173727343485,0.18287337019223934
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,(Intercept),28.133086760231198,2.4534461526499367,2.1130067400947197e-30
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,age_range_18.25,-18.508481906486757,35.854822079696504,0.6057126484193185
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,age_range_26.35,11.60549612506079,34.483881510006796,0.7364587348009074
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,age_range_36.45,-22.976769686900706,34.014391755961455,0.49936034230276394
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,age_range_46.55,-27.929440495005117,35.35260731526633,0.4295169233052728
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,age_range_56.70,-37.012577989981395,35.86600624501685,0.3020919481710535
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,age_range_70.,-20.66099556726751,35.710739594160536,0.5628850853066694
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,family_size_1,-2.478727599591139,20.54710396416853,0.9039795561375525
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,family_size_2,2.537833287051086,20.567011359798865,0.9017960801164981
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,family_size_3,6.182720737277129,21.680105197309224,0.7755078219487601
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,family_size_4,-3.1893778742457664,29.099037849975833,0.9127236841923525
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_1.0,18.52925829925834,32.16330814694874,0.5645506491821008
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_2.0,16.662147918314474,35.32933806762131,0.6371975469569562
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_3.0,27.17733130380062,31.714474363347925,0.39148333120037715
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_4.0,26.267664012921518,30.144256365746898,0.3835406640328374
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_5.0,40.28067276112358,30.666578853908632,0.1890191456865625
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_6.0,29.64140146613902,31.017635141621593,0.3392634604466903
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_7.0,41.30367407797396,32.97964745571946,0.21043033910513234
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_8.0,27.457695428787318,40.216977145131146,0.49477496051915804
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_9.0,3.607050775344185,35.78009375049818,0.9197003673748034
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_10.0,-18.957054239696816,52.087665724759916,0.7159004764703477
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t1,income_bracket_11.0,57.10904477290453,57.11379517890807,0.317355544768155
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,(Intercept),33.572939213269834,2.582982673470409,1.4605108230341937e-38
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,age_range_18.25,-12.582281623042697,39.04314011111427,0.747252471041755
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,age_range_26.35,8.878116106145601,38.13708756131174,0.8159217183579698
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,age_range_36.45,-7.5124897919695295,36.71576521681281,0.837876054897307
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,age_range_46.55,-41.858598071174555,38.859235051246586,0.2814028004462042
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,age_range_56.70,-29.03117361517312,39.0884103911401,0.45766363218332495
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,age_range_70.,-18.171816225424884,38.56477129278948,0.6374982475257923
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,family_size_1,24.025368095947904,18.297778581204028,0.1891820350548134
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,family_size_2,29.95807443018628,18.253610022464848,0.10075951105935176
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,family_size_3,34.74581581659806,19.67065721140138,0.07733870637791555
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,family_size_4,-5.829798649127845,23.776112444951444,0.8063059980033278
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_1.0,-5.690247875783435,37.19437207530477,0.878409319108033
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_2.0,30.491255517609282,35.543338759234345,0.39097325738634947
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_3.0,34.707547543855966,35.870003520434096,0.333252702933711
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_4.0,31.646833468982056,34.861659241434964,0.3639971842762435
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_5.0,42.85837123291786,35.224120105401475,0.22371146628566457
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_6.0,16.345552825289023,35.597741757790864,0.646111358621849
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_7.0,48.32572060698165,37.86573965378526,0.20187724155468592
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_8.0,14.969274103236513,41.39028956398049,0.7176065682956234
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_9.0,9.3097547881743,40.772467554299446,0.8193872806546723
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_10.0,-17.51897291622421,55.86820100399686,0.7538438057836795
+Phase 1 - Full,treatment_drugstore items,avg_daily_expenditure_t2,income_bracket_11.0,43.58543240610118,64.12096943003196,0.4966738620653689
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,(Intercept),47.7286846721248,4.177912290854278,3.5124909614041466e-30
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,age_range_18.25,-96.19066825834322,64.04611389161416,0.1331311893089147
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,age_range_26.35,-124.33609425894053,51.47588330421565,0.015721115956711926
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,age_range_36.45,-138.7619610384468,49.40614635595808,0.004978073662093082
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,age_range_46.55,-135.52511674464387,51.50702931520754,0.008511575617169496
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,age_range_56.70,-116.35238369161475,53.55109250583591,0.029805744545925543
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,age_range_70.,-107.3531529333126,53.21845235607385,0.04367922188467971
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,family_size_1,14.010636660625165,26.06108362088521,0.5908508172560796
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,family_size_2,-18.44277935484108,26.03978683895239,0.4787915426014432
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,family_size_3,-21.520222707267017,29.703984409934755,0.4687693330018099
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,family_size_4,-25.716295046520887,33.74159858823232,0.445972345720962
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_1.0,172.20881346307374,58.47425463296095,0.003230928246335893
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_2.0,138.1936103998849,46.42468223921486,0.002915085374122556
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_3.0,128.6593510529443,46.3608936280113,0.00551971808101444
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_4.0,129.53730084976885,45.32891490873264,0.004269068730090065
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_5.0,125.08828705041432,46.09111690907851,0.006651625583672599
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_6.0,139.5828833324105,46.7184232067004,0.002812026752992975
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_7.0,116.82612271889857,50.02780884000539,0.0195364035490964
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_8.0,62.330140084832806,58.66967277755577,0.28806424016103166
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_9.0,96.20946992921716,60.15836138884418,0.10976808502762798
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_10.0,30.270088889241432,102.5496332762095,0.7678616448975939
+Phase 1 - Full,treatment_other food,avg_daily_expenditure,income_bracket_11.0,161.17542647788306,69.04673645469605,0.019584968238175644
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,(Intercept),48.03485786886077,2.747316124781441,3.3852107993451168e-68
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,age_range_18.25,-60.59804930826918,63.50086412230035,0.33994414355967995
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,age_range_26.35,-69.58670470812307,58.09654104549509,0.23101090336495586
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,age_range_36.45,-51.11346778974048,55.5579522002461,0.35757687173997166
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,age_range_46.55,-71.09991395779312,58.281104539291746,0.22249178940450265
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,age_range_56.70,-66.63505176157493,59.27193588884548,0.2609238962082999
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,age_range_70.,-53.6241646665037,59.445324817080795,0.36702224392833216
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,family_size_1,6.754112794819304,25.834457412399242,0.7937559831011722
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,family_size_2,-1.6066239165061904,27.786995006923366,0.9538928727172695
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,family_size_3,-31.292937361525947,31.363505823355197,0.31840663683689374
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,family_size_4,-30.83253201470695,29.378981993299476,0.29396549729422344
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_1.0,86.68130597430984,60.719411751187714,0.1534230066987176
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_2.0,112.40556230617354,52.84439812069173,0.03341748559775439
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_3.0,117.17881378985227,52.957053329662656,0.026922986112271396
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_4.0,115.38400518864026,52.645763739223554,0.02840652071159762
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_5.0,101.75204366682682,52.486431460438894,0.052552789093950086
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_6.0,112.45888449852546,53.55980414777161,0.03576252422652077
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_7.0,109.87431879636152,54.038274711048174,0.04203198799398596
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_8.0,119.25683255984164,73.20682193830304,0.10331243974398938
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_9.0,60.17908520066399,58.972159670216264,0.3075136585511494
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_10.0,30.77175456049561,82.22684076361196,0.7082351512653458
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t1,income_bracket_11.0,98.57165251207277,74.38222594301614,0.18511092742744598
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,(Intercept),14.507887237742006,2.8926824087083,5.315414346414239e-07
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,age_range_18.25,-81.72742575523364,61.175410193785005,0.18157241855536946
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,age_range_26.35,-76.9466822051022,56.26505711516379,0.17145277831879951
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,age_range_36.45,-74.13050618240922,54.898997362188155,0.17692506464356503
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,age_range_46.55,-78.08897170939274,56.11396952517478,0.16404706013595174
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,age_range_56.70,-66.41709443920175,57.44582446572541,0.24761878700015763
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,age_range_70.,-62.72888527882301,57.66259528230074,0.27666299564659846
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,family_size_1,-2.6920714875089793,27.63070177839371,0.9223850542047116
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,family_size_2,3.7846770425296823,28.19969275669884,0.8932372920544975
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,family_size_3,-3.863143735230371,31.826658642780846,0.9033900665991386
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,family_size_4,-23.856898233187696,33.57326316413411,0.4773410962137724
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_1.0,129.97505414776197,52.921676479458846,0.014053928494534856
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_2.0,114.98440558987393,50.84107878665494,0.02372472202556087
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_3.0,127.80840931984154,50.72008342246689,0.011743385722847185
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_4.0,122.48458096212691,50.79714511579454,0.015902413215842227
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_5.0,117.33710491319457,50.406912632252656,0.0199277541729449
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_6.0,123.34720922410393,51.94047739574758,0.017564055781399076
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_7.0,106.5502326667653,53.08663344177173,0.04474556878318966
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_8.0,67.91014088214143,61.0481703179088,0.2659717294330758
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_9.0,52.03221457572389,59.17788524621778,0.3792704332093142
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_10.0,33.09874686267639,93.3050249735187,0.7227884646100853
+Phase 1 - Full,treatment_other food,avg_daily_expenditure_t2,income_bracket_11.0,134.3852577609426,78.24684333471596,0.08590414699052143
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,(Intercept),-64.10838526593372,3.1520469288254205,1.3278360527767265e-91
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,age_range_18.25,-48.9389738402913,72.49205220156506,0.49961882307955985
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,age_range_26.35,-89.22962218258671,66.73439305424792,0.1812003972258089
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,age_range_36.45,-28.92472056793837,65.01685496811979,0.656408075905929
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,age_range_46.55,-58.11710756562232,66.08366673401304,0.3791628017153197
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,age_range_56.70,25.52525729939611,71.08658653975071,0.7195421067496062
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,age_range_70.,-14.308662075694805,68.62239327801048,0.834829235756463
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,family_size_1,36.98205855392954,30.31102829076135,0.22243782272486415
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,family_size_2,29.655586877173253,29.453642284443937,0.31400847745149607
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,family_size_3,5.990680986791805,32.592816881947854,0.8541681519061232
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,family_size_4,-21.43043438819342,39.04575101527904,0.5831076845486424
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_1.0,54.94825734834829,63.94557712480409,0.39018049879271954
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_2.0,201.95931718206396,66.28324545044681,0.0023131968619610026
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_3.0,139.3186561989587,62.60777562572477,0.02606796318277553
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_4.0,178.13678308997135,61.8904223421337,0.004000365778479534
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_5.0,167.16268412948276,61.54276926267579,0.006605706547898479
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_6.0,97.80305308969214,62.19535113698159,0.11583748469851499
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_7.0,127.19969626789708,65.06302358379628,0.05058570665300848
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_8.0,72.71615447318503,71.66750883554607,0.31028593951972544
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_9.0,82.02145511793556,81.24820562757202,0.31273137274777557
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_10.0,52.237307307065564,100.21991316366324,0.6022109800108228
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure,income_bracket_11.0,192.05244807823473,78.10816946503512,0.013943407563342737
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,(Intercept),9.989028662006962,2.994662893188305,0.0008517354258743849
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,age_range_18.25,-78.03530949996019,55.38789964391707,0.15887463410501712
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,age_range_26.35,-80.69547720349216,52.366009644180025,0.12332556578164365
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,age_range_36.45,-62.1688670683992,50.68513158944102,0.21998991911515542
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,age_range_46.55,-60.83645997913235,52.07404831487913,0.24270406136256104
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,age_range_56.70,-46.8517286412309,52.89512607346142,0.37575778486694034
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,age_range_70.,-49.923729953660526,52.56093628228883,0.3422053432644856
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,family_size_1,-41.73391866329154,22.596364855103246,0.06476302735177973
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,family_size_2,-68.80683580686895,22.12105292643554,0.0018689465904717336
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,family_size_3,14.036427121734016,25.410610459622948,0.5806873938805224
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,family_size_4,-49.52556897013473,30.577252978056745,0.10530583322141672
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_1.0,136.1388972611956,49.419150571380584,0.005875256070097412
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_2.0,133.0699578479429,48.7356233750178,0.006327070031900821
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_3.0,134.77784709224844,49.17311333334122,0.006129545291522267
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_4.0,145.45265335073276,48.197715177554365,0.0025471580663851143
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_5.0,134.78769910830945,48.2718462022446,0.0052360397606544505
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_6.0,85.26641364145169,49.246754498063645,0.08338443198195677
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_7.0,124.91476748353608,51.31361057287908,0.014922413669103666
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_8.0,87.62142087323242,56.14046003560417,0.11858817059843758
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_9.0,66.66192795324292,54.65881970169304,0.22262201266606862
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_10.0,51.08971838673551,86.72092444403054,0.5557780910213929
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t1,income_bracket_11.0,132.17519006390899,59.78749694698653,0.027057631314379094
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,(Intercept),69.42043253843259,3.377365054348428,1.7376786615626804e-93
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,age_range_18.25,-172.55165933595597,64.00579934908086,0.00702278820940149
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,age_range_26.35,-171.03319043769812,59.420252892544234,0.003999147797569577
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,age_range_36.45,-184.96789319009827,57.23875542776948,0.0012321715638790134
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,age_range_46.55,-179.34315013359907,58.72271609919651,0.002258822015019765
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,age_range_56.70,-141.22432631156323,60.263800925823695,0.019111043159843428
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,age_range_70.,-143.68505041666137,59.60687022084015,0.015932357098953465
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,family_size_1,63.816375037576094,26.285145564903143,0.015192223617932385
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,family_size_2,-3.4784410810371766,25.31701325394199,0.8907188336771059
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,family_size_3,15.623114073576614,28.906231243571423,0.5888715058794561
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,family_size_4,-3.0179627554482797,34.846942700761424,0.930984857810531
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_1.0,129.03558969929904,56.19612591189066,0.02167063475937825
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_2.0,142.20773486071047,54.866033902120556,0.00954734822678936
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_3.0,156.27116071406286,55.30663613683256,0.004721994154826689
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_4.0,188.40636373554224,54.39605674221569,0.000533446775253199
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_5.0,151.95302756882205,54.416827488928675,0.005234044822777745
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_6.0,139.56252800850112,55.58553830087094,0.012049991406259015
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_7.0,127.96254585853738,58.144080907261696,0.02775598502000157
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_8.0,109.32360625534628,63.712060893658354,0.08618643268731924
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_9.0,83.72327978779595,63.05698676583337,0.18427021706223573
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_10.0,66.53789937158487,95.67416529403378,0.4867681121597215
+Phase 1 - Full,treatment_other non-food products,avg_daily_expenditure_t2,income_bracket_11.0,180.184708984194,71.97552814391166,0.012303302742752058
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,(Intercept),50.74771619368174,2.8773274912721307,2.0356491283934246e-69
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,age_range_18.25,-56.4714421755756,51.479607808302724,0.27266078891558904
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,age_range_26.35,-59.313063117212806,52.370745183208165,0.25740386581643065
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,age_range_36.45,-45.32532375844618,50.517282103394066,0.3696034821728287
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,age_range_46.55,-104.02242420957431,53.00686866284197,0.04971741286277249
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,age_range_56.70,-59.419258798530905,52.7481504620536,0.2599714175175047
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,age_range_70.,-40.128571825783624,52.70008502820541,0.44639073329272616
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,family_size_1,12.092608697229636,23.054221884995503,0.5999128622984571
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,family_size_2,43.71938910734565,22.841130532352633,0.05561742776642451
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,family_size_3,20.534228462281764,24.56885925786078,0.40328096922891365
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,family_size_4,-1.7735849883510617,28.342400549767817,0.9501035119805595
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_1.0,11.258497672986767,49.99882400936789,0.821843825532684
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_2.0,46.04730887292753,49.02435127506942,0.3475943268373538
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_3.0,31.449394916686952,48.93984273289019,0.5204778622631996
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_4.0,28.840293405139,48.282664311792274,0.5502950710850448
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_5.0,26.731861160722556,48.646250312435825,0.5826541883997962
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_6.0,27.824450864580527,50.42315259708336,0.5810747711883586
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_7.0,34.03016904982798,50.98549594230478,0.504488946419035
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_8.0,16.528343392774172,53.720545384308764,0.758332650084583
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_9.0,-32.99213447683648,56.94134857099951,0.5623180505034785
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_10.0,-41.87960879719865,78.77204248753876,0.5949667144373447
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure,income_bracket_11.0,47.52787795484735,85.51948452022776,0.5783807619789243
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,(Intercept),17.394526504162574,2.8379101328593586,8.889212102055549e-10
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,age_range_18.25,-43.322252945867405,51.26693651041112,0.3980964120710383
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,age_range_26.35,-51.37249473561732,52.72627000499364,0.32990011922937357
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,age_range_36.45,-44.753692327683716,50.68050460986986,0.3772105448836963
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,age_range_46.55,-44.401767627895424,53.23422194093893,0.40423806578660204
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,age_range_56.70,-51.49935426850337,53.53302215185355,0.33604869317957065
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,age_range_70.,-52.46806590581052,53.283298777121566,0.32477614609729555
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,family_size_1,12.047161232522972,21.318649461551882,0.572008495519087
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,family_size_2,13.189005454899739,21.15968450341215,0.5330848011109512
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,family_size_3,-24.212801245828903,23.019855869039837,0.29288603880188235
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,family_size_4,-29.18189195139203,26.760279254822787,0.27550131422613916
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_1.0,45.123145082712306,50.320101967489414,0.3698715165963389
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_2.0,58.9832705698454,50.238006615412885,0.24036985028697228
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_3.0,53.76117017567586,49.84007574367386,0.2807384337175941
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_4.0,60.28302637540519,49.32894409867048,0.22168988747827023
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_5.0,48.466429658714404,49.74524971902521,0.32991592552212534
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_6.0,48.24796295545581,50.91783579964752,0.34335543736007446
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_7.0,36.56544944378376,53.14132343224117,0.49140594215085254
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_8.0,35.477694029333755,55.03703734443338,0.5191797022525984
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_9.0,2.1438947221885876,56.58422076641215,0.9697766826526164
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_10.0,-26.350449762269022,79.25883034137968,0.7395427538204398
+Phase 1 - Full,treatment_ready-to-eat food,avg_daily_expenditure_t1,income_bracket_11.0,84.7889354440825,66.37620381852852,0.20146707070684475
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,(Intercept),31.32233915058226,3.0956680735727238,4.832441803386323e-24
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,age_range_18.25,-27.92763695217399,59.66535238858535,0.6397355831835081
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,age_range_26.35,-27.686139227536838,60.73790791672895,0.6485143794695156
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,age_range_36.45,-31.33421879813148,59.969852678657524,0.6013248045237541
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,age_range_46.55,-41.32667938401152,61.29243994497286,0.5001527631882667
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,age_range_56.70,-14.780685881233673,61.59704127370632,0.8103639727111805
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,age_range_70.,-31.441685748179776,61.474163006792494,0.6090298988919465
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,family_size_1,-28.941040319990567,22.886809288278908,0.20604577000169477
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,family_size_2,-21.44610598121731,23.276974820922916,0.35687500699086316
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,family_size_3,-55.59945087859505,24.834259079300786,0.02517179025154946
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,family_size_4,-38.89046891774316,29.493475931948975,0.1873044487831978
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_1.0,18.23531991258238,55.40167047937775,0.7420455435869686
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_2.0,49.31882937157135,54.28023559204513,0.36356737856155685
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_3.0,34.14328360243067,54.23367456075275,0.5289860855134446
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_4.0,53.29549487706203,53.98475508655033,0.32353334093533626
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_5.0,10.702872314674492,54.17368630682515,0.8433854977155549
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_6.0,29.39421948313373,54.70722097887243,0.5910623228786686
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_7.0,41.6618162394899,56.250584189342206,0.45891094602814786
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_8.0,4.05412516521925,61.814655856647725,0.9477083418098068
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_9.0,-17.926333958329288,63.20050096878664,0.7766856609153054
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_10.0,-55.353696568251,84.8409791963211,0.5141198764796742
+Phase 1 - Full,treatment_meat/seafood,avg_daily_expenditure,income_bracket_11.0,42.83996513636789,82.03528705862948,0.6015236439510052
