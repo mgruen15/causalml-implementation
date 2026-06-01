@@ -353,6 +353,15 @@ def plot_causal_dag():
         ]
         plt.legend(handles=legend_elements, loc='lower center', ncol=2, frameon=True, fontsize=9)
 
+        # Add explanation box for node groups
+        explanation = (
+            "Variable Groups:\n"
+            "• Demographics: E.g. Age, Income, Family Size\n"
+            "• Baseline Habits: Past spending behaviors of consumers at the retailer"
+        )
+        plt.text(0.02, 0.98, explanation, fontsize=8, va='top', ha='left',
+                 bbox=dict(boxstyle="round,pad=0.3", facecolor="white", edgecolor="lightgray", alpha=0.9))
+
         plt.title(f"SCM: {LABEL_MAP.get(t_col, t_col)}", fontsize=14, pad=20)
         plt.xlim(0, 1); plt.ylim(0, 1); plt.axis("off")
         safe_name = t_col.replace("treatment_", "").replace("/", "_").replace(" ", "_")
