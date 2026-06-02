@@ -508,8 +508,14 @@ def plot_causal_dag():
         ax_forest.set_yticks(y_pos)
         
         # Clean up labels
-        labels = [v.replace("age_range_", "Age: ").replace("income_bracket_", "Income: ").replace("family_size_", "Family: ") 
-                  for v in forest_data["variable"]] + ["OVERALL ATE"]
+        def clean_label(v):
+            if "age_range" in v:
+                val = v.replace("age_range_", "").replace(".", "-")
+                if val == "70-": val = "70+"
+                return f"Age: {val}"
+            return v.replace("income_bracket_", "Income: ").replace("family_size_", "Family: ")
+
+        labels = [clean_label(v) for v in forest_data["variable"]] + ["OVERALL ATE"]
         ax_forest.set_yticklabels(labels)
         
         ax_forest.set_xlabel("Estimated Impact (monetary units)")
