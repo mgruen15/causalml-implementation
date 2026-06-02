@@ -29,82 +29,112 @@ ORDER = [
 ]
 
 def plot_summary_table():
-    """Think Aloud #6: Summary Table of ATE and CATE across categories."""
+    """Think Aloud #6: Detailed Summary Tables per category."""
     ate_path = "results/ate_results.csv"
     cate_path = "results/cate_distributions.csv"
-    if not os.path.exists(ate_path) or not os.path.exists(cate_path): return
+    gate_path = "results/gate_results.csv"
+    if not all(os.path.exists(p) for p in [ate_path, cate_path, gate_path]): return
 
     ate_df = pd.read_csv(ate_path)
     cate_df = pd.read_csv(cate_path)
+    gate_df = pd.read_csv(gate_path)
 
-    # Filter ATE to main phase and outcome
+    # Filter ATE and GATE to main phase and outcome
     ate_df = ate_df[
         (ate_df["phase"] == "Phase 1 - Full") & 
         (ate_df["outcome"] == "avg_daily_expenditure") &
         (ate_df["method"] == "GRF")
     ]
+    gate_df = gate_df[
+        (gate_df["phase"] == "Phase 1 - Full") & 
+        (gate_df["outcome"] == "avg_daily_expenditure")
+    ]
 
-    summary_data = []
     for t_col in ORDER:
         if t_col not in cate_df["treatment"].unique(): continue
         
-        # Get ATE info
+        # 1. Global Metrics
         ate_row = ate_df[ate_df["treatment"] == t_col]
         if ate_row.empty: continue
         ate_val = ate_row["estimate"].values[0]
         ate_se = ate_row["se"].values[0]
         
-        # Get CATE distribution info
-        cates = cate_df[cate_df["treatment"] == t_col]["cate"]
+        # 2. GATE Breakdown
+        t_gate = gate_df[(gate_df["treatment"] == t_col) & (gate_df["variable"] != "(Intercept)")].copy()
         
-        summary_data.append({
-            "Coupon Category": LABEL_MAP.get(t_col, t_col),
-            "ATE (Avg. Effect)": f"${ate_val:.2f} (±{1.96*ate_se:.2f})",
-            "Mean CATE": f"${cates.mean():.2f}",
-            "Median CATE": f"${cates.median():.2f}",
-            "Std. Dev. CATE": f"${cates.std():.2f}"
-        })
+        def parse_var(v):
+            if "age_range" in v: 
+                val = v.replace("age_range_", "").replace(".", "-")
+                if val == "70-": val = "70+"
+                return ("Age", val)
+            if "income_bracket" in v: return ("Income", v.replace("income_bracket_", ""))
+            if "family_size" in v: return ("Family Size", v.replace("family_size_", ""))
+            return ("Other", v)
 
-    df_table = pd.DataFrame(summary_data)
+        rows = []
+        # Section Header: Global
+        rows.append(["GLOBAL CAUSAL METRICS", "", "", ""])
+        rows.append(["Confounders Controlled", "Demographics, Baseline Habits", "", ""])
+        rows.append(["Overall ATE", f"${ate_val:.2f} (±{1.96*ate_se:.2f})", "", ""])
+        
+        # Section Header: GATE
+        rows.append(["", "", "", ""]) # Spacer
+        rows.append(["SUBGROUP HETEROGENEITY (GATE)", "", "", ""])
+        rows.append(["Subgroup Variable", "Value", "Point Estimate", "95% Confidence Interval"])
+        
+        for _, g_row in t_gate.iterrows():
+            var_name, var_val = parse_var(g_row["variable"])
+            ci_low = g_row["coef"] - 1.96 * g_row["se"]
+            ci_high = g_row["coef"] + 1.96 * g_row["se"]
+            rows.append([var_name, var_val, f"${g_row['coef']:.2f}", f"[${ci_low:.2f}, ${ci_high:.2f}]"])
 
-    # Create the table plot
-    fig, ax = plt.subplots(figsize=(12, len(df_table)*0.8 + 1))
-    ax.axis('off')
-    
-    # Render the table
-    table = ax.table(
-        cellText=df_table.values,
-        colLabels=df_table.columns,
-        cellLoc='center',
-        loc='center',
-        colColours=["#f2f2f2"] * len(df_table.columns)
-    )
-    
-    # Styling
-    table.auto_set_font_size(False)
-    table.set_fontsize(10)
-    table.scale(1.2, 1.8)
-    
-    # Make header bold
-    for (row, col), cell in table.get_celld().items():
-        if row == 0:
-            cell.set_text_props(fontweight='bold')
+        # Create Table Plot
+        fig, ax = plt.subplots(figsize=(12, len(rows) * 0.4 + 2))
+        ax.axis('off')
+        
+        table = ax.table(
+            cellText=rows,
+            cellLoc='left',
+            loc='center',
+            colWidths=[0.32, 0.32, 0.12, 0.24]
+        )
+        
+        table.auto_set_font_size(False)
+        table.set_fontsize(9)
+        table.scale(1.2, 1.5)
 
-    # Add explanation box
-    explanation = (
-        "Metrics Explanation:\n"
-        "• ATE (Average Treatment Effect): The average change in expenditure caused by the coupon across all customers.\n"
-        "• CATE (Conditional Average Treatment Effect): The estimated effect for individual customers based on their\n"
-        "  specific characteristics. The distribution of CATE shows how much the effect varies (heterogeneity)."
-    )
-    ax.text(0.5, -0.05, explanation, fontsize=9, ha='center', va='top', transform=ax.transAxes,
-            bbox=dict(boxstyle="round,pad=0.5", facecolor="white", edgecolor="lightgray", alpha=0.9))
+        # Styling: Bold headers and section titles
+        for (i, j), cell in table.get_celld().items():
+            content = rows[i][j]
+            if content in ["GLOBAL CAUSAL METRICS", "SUBGROUP HETEROGENEITY (GATE)"]:
+                cell.set_text_props(fontweight='bold', color='darkblue')
+                cell.set_facecolor('#f0f0f8')
+            if i == rows.index(["Subgroup Variable", "Value", "Point Estimate", "95% Confidence Interval"]):
+                cell.set_text_props(fontweight='bold')
+                cell.set_facecolor('#f2f2f2')
+            
+            # Hide borders for spacers
+            if rows[i] == ["", "", "", ""]:
+                cell.set_visible(False)
 
-    plt.title("Effectiveness Summary across Coupon Categories", fontsize=14, pad=20, fontweight="bold")
-    plt.tight_layout()
-    plt.savefig(f"{THINK_ALOUD_DIR}/summary_table.png", dpi=300, bbox_inches='tight')
-    plt.close()
-    print("✓ Saved Think Aloud summary table")
+        label = LABEL_MAP.get(t_col, t_col)
+        plt.title(f"Causal Effectiveness Summary: {label}", fontsize=14, pad=20, fontweight="bold")
+        
+        # Add explanation box
+        explanation = (
+            "Metrics Explanation:\n"
+            "• ATE (Average Treatment Effect): The average change in expenditure caused by the coupon across all customers.\n"
+            "• GATE (Group Average Treatment Effect): The estimated impact for specific demographic subgroups.\n"
+            "  The 95% Confidence Interval shows the range where the true effect likely falls."
+        )
+        ax.text(0.5, -0.05, explanation, fontsize=8, ha='center', va='top', transform=ax.transAxes,
+                bbox=dict(boxstyle="round,pad=0.5", facecolor="white", edgecolor="lightgray", alpha=0.9))
+
+        safe_name = t_col.replace("treatment_", "").replace("/", "_").replace(" ", "_")
+        plt.tight_layout()
+        plt.savefig(f"{THINK_ALOUD_DIR}/summary_table_{safe_name}.png", dpi=300, bbox_inches='tight')
+        plt.close()
+        print(f"✓ Saved Think Aloud summary table for {label}")
 
 def plot_fig1_cate_distributions():
     """Replicates Figure 1: Distribution of CATE by coupon type."""
