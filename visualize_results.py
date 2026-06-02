@@ -132,7 +132,7 @@ def plot_summary_table():
 
         safe_name = t_col.replace("treatment_", "").replace("/", "_").replace(" ", "_")
         plt.tight_layout()
-        plt.savefig(f"{THINK_ALOUD_DIR}/summary_table_{safe_name}.png", dpi=300, bbox_inches='tight')
+        plt.savefig(f"plots/summary_table_{safe_name}.png", dpi=300, bbox_inches='tight')
         plt.close()
         print(f"✓ Saved Think Aloud summary table for {label}")
 
@@ -542,16 +542,16 @@ def plot_causal_dag():
 
 if __name__ == "__main__":
     # Standard Replication Plots
-    plot_fig1_cate_distributions()
-    plot_cate_violins()
-    plot_gate_subgroups()
-    plot_gate_heatmaps()
+    # plot_fig1_cate_distributions()
+    # plot_cate_violins()
+    # plot_gate_subgroups()
+    # plot_gate_heatmaps()
     plot_causal_dag()
     
     # Think Aloud Study Plots
     print("\nGenerating Think Aloud Study Visualizations...")
     plot_summary_table()
-    plot_qini_curve()
-    plot_waterfall_uncertainty()
-    plot_personas()
-    plot_feature_importance()
+    # plot_qini_curve()
+    # plot_waterfall_uncertainty()
+    # plot_personas()
+    # plot_feature_importance()
