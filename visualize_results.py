@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
+from scipy.stats import norm
 
 # Create plots directory
 os.makedirs("plots", exist_ok=True)
@@ -539,6 +540,138 @@ def plot_causal_dag():
         plt.close()
         print(f"✓ Saved Two-Panel Analysis (GATE) for {t_col}")
 
+def plot_implied_density_ridge():
+    """Think Aloud #7: Implied Probability Density Curves (Ridge Plot)."""
+    ate_path = "results/ate_results.csv"
+    gate_path = "results/gate_results.csv"
+    if not all(os.path.exists(p) for p in [ate_path, gate_path]): return
+
+    ate_df = pd.read_csv(ate_path)
+    gate_df = pd.read_csv(gate_path)
+
+    # Filter to main phase and outcome
+    ate_df = ate_df[
+        (ate_df["phase"] == "Phase 1 - Full") & 
+        (ate_df["outcome"] == "avg_daily_expenditure") &
+        (ate_df["method"] == "GRF")
+    ]
+    gate_df = gate_df[
+        (gate_df["phase"] == "Phase 1 - Full") & 
+        (gate_df["outcome"] == "avg_daily_expenditure")
+    ]
+
+    for t_col in ORDER:
+        if t_col not in gate_df["treatment"].unique(): continue
+        
+        # Collect data for plotting
+        plot_data = []
+        
+        # 1. Overall ATE
+        ate_row = ate_df[ate_df["treatment"] == t_col]
+        if not ate_row.empty:
+            plot_data.append({
+                "label": "OVERALL ATE",
+                "estimate": ate_row["estimate"].values[0],
+                "se": ate_row["se"].values[0],
+                "color": "darkblue"
+            })
+            
+        # 2. GATE Subgroups
+        t_gate = gate_df[gate_df["treatment"] == t_col].copy()
+        # Custom sorting logic
+        def sort_key(var):
+            if var == "(Intercept)": return (-1, 0)
+            if "age_range" in var:
+                cat_order = 0
+                try:
+                    parts = var.split("_")[-1].split(".")
+                    val = float(parts[0]) if parts[0].isdigit() else 0
+                except: val = 0
+            elif "income_bracket" in var:
+                cat_order = 1
+                try: val = float(var.split("_")[-1])
+                except: val = 0
+            elif "family_size" in var:
+                cat_order = 2
+                f_val = var.split("_")[-1]
+                try: val = float(f_val.replace("+", ""))
+                except: val = 0
+            else:
+                cat_order = 3
+                val = 0
+            return (cat_order, val)
+
+        t_gate["sort_val"] = t_gate["variable"].apply(sort_key)
+        t_gate = t_gate.sort_values("sort_val", ascending=False)
+        
+        for _, g_row in t_gate.iterrows():
+            if g_row["variable"] == "(Intercept)": continue
+            
+            def clean_label(v):
+                if "age_range" in v:
+                    val = v.replace("age_range_", "").replace(".", "-")
+                    if val == "70-": val = "70+"
+                    return f"Age: {val}"
+                return v.replace("income_bracket_", "Income: ").replace("family_size_", "Family: ")
+
+            plot_data.append({
+                "label": clean_label(g_row["variable"]),
+                "estimate": g_row["coef"],
+                "se": g_row["se"],
+                "color": "black"
+            })
+
+        if not plot_data: continue
+
+        # Plotting
+        fig, ax = plt.subplots(figsize=(10, len(plot_data) * 0.4 + 2))
+        
+        # Determine x-range
+        all_means = [d["estimate"] for d in plot_data]
+        all_ses = [d["se"] for d in plot_data]
+        x_min = min([m - 4*s for m, s in zip(all_means, all_ses)])
+        x_max = max([m + 4*s for m, s in zip(all_means, all_ses)])
+        x = np.linspace(x_min, x_max, 500)
+        
+        overlap = 0.85
+        for i, d in enumerate(plot_data):
+            y_offset = len(plot_data) - i
+            # Skip if SE is zero or NaN to avoid errors
+            if pd.isna(d["se"]) or d["se"] <= 0: continue
+            
+            pdf = norm.pdf(x, d["estimate"], d["se"])
+            # Normalize PDF to fit in the ridge row
+            pdf_norm = pdf / pdf.max() * overlap
+            
+            # Plot the line
+            ax.plot(x, pdf_norm + y_offset, color='gray', lw=0.8, alpha=0.5)
+            
+            # Fill areas
+            # Negative side (red)
+            ax.fill_between(x, y_offset, pdf_norm + y_offset, where=(x <= 0), 
+                            color='red', alpha=0.4, interpolate=True)
+            # Positive side (blue)
+            ax.fill_between(x, y_offset, pdf_norm + y_offset, where=(x > 0), 
+                            color='skyblue', alpha=0.4, interpolate=True)
+            
+            # Label
+            ax.text(x_min - (x_max-x_min)*0.02, y_offset, d["label"], ha='right', va='bottom', fontsize=8)
+
+        ax.axvline(0, color='black', linestyle='-', alpha=0.3, lw=1)
+        ax.set_yticks([])
+        ax.set_xlabel("Estimated Causal Effect ($ / day)")
+        label = LABEL_MAP.get(t_col, t_col)
+        ax.set_title(f"Implied Probability Densities (Ridge Plot): {label}", fontsize=14, fontweight="bold", pad=20)
+        
+        # Remove spines
+        for spine in ["left", "right", "top"]:
+            ax.spines[spine].set_visible(False)
+            
+        safe_name = t_col.replace("treatment_", "").replace("/", "_").replace(" ", "_")
+        plt.tight_layout()
+        plt.savefig(f"plots/ridge_densities_{safe_name}.png", dpi=300, bbox_inches='tight')
+        plt.close()
+        print(f"✓ Saved Ridge Plot for {label}")
 
 if __name__ == "__main__":
     # Standard Replication Plots
@@ -551,6 +684,7 @@ if __name__ == "__main__":
     # Think Aloud Study Plots
     print("\nGenerating Think Aloud Study Visualizations...")
     plot_summary_table()
+    plot_implied_density_ridge()
     # plot_qini_curve()
     # plot_waterfall_uncertainty()
     # plot_personas()
