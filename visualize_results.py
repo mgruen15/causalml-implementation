@@ -379,72 +379,130 @@ def plot_gate_heatmaps():
         print(f"✓ Saved GATE heatmap for {t_col}")
 
 def plot_causal_dag():
-    """Option A: Structural Causal Model (DAG)."""
+    """Option A: Two-panel visualization (Structural DAG + CATE Forest Plot)."""
     ate_file = "results/ate_results.csv"
     conf_file = "results/confounder_strengths.csv"
-    if not os.path.exists(ate_file) or not os.path.exists(conf_file): return
+    gate_file = "results/gate_results.csv"
+    if not os.path.exists(ate_file) or not os.path.exists(conf_file) or not os.path.exists(gate_file): return
+    
     ate_df = pd.read_csv(ate_file)
     conf_df = pd.read_csv(conf_file)
+    gate_df = pd.read_csv(gate_file)
+    
     ate_df = ate_df[(ate_df["method"] == "GRF") & (ate_df["phase"] == "Phase 1 - Full") & (ate_df["outcome"] == "avg_daily_expenditure")]
 
     for t_col in ate_df["treatment"].unique():
-        ate_val = ate_df[ate_df["treatment"] == t_col]["estimate"].values[0]
-        t_conf = conf_df[conf_df["treatment"] == t_col]
-        plt.figure(figsize=(10, 7))
-        pos = {"Demographics": (0.1, 0.8), "Baseline Habits": (0.1, 0.2), "Coupon (D)": (0.5, 0.5), "Expenditure (Y)": (0.9, 0.5)}
+        ate_row = ate_df[ate_df["treatment"] == t_col]
+        ate_val = ate_row["estimate"].values[0]
+        ate_se = ate_row["se"].values[0]
         
-        # 1. Store the drawn patches in a dictionary
+        t_conf = conf_df[conf_df["treatment"] == t_col]
+        t_gate = gate_df[(gate_df["treatment"] == t_col) & (gate_df["outcome"] == "avg_daily_expenditure") & (gate_df["phase"] == "Phase 1 - Full")]
+        
+        if t_gate.empty: continue
+
+        # Prepare Forest Plot Data
+        forest_data = t_gate[t_gate["variable"] != "(Intercept)"].copy()
+        
+        # Custom sorting logic
+        def sort_key(var):
+            if "age_range" in var:
+                cat_order = 0
+                val = float(var.split("_")[-1].split(".")[0]) if "." in var.split("_")[-1] else 0
+            elif "income_bracket" in var:
+                cat_order = 1
+                val = float(var.split("_")[-1])
+            elif "family_size" in var:
+                cat_order = 2
+                f_val = var.split("_")[-1]
+                val = float(f_val.replace("+", ""))
+            else:
+                cat_order = 3
+                val = 0
+            return (cat_order, val)
+
+        forest_data["sort_val"] = forest_data["variable"].apply(sort_key)
+        forest_data = forest_data.sort_values("sort_val", ascending=False)
+        forest_data["ci"] = 1.96 * forest_data["se"]
+
+        # Create Figure
+        fig, (ax_dag, ax_forest) = plt.subplots(1, 2, figsize=(20, 10), gridspec_kw={'width_ratios': [1, 1.2]})
+        
+        # --- LEFT PANEL: Structural DAG ---
+        pos = {
+            "Demographics": (0.1, 0.8),
+            "Baseline Habits": (0.1, 0.2),
+            "Coupon": (0.5, 0.5),
+            "Expenditure": (0.9, 0.5)
+        }
+        
         node_patches = {}
         for node, (x, y) in pos.items():
-            color = "lightblue" if "(D)" in node else "lightgreen" if "(Y)" in node else "lightgrey"
+            color = "lightblue" if "Coupon" in node else "lightgreen" if "Expenditure" in node else "lightgrey"
             circle = plt.Circle((x, y), 0.08, color=color, ec="black", zorder=3)
-            plt.gca().add_patch(circle)
+            ax_dag.add_patch(circle)
             node_patches[node] = circle
-            plt.text(x, y, node, ha="center", va="center", fontweight="bold", zorder=4)
+            ax_dag.text(x, y, node, ha="center", va="center", fontweight="bold", zorder=4, fontsize=11)
 
-        def draw_arrow(start, end, label, color="black", lw=2):
-            # 2. Pass the patches to patchA and patchB. This forces the arrow to clip exactly at the edge!
-            plt.annotate("", xy=pos[end], xytext=pos[start], 
+        def draw_arrow(start, end, label, color="black", lw=2, ax=ax_dag):
+            ax.annotate("", xy=pos[end], xytext=pos[start], 
                          arrowprops=dict(arrowstyle="->", color=color, lw=lw,
                                          patchA=node_patches[start], patchB=node_patches[end],
-                                         shrinkA=2, shrinkB=2)) # Adds a tiny 2-point gap so it doesn't overlap the black border
-            
-            p1 = np.array(pos[start])
-            p2 = np.array(pos[end])
-            mid = (p1 + p2) / 2
-            
-            plt.text(mid[0], mid[1], label, 
-                     ha="center", va="center", color=color, fontweight="bold",
-                     bbox=dict(facecolor='white', edgecolor='none', alpha=0.9, pad=1))
+                                         shrinkA=2, shrinkB=2))
+            if label:
+                p1, p2 = np.array(pos[start]), np.array(pos[end])
+                mid = (p1 + p2) / 2
+                ax.text(mid[0], mid[1], label, ha="center", va="center", color=color, 
+                        fontweight="bold", fontsize=9, bbox=dict(facecolor='white', edgecolor='none', alpha=0.9, pad=1))
 
+        # Draw DAG Arrows
         for _, row in t_conf.iterrows():
             c_node = "Demographics" if row["confounder_group"] == "Demographics" else "Baseline Habits"
-            draw_arrow(c_node, "Coupon (D)", f"r={row['strength_to_d']:.2f}", color="gray")
-            draw_arrow(c_node, "Expenditure (Y)", f"r={row['strength_to_y']:.2f}", color="gray")
-        draw_arrow("Coupon (D)", "Expenditure (Y)", f"ATE = {ate_val:+.2f}", color="darkblue", lw=3)
+            draw_arrow(c_node, "Coupon", "", color="gray")
+            draw_arrow(c_node, "Expenditure", "", color="gray")
+        draw_arrow("Coupon", "Expenditure", f"ATE = {ate_val:+.2f}", color="darkblue", lw=3)
 
-        # Add Legend for clarity in think-aloud study
+        ax_dag.set_title("Structural Causal Relationships", fontsize=14, fontweight="bold")
+        ax_dag.set_xlim(0, 1); ax_dag.set_ylim(0, 1); ax_dag.axis("off")
+
+        # --- RIGHT PANEL: Forest Plot ---
+        # Add ATE to forest data for reference
+        y_pos = np.arange(len(forest_data) + 1)
+        ax_forest.errorbar(ate_val, len(forest_data), xerr=1.96*ate_se, fmt='o', color='darkblue', 
+                           capsize=5, label="Overall ATE", markersize=8)
+        
+        ax_forest.errorbar(forest_data["coef"], np.arange(len(forest_data)), xerr=forest_data["ci"], 
+                           fmt='o', color='black', ecolor='gray', capsize=3, alpha=0.7)
+        
+        ax_forest.axvline(0, color='red', linestyle='--', alpha=0.5)
+        ax_forest.set_yticks(y_pos)
+        
+        # Clean up labels
+        labels = [v.replace("age_range_", "Age: ").replace("income_bracket_", "Income: ").replace("family_size_", "Family: ") 
+                  for v in forest_data["variable"]] + ["OVERALL ATE"]
+        ax_forest.set_yticklabels(labels)
+        
+        ax_forest.set_xlabel("Estimated Impact (monetary units)")
+        ax_forest.set_title(f"Heterogeneity Details (GATE by Demographic-Subgroup)", fontsize=14, fontweight="bold")
+        ax_forest.grid(axis='x', linestyle=':', alpha=0.6)
+        
+        # Styling
+        plt.suptitle(f"Causal Analysis: {LABEL_MAP.get(t_col, t_col)}", fontsize=18, fontweight="bold", y=0.98)
+        plt.tight_layout(rect=[0, 0.05, 1, 0.95])
+        
+        # Legend and Explanation at the bottom
         from matplotlib.lines import Line2D
         legend_elements = [
-            Line2D([0], [0], color='gray', lw=1.5, label='r: Confounding Strength (Correlation)'),
-            Line2D([0], [0], color='darkblue', lw=2.5, label='ATE: Average Treatment Effect')
+            Line2D([0], [0], color='darkblue', lw=2.5, label='Average Treatment Effect (ATE)'),
+            Line2D([0], [0], color='black', marker='o', ls='none', label='Group Average Treatment Effect (GATE)')
         ]
-        plt.legend(handles=legend_elements, loc='lower center', ncol=2, frameon=True, fontsize=9)
+        fig.legend(handles=legend_elements, loc='lower center', ncol=2, frameon=True, fontsize=10)
 
-        # Add explanation box for node groups
-        explanation = (
-            "Variable Groups:\n"
-            "• Demographics: E.g. Age, Income, Family Size\n"
-            "• Baseline Habits: Past spending behaviors of consumers at the retailer"
-        )
-        plt.text(0.02, 0.98, explanation, fontsize=8, va='top', ha='left',
-                 bbox=dict(boxstyle="round,pad=0.3", facecolor="white", edgecolor="lightgray", alpha=0.9))
-
-        plt.title(f"SCM: {LABEL_MAP.get(t_col, t_col)}", fontsize=14, pad=20)
-        plt.xlim(0, 1); plt.ylim(0, 1); plt.axis("off")
         safe_name = t_col.replace("treatment_", "").replace("/", "_").replace(" ", "_")
-        plt.tight_layout(); plt.savefig(f"plots/causal_dag_{safe_name}.png"); plt.close()
-        print(f"✓ Saved DAG for {t_col}")
+        plt.savefig(f"plots/causal_dag_{safe_name}.png", dpi=300, bbox_inches='tight')
+        plt.close()
+        print(f"✓ Saved Two-Panel Analysis (GATE) for {t_col}")
+
 
 if __name__ == "__main__":
     # Standard Replication Plots
