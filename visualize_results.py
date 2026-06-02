@@ -62,8 +62,7 @@ def plot_summary_table():
             "ATE (Avg. Effect)": f"${ate_val:.2f} (±{1.96*ate_se:.2f})",
             "Mean CATE": f"${cates.mean():.2f}",
             "Median CATE": f"${cates.median():.2f}",
-            "Std. Dev. CATE": f"${cates.std():.2f}",
-            "% Positive Effect": f"{(cates > 0).mean()*100:.1f}%"
+            "Std. Dev. CATE": f"${cates.std():.2f}"
         })
 
     df_table = pd.DataFrame(summary_data)
@@ -90,6 +89,16 @@ def plot_summary_table():
     for (row, col), cell in table.get_celld().items():
         if row == 0:
             cell.set_text_props(fontweight='bold')
+
+    # Add explanation box
+    explanation = (
+        "Metrics Explanation:\n"
+        "• ATE (Average Treatment Effect): The average change in expenditure caused by the coupon across all customers.\n"
+        "• CATE (Conditional Average Treatment Effect): The estimated effect for individual customers based on their\n"
+        "  specific characteristics. The distribution of CATE shows how much the effect varies (heterogeneity)."
+    )
+    ax.text(0.5, -0.05, explanation, fontsize=9, ha='center', va='top', transform=ax.transAxes,
+            bbox=dict(boxstyle="round,pad=0.5", facecolor="white", edgecolor="lightgray", alpha=0.9))
 
     plt.title("Effectiveness Summary across Coupon Categories", fontsize=14, pad=20, fontweight="bold")
     plt.tight_layout()
