@@ -63,6 +63,25 @@ def plot_summary_table():
         # 2. GATE Breakdown
         t_gate = gate_df[(gate_df["treatment"] == t_col) & (gate_df["variable"] != "(Intercept)")].copy()
         
+        def sort_key(var):
+            if "age_range" in var:
+                cat_order = 0
+                val = float(var.split("_")[-1].split(".")[0]) if "." in var.split("_")[-1] else 0
+            elif "family_size" in var:
+                cat_order = 1
+                f_val = var.split("_")[-1]
+                val = float(f_val.replace("+", ""))
+            elif "income_bracket" in var:
+                cat_order = 2
+                val = float(var.split("_")[-1])
+            else:
+                cat_order = 3
+                val = 0
+            return (cat_order, val)
+
+        t_gate["sort_val"] = t_gate["variable"].apply(sort_key)
+        t_gate = t_gate.sort_values("sort_val", ascending=True)
+        
         def parse_var(v):
             if "age_range" in v: 
                 val = v.replace("age_range_", "").replace(".", "-")
@@ -441,13 +460,13 @@ def plot_causal_dag():
             if "age_range" in var:
                 cat_order = 0
                 val = float(var.split("_")[-1].split(".")[0]) if "." in var.split("_")[-1] else 0
-            elif "income_bracket" in var:
-                cat_order = 1
-                val = float(var.split("_")[-1])
             elif "family_size" in var:
-                cat_order = 2
+                cat_order = 1
                 f_val = var.split("_")[-1]
                 val = float(f_val.replace("+", ""))
+            elif "income_bracket" in var:
+                cat_order = 2
+                val = float(var.split("_")[-1])
             else:
                 cat_order = 3
                 val = 0
@@ -590,14 +609,14 @@ def plot_implied_density_ridge():
                     parts = var.split("_")[-1].split(".")
                     val = float(parts[0]) if parts[0].isdigit() else 0
                 except: val = 0
-            elif "income_bracket" in var:
-                cat_order = 1
-                try: val = float(var.split("_")[-1])
-                except: val = 0
             elif "family_size" in var:
-                cat_order = 2
+                cat_order = 1
                 f_val = var.split("_")[-1]
                 try: val = float(f_val.replace("+", ""))
+                except: val = 0
+            elif "income_bracket" in var:
+                cat_order = 2
+                try: val = float(var.split("_")[-1])
                 except: val = 0
             else:
                 cat_order = 3
@@ -605,7 +624,7 @@ def plot_implied_density_ridge():
             return (cat_order, val)
 
         t_gate["sort_val"] = t_gate["variable"].apply(sort_key)
-        t_gate = t_gate.sort_values("sort_val", ascending=False)
+        t_gate = t_gate.sort_values("sort_val", ascending=True)
         
         for _, g_row in t_gate.iterrows():
             if g_row["variable"] == "(Intercept)": continue
