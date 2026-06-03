@@ -126,7 +126,8 @@ def plot_summary_table():
             "Metrics Explanation:\n"
             "• ATE (Average Treatment Effect): The average change in expenditure caused by the coupon across all customers.\n"
             "• GATE (Group Average Treatment Effect): The estimated impact for specific demographic subgroups.\n"
-            "  The 95% Confidence Interval shows the range where the true effect likely falls."
+            "  The 95% Confidence Interval shows the range where the true effect likely falls.\n"
+            "• Income Bracket: 1 (lowest) to 11 (highest). A higher number corresponds to higher income."
         )
         ax.text(0.5, -0.05, explanation, fontsize=8, ha='center', va='top', transform=ax.transAxes,
                 bbox=dict(boxstyle="round,pad=0.5", facecolor="white", edgecolor="lightgray", alpha=0.9))
@@ -461,10 +462,11 @@ def plot_causal_dag():
         
         # --- LEFT PANEL: Structural DAG ---
         pos = {
-            "Demographics": (0.1, 0.8),
-            "Baseline Habits": (0.1, 0.2),
-            "Coupon": (0.5, 0.5),
-            "Expenditure": (0.9, 0.5)
+            "Age": (0.15, 0.75),
+            "Income": (0.15, 0.45),
+            "Family Size": (0.15, 0.15),
+            "Coupon": (0.5, 0.75),
+            "Expenditure": (0.9, 0.45)
         }
         
         node_patches = {}
@@ -473,7 +475,9 @@ def plot_causal_dag():
             circle = plt.Circle((x, y), 0.08, color=color, ec="black", zorder=3)
             ax_dag.add_patch(circle)
             node_patches[node] = circle
-            ax_dag.text(x, y, node, ha="center", va="center", fontweight="bold", zorder=4, fontsize=11)
+            # Wrap text for Family Size if needed
+            display_text = node.replace(" ", "\n")
+            ax_dag.text(x, y, display_text, ha="center", va="center", fontweight="bold", zorder=4, fontsize=10)
 
         def draw_arrow(start, end, label, color="black", lw=2, ax=ax_dag):
             ax.annotate("", xy=pos[end], xytext=pos[start], 
@@ -487,8 +491,7 @@ def plot_causal_dag():
                         fontweight="bold", fontsize=9, bbox=dict(facecolor='white', edgecolor='none', alpha=0.9, pad=1))
 
         # Draw DAG Arrows
-        for _, row in t_conf.iterrows():
-            c_node = "Demographics" if row["confounder_group"] == "Demographics" else "Baseline Habits"
+        for c_node in ["Age", "Income", "Family Size"]:
             draw_arrow(c_node, "Coupon", "", color="gray")
             draw_arrow(c_node, "Expenditure", "", color="gray")
         draw_arrow("Coupon", "Expenditure", f"ATE = {ate_val:+.2f}", color="darkblue", lw=3)
