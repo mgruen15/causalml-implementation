@@ -44,10 +44,6 @@ except Exception:
 
 DATA_DIR = "./data"
 
-# ─────────────────────────────────────────────────────────────────────────────
-# SECTION 1  Data loading & period construction
-# ─────────────────────────────────────────────────────────────────────────────
-
 def load_data():
     print("Loading raw data files...")
     
@@ -166,10 +162,6 @@ def map_item_categories(items):
     return items
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# SECTION 2  Full preprocessing & feature engineering
-# ─────────────────────────────────────────────────────────────────────────────
-
 def _check_treatment_collinearity(panel, treatment_cols):
     """
     Fix 3: Diagnose treatment collinearity and pure-variation counts.
@@ -240,13 +232,13 @@ def preprocess_data(full_run=True):
     items   = map_item_categories(items)
     periods = create_artificial_periods(campaigns, transactions)
 
-    # ── parse transaction dates ──────────────────────────────────────────────
+    # parse transaction dates
     transactions["date"] = pd.to_datetime(transactions["date"])
     transactions = transactions.merge(
         items[["item_id", "target_category"]], on="item_id", how="left"
     )
 
-    # ── assign each transaction to a period ─────────────────────────────────
+    # assign each transaction to a period 
     def assign_period(dates, periods_df):
         period_ids = np.full(len(dates), np.nan)
         for _, row in periods_df.iterrows():
@@ -260,7 +252,7 @@ def preprocess_data(full_run=True):
     transactions = transactions.dropna(subset=["period_id"])
     transactions["period_id"] = transactions["period_id"].astype(int)
 
-    # ── Outcome Y: average per-day expenditure per customer per period ───────
+    # Outcome Y: average per-day expenditure per customer per period 
     outcome_df = (
         transactions
         .groupby(["customer_id", "period_id"])["selling_price"]
@@ -275,7 +267,7 @@ def preprocess_data(full_run=True):
         outcome_df["total_expenditure"] / outcome_df["duration_days"]
     )
 
-    # ── Balanced panel: every customer × every period ────────────────────────
+    # Balanced panel: every customer × every period 
     # Paper: n=1,582 customers, T=33 periods → 52,206 obs before trimming
     all_customers = pd.DataFrame(
         {"customer_id": range(1, 1583)}
@@ -290,7 +282,7 @@ def preprocess_data(full_run=True):
     )
     panel["avg_daily_expenditure"] = panel["avg_daily_expenditure"].fillna(0)
 
-    # ── Socio-demographic covariates (Table 1) ───────────────────────────────
+    # Socio-demographic covariates (Table 1) 
     demographics = demographics.copy()
     demo_cols = [
         "age_range", "marital_status", "rented",
@@ -301,7 +293,7 @@ def preprocess_data(full_run=True):
     panel = panel.merge(demographics, on="customer_id", how="left")
     panel[demo_cols] = panel[demo_cols].fillna("unknown")
 
-    # ── Robustness subset: drop rows with any unknown socio-economic value ───
+    # Robustness subset: drop rows with any unknown socio-economic value 
     if not full_run:
         print("Filtering to known socio-economic observations (n≈431 customers)...")
         for col in demo_cols:
@@ -309,10 +301,10 @@ def preprocess_data(full_run=True):
 
     print("Engineering covariates X...")
 
-    # ── One-hot encode socio-demographics ────────────────────────────────────
+    # One-hot encode socio-demographics 
     panel = pd.get_dummies(panel, columns=demo_cols, drop_first=False)
 
-    # ── Lagged category spending (t-1) ───────────────────────────────────────
+    # Lagged category spending (t-1) 
     all_cats = items["target_category"].unique()
     cat_spend = (
         transactions
@@ -341,7 +333,7 @@ def preprocess_data(full_run=True):
     )
     panel[lagged_spend_cols] = panel[lagged_spend_cols].fillna(0)
 
-    # ── Treatments: binary indicator per category per (customer, period) ─────
+    # Treatments: binary indicator per category per (customer, period) 
     coupon_cats = coupons_items.merge(
         items[["item_id", "target_category"]], on="item_id"
     )
@@ -391,7 +383,7 @@ def preprocess_data(full_run=True):
     treatment_cols = [c for c in treatments.columns if c.startswith("treatment_")]
     panel[treatment_cols] = panel[treatment_cols].fillna(0).astype(int)
 
-    # ── Coupon redemptions at t ───────────────────────────────────────────────
+    # Coupon redemptions at t
     train_redemptions = train_periods[train_periods["redemption_status"] == 1]
     if len(train_redemptions) > 0:
         redemptions = (
@@ -415,7 +407,7 @@ def preprocess_data(full_run=True):
     else:
         redemptions = pd.DataFrame(columns=["customer_id", "period_id"])
 
-    # ── Lagged coupon history (t-1) ───────────────────────────────────────────
+    # Lagged coupon history (t-1) 
     lagged_tr = treatments.copy()
     lagged_tr["period_id"] = lagged_tr["period_id"] + 1
     lagged_tr = lagged_tr.rename(
@@ -437,17 +429,17 @@ def preprocess_data(full_run=True):
         lagged_red_cols = [c for c in lagged_red.columns if c.startswith("lagged_redemption_")]
         panel[lagged_red_cols] = panel[lagged_red_cols].fillna(0).astype(int)
 
-    # ── Period fixed effects ──────────────────────────────────────────────────
+    # Period fixed effects 
     panel = pd.get_dummies(panel, columns=["period_id"], prefix="FE_period")
 
-    # ── Temporary period index for shift operations ───────────────────────────
+    # Temporary period index for shift operations 
     fe_cols = [c for c in panel.columns if c.startswith("FE_period_")]
     panel["_period_idx"] = (
         panel[fe_cols].idxmax(axis=1)
         .str.replace("FE_period_", "").astype(int)
     )
 
-    # ── Outcomes at t+1 and t+2 ───────────────────────────────────────────────
+    # Outcomes at t+1 and t+2 
     panel = panel.sort_values(["customer_id", "_period_idx"])
     for lag, col in [(1, "avg_daily_expenditure_t1"),
                      (2, "avg_daily_expenditure_t2")]:
@@ -459,7 +451,7 @@ def preprocess_data(full_run=True):
     n_obs    = len(panel)
     n_treat  = panel["treatment_Any Coupon"].mean()
 
-    # ── Panel shape validation ───────────────────────────────────────────────
+    # Panel shape validation 
     # We only validate in full_run mode.
     if full_run:
         expected_customers = 1582
@@ -483,15 +475,11 @@ def preprocess_data(full_run=True):
     print(f"Panel built: {n_obs:,} obs | {n_cust:,} customers | "
           f"treatment rate (any coupon) = {n_treat:.3f}")
 
-    # ── Treatment collinearity diagnostic (Fix 3) ────────────────────────────
+    # Treatment collinearity diagnostic (Fix 3) 
     _check_treatment_collinearity(panel, treatment_cols)
 
     return panel, treatment_cols
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# SECTION 3  Causal Forest via R's grf
-# ─────────────────────────────────────────────────────────────────────────────
 
 def _to_r_matrix(df):
     """Convert a pandas DataFrame to an R matrix (float64)."""
@@ -543,7 +531,7 @@ def estimate_causal_forest(panel, treatment_col, feature_cols, outcome_col):
         print(f"{tag} Insufficient treatment variation. Skipping.")
         return None
 
-    # ── Call grf::causal_forest ───────────────────────────────────────────────
+    # Call grf::causal_forest 
     r_X        = _to_r_matrix(X)
     r_Y        = ro.FloatVector(Y.tolist())
     r_W        = ro.FloatVector(W.astype(float).tolist())
@@ -572,9 +560,6 @@ def estimate_causal_forest(panel, treatment_col, feature_cols, outcome_col):
     }
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# SECTION 4  ATE via doubly-robust AIPW estimator (Section 6.2)
-# ─────────────────────────────────────────────────────────────────────────────
 
 def estimate_ate(fit_result, tag=""):
     """
@@ -599,10 +584,6 @@ def estimate_ate(fit_result, tag=""):
     print(f"{tag} ATE = {coef:.3f}  SE = {se:.3f}  p = {pval:.4f}")
     return {"estimate": coef, "se": se, "pvalue": pval}
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# SECTION 5  GATE via best_linear_projection (Section 6.3)
-# ─────────────────────────────────────────────────────────────────────────────
 
 def estimate_gate(fit_result, tag=""):
     """
@@ -657,9 +638,6 @@ def estimate_gate(fit_result, tag=""):
     return gate_df
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# SECTION 6  Goodness-of-fit / calibration (Section 6.5)
-# ─────────────────────────────────────────────────────────────────────────────
 
 def test_calibration(fit_result, tag=""):
     """
@@ -681,9 +659,6 @@ def test_calibration(fit_result, tag=""):
     return cal
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# SECTION 7  Double ML robustness check (Section 6.5, Table 6)
-# ─────────────────────────────────────────────────────────────────────────────
 
 def double_ml_ate(panel, treatment_col, feature_cols, outcome_col):
     """
@@ -733,13 +708,10 @@ def double_ml_ate(panel, treatment_col, feature_cols, outcome_col):
         return None
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# SECTION 8  Main pipeline
-# ─────────────────────────────────────────────────────────────────────────────
 
 def run_pipeline():
 
-    # ── Table 2 / 3 benchmark specs (treatment → outcomes) ───────────────────
+    # Table 2 / 3 benchmark specs (treatment → outcomes) 
     benchmarks = [
         # (treatment_col, [outcome_cols], run_double_ml)
         ("treatment_Any Coupon",
@@ -776,9 +748,8 @@ def run_pipeline():
          False),
     ]
 
-    # ─────────────────────────────────────────────────────────────────────────
+    
     # PHASE 1: Full sample (N ≈ 50,624)
-    # ─────────────────────────────────────────────────────────────────────────
     print("\n" + "="*70)
     print("PHASE 1: Main Analysis – Full Sample")
     print("="*70)
@@ -809,12 +780,12 @@ def run_pipeline():
         for outcome in outcomes:
             tag = f"[{t_col} → {outcome}]"
 
-            # ── Causal Forest ────────────────────────────────────────────────
+            # Causal Forest 
             fit = estimate_causal_forest(panel, t_col, feature_cols, outcome)
             if fit is None:
                 continue
 
-            # ── CATE Distributions (Fig 1) ───────────────────────────────────
+            # CATE Distributions (Fig 1) 
             if outcome == "avg_daily_expenditure":
                 # Get OOB predictions from the forest with variance estimation
                 preds = ro.r.predict(fit["forest"], **{"estimate.variance": True})
@@ -852,7 +823,7 @@ def run_pipeline():
 
                 all_cate_distributions.append(temp_df)
 
-            # ── Feature Importance ───────────────────────────────────────────
+            # Feature Importance 
             if outcome == "avg_daily_expenditure":
                 var_imp = grf.variable_importance(fit["forest"])
                 var_imp_vals = np.array(var_imp).flatten()
@@ -863,7 +834,7 @@ def run_pipeline():
                 })
                 all_feature_importance.append(imp_df)
 
-            # ── ATE (Table 2 / 3) ────────────────────────────────────────────
+            # ATE (Table 2 / 3)
             ate = estimate_ate(fit, tag=tag)
             all_ate_results.append({
                 "phase": "Phase 1 - Full",
@@ -875,7 +846,7 @@ def run_pipeline():
                 "pvalue": ate["pvalue"]
             })
 
-            # ── GATE (Figures 2-4) ───────────────────────────────────────────
+            # GATE (Figures 2-4)
             gate = estimate_gate(fit, tag=tag)
             if gate is not None:
                 gate = gate.copy()
@@ -884,7 +855,7 @@ def run_pipeline():
                 gate["outcome"] = outcome
                 all_gate_results.append(gate)
 
-            # ── Calibration (Table 8) ────────────────────────────────────────
+            # Calibration (Table 8)
             if outcome == "avg_daily_expenditure":
                 cal = test_calibration(fit, tag=tag)
                 row_names = list(ro.r["rownames"](cal))
@@ -902,7 +873,7 @@ def run_pipeline():
 
             results_full[(t_col, outcome)] = {"ate": ate, "gate": gate}
 
-            # ── Double ML robustness (Table 6) ───────────────────────────────
+            # Double ML robustness (Table 6)
             if do_dml and outcome == "avg_daily_expenditure":
                 dml = double_ml_ate(panel, t_col, feature_cols, outcome)
                 if dml:
@@ -916,9 +887,7 @@ def run_pipeline():
                         "pvalue": dml["pvalue"]
                     })
 
-    # ─────────────────────────────────────────────────────────────────────────
     # PHASE 2: Robustness – reduced sample (N ≈ 13,792, known socio-economics)
-    # ─────────────────────────────────────────────────────────────────────────
     print("\n" + "="*70)
     print("PHASE 2: Robustness Check – Reduced Sample (known socio-economics)")
     print("="*70)
@@ -952,7 +921,7 @@ def run_pipeline():
             "pvalue": ate_r["pvalue"]
         })
 
-    # ── Save all results to disk ─────────────────────────────────────────────
+    # Save all results to disk 
     print("\nSaving all results to './results' directory...")
     
     if all_ate_results:
@@ -983,7 +952,7 @@ def run_pipeline():
         imp_df.to_csv("results/feature_importance.csv", index=False)
         print("  ✓ Saved results/feature_importance.csv")
 
-    # ── Calculate Dynamic Cost (Avg Discount) ───────────────────────────────
+    # Calculate Dynamic Cost (Avg Discount)
     # We calculate the average discount per redeemed coupon from transaction data
     # as the baseline cost threshold for the profitability matrix.
     tx_file = os.path.join(DATA_DIR, "customer_transaction_data.csv")
@@ -995,7 +964,7 @@ def run_pipeline():
             f.write(str(avg_discount))
         print(f"  ✓ Saved results/dynamic_cost.txt (Cost = {avg_discount:.2f})")
 
-    # ── Calculate Confounder Strengths for DAG ──────────────────────────────
+    # Calculate Confounder Strengths for DAG 
     print("Calculating confounder strengths for DAG...")
     confounder_results = []
     # Identify representative confounder cols (baseline habits and demographics)
