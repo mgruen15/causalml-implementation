@@ -8,7 +8,6 @@ from scipy.stats import norm
 # Create plots directory
 os.makedirs("plots", exist_ok=True)
 THINK_ALOUD_DIR = "plots/think_aloud"
-os.makedirs(THINK_ALOUD_DIR, exist_ok=True)
 
 # Configuration
 LABEL_MAP = {
@@ -242,6 +241,7 @@ def plot_qini_curve():
     """Think Aloud #1: Cumulative Gain (Qini) Curve."""
     file_path = "results/cate_distributions.csv"
     if not os.path.exists(file_path): return
+    os.makedirs(THINK_ALOUD_DIR, exist_ok=True)
     df = pd.read_csv(file_path)
     
     for t_col in df["treatment"].unique():
@@ -277,6 +277,7 @@ def plot_waterfall_uncertainty():
     """Think Aloud #2: Ranked Waterfall Plot with Individual Uncertainty."""
     file_path = "results/cate_distributions.csv"
     if not os.path.exists(file_path): return
+    os.makedirs(THINK_ALOUD_DIR, exist_ok=True)
     df = pd.read_csv(file_path)
     
     for t_col in df["treatment"].unique():
@@ -310,6 +311,7 @@ def plot_personas():
     """Think Aloud #3: Pre-defined Persona Contrasts."""
     file_path = "results/cate_distributions.csv"
     if not os.path.exists(file_path): return
+    os.makedirs(THINK_ALOUD_DIR, exist_ok=True)
     df = pd.read_csv(file_path)
     
     # We focus on "All Coupons" for simplicity in persona demonstration
@@ -365,6 +367,7 @@ def plot_feature_importance():
     """Think Aloud #5: Feature Importance for Heterogeneity."""
     file_path = "results/feature_importance.csv"
     if not os.path.exists(file_path): return
+    os.makedirs(THINK_ALOUD_DIR, exist_ok=True)
     df = pd.read_csv(file_path)
     
     for t_col in df["treatment"].unique():
@@ -696,18 +699,12 @@ def plot_implied_density_ridge():
         print(f"✓ Saved Ridge Plot for {label}")
 
 if __name__ == "__main__":
-    # Standard Replication Plots
-    # plot_fig1_cate_distributions()
-    # plot_cate_violins()
-    # plot_gate_subgroups()
-    # plot_gate_heatmaps()
+    # Only the plots used in the paper are generated here. Further plot
+    # functions (CATE distributions/violins, GATE subgroups/heatmaps, Qini
+    # curves, waterfall, personas, feature importance) are defined above
+    # and can be added back if needed.
     plot_causal_dag()
-    
-    # Think Aloud Study Plots
+
     print("\nGenerating Think Aloud Study Visualizations...")
     plot_summary_table()
     plot_implied_density_ridge()
-    # plot_qini_curve()
-    # plot_waterfall_uncertainty()
-    # plot_personas()
-    # plot_feature_importance()

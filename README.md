@@ -25,7 +25,7 @@ The replication pipeline follows these steps:
 6. **Robustness Checks:** 
     - **Double ML:** Validates results using Lasso-based Double ML via the `causalDML` R package.
     - **Reduced Sample:** Re-runs analysis on a subset with known socio-economic data.
-7. **Visualization:** Produces CATE distribution histograms, violin plots, GATE subgroup error bars, heatmaps, and Structural Causal Models (DAGs).
+7. **Visualization:** Produces Structural Causal Models (DAGs), per-category summary tables, and CATE ridge density plots.
 
 ## Installation
 
